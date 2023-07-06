@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'helvetica_neue';
+  src: url('./font/Helvetica/linotype_-_helvetica_neue_lt_thai_bold-webfont.woff2') format('woff2'),
+       url('./font/Helvetica/linotype_-_helvetica_neue_lt_thai_bold-webfont.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'helvetica_neue';
+  src: url('./font/Helvetica/linotype_-_helvetica_neue_lt_thai_regular-webfont.woff2') format('woff2'),
+       url('./font/Helvetica/linotype_-_helvetica_neue_lt_thai_regular-webfont.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre&display=swap');
+
+

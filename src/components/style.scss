@@ -1,0 +1,576 @@
+$fontFrank: "Frank Ruhl Libre";
+$fontHelvetica: "helvetica_neue";
+$colorBlack: #000000;
+$colorWhite: #ffffff;
+$colorGray: #ededed;
+$colorDarkGray: #c4c4c4;
+$colorGray979797: #979797;
+
+%subTitle14px {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+%subTitle {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  font-family: $fontFrank;
+}
+
+%H1Desktop {
+  font-weight: 400;
+  font-size: 58px;
+  line-height: 69px;
+  font-family: $fontHelvetica;
+}
+
+%H2Desktop {
+  font-weight: 400;
+  font-size: 46px;
+  line-height: 55px;
+  font-family: $fontHelvetica;
+}
+
+%H3Desktop {
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 36px;
+  font-family: $fontHelvetica;
+}
+
+%bodyDesktop {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 130%;
+  font-family: $fontHelvetica;
+}
+
+a {
+  text-decoration: none;
+  color: $colorBlack;
+}
+
+%button {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  border: 1px solid $colorBlack;
+  padding: 22px 32px;
+  background-color: transparent;
+  font-family: $fontFrank;
+}
+
+ul,
+li {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none;
+}
+
+input,
+select {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+.sectionHeader {
+  .appHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 38px 62px;
+    .wrapLange {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      a {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+        color: $colorGray;
+        @extend %subTitle14px;
+        img {
+          max-width: 25px;
+        }
+      }
+      p {
+        color: $colorGray;
+        @extend %subTitle14px;
+      }
+    }
+  }
+  .wrapMenuNavigation {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 75px 0;
+    min-height: 100vh;
+    // display: none;
+    align-items: center;
+    background-color: $colorBlack;
+    overflow-y: scroll;
+    .wrapListMenuNavigation {
+      ul {
+        li {
+          a {
+            @extend %H2Desktop;
+            color: $colorWhite;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+  .menuHam {
+    .hambergerBox {
+      width: 33px;
+      height: 33px;
+      position: relative;
+      float: right;
+      cursor: pointer;
+      .hambergerBar {
+        width: 33px;
+        height: 4px;
+        background-color: #000000;
+        position: absolute;
+      }
+      .hambergerBar:nth-of-type(1) {
+        top: 0px;
+      }
+      .hambergerBar:nth-of-type(2) {
+        top: 10px;
+      }
+      .hambergerBar:nth-of-type(3) {
+        top: 20px;
+      }
+      .hambergerBar:nth-of-type(1).activeHam {
+        top: 10px;
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -moz-transition: top 0.3s ease 0.1s, -moz-transform 0.3s ease-out 0.5s;
+        -o-transition: top 0.3s ease 0.1s, -o-transform 0.3s ease-out 0.5s;
+        -webkit-transition: top 0.3s ease, -webkit-transform 0.3s ease-out;
+        -webkit-transition-delay: 0.1s, 0.5s;
+        transition: top 0.3s ease 0.1s, transform 0.3s ease-out 0.5s;
+      }
+      .hambergerBar:nth-of-type(2).activeHam {
+        opacity: 0;
+        transition: 0.5s ease-in-out;
+      }
+      .hambergerBar:nth-of-type(3).activeHam {
+        top: 10px;
+        -moz-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        -webkit-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+        -moz-transition: top 0.3s ease 0.1s, -moz-transform 0.3s ease-out 0.7s;
+        -o-transition: top 0.3s ease 0.1s, -o-transform 0.3s ease-out 0.7s;
+        -webkit-transition: top 0.3s ease, -webkit-transform 0.3s ease-out;
+        -webkit-transition-delay: 0.1s, 0.7s;
+        transition: top 0.3s ease 0.1s, transform 0.3s ease-out 0.7s;
+      }
+    }
+    .animateMenuHead {
+      -moz-transition: -moz-transform 0.3s ease 0.5s;
+      -o-transition: -o-transform 0.3s ease 0.5s;
+      -webkit-transition: -webkit-transform 0.3s ease;
+      -webkit-transition-delay: 0.5s;
+      transition: transform 0.3s ease 0.5s;
+      -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+.wrapApproach {
+  padding: 125px 0 163px 0;
+  h2 {
+    @extend %H1Desktop;
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+  h3 {
+    @extend %subTitle;
+  }
+}
+.wrapTitleWorksHome {
+  h3 {
+    @extend %subTitle;
+    text-align: center;
+    margin-bottom: 37px;
+  }
+}
+
+.sectionWorksHome {
+  .wrapWorksHome {
+    position: relative;
+    padding: 0 0 153px 0;
+
+    .wrapSubTitleWorksHome {
+      h2 {
+        animation-name: slideUp;
+        animation-duration: 4s;
+        animation-timing-function: ease-in;
+        animation-fill-mode: forwards;
+        display: inline;
+        @extend %bodyDesktop;
+      }
+      @keyframes slideUp {
+        0%,
+        50% {
+          transform: translateY(100%);
+          opacity: 0;
+        }
+
+        60%,
+        100% {
+          transform: translate(0px, 0px);
+          opacity: 1;
+        }
+      }
+    }
+
+    .wrapCaseStudy {
+      h3 {
+        @extend %subTitle;
+        margin-top: 29px;
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        li {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          @extend %H1Desktop;
+          color: $colorGray;
+          cursor: pointer;
+        //   line-height: normal;
+          a {
+            @extend %H1Desktop;
+            text-decoration: none;
+            color: $colorGray;
+          }
+        }
+        .active {
+            color: $colorBlack;
+        }
+      }
+      .wrapListCaseStudyCase {
+        button {
+            @extend %H1Desktop;
+            display: block;
+            background-color: transparent;
+            border-radius: 0px;
+            border: none;
+            color: $colorGray;
+        }
+        button:disabled {
+            color: $colorBlack;
+        }
+
+      }
+    }
+    .wrapContentCaseStudy {
+
+    }
+    img {
+      width: 100%;
+    }
+    h2 {
+      @extend %H2Desktop;
+    }
+    .lineWorskHome {
+      width: 1px;
+      height: 100%;
+      background-color: $colorDarkGray;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      top: 0;
+    }
+  }
+  a {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 9px;
+    button {
+      @extend %button;
+      min-width: 166px;
+    }
+  }
+}
+
+.sectionClientHome {
+  padding: 100px 0 0 0;
+  h3 {
+    @extend %subTitle;
+    text-align: center;
+  }
+  .wrapListClientHome {
+    ul {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      margin: 0;
+      padding: 0;
+      grid-gap: 88px 179px;
+      li {
+        list-style: none;
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+  a {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 90px;
+    button {
+      @extend %button;
+      min-width: 166px;
+    }
+  }
+}
+
+.sectionThinkHome {
+  padding: 103px 0 100px 0;
+  h3 {
+    @extend %subTitle;
+    text-align: center;
+    margin-bottom: 39px;
+  }
+  a {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 40px;
+    button {
+      @extend %button;
+    }
+    .ItemThinkHome {
+      img {
+        width: 100%;
+        margin-bottom: 37px;
+      }
+      h2 {
+        text-align: left;
+        @extend %H3Desktop;
+      }
+    }
+  }
+}
+
+.sectionTitlePage {
+  padding: 130px 0;
+  h2 {
+    @extend %H1Desktop;
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+  h3 {
+    @extend %subTitle;
+  }
+}
+
+.sectionTitleWorksInfo {
+  padding: 130px 0 140px 0;
+  h2 {
+    margin-bottom: 40px;
+  }
+  h5 {
+    @extend %bodyDesktop;
+  }
+  .wrapObjectiveWorks {
+    margin-top: 40px;
+    h4 {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.sectionListWorks {
+  .ItemListWorks {
+    margin-bottom: 40px;
+    img {
+      width: 100%;
+    }
+    h2 {
+      @extend %H3Desktop;
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+    p {
+      @extend %subTitle;
+    }
+  }
+}
+
+.sectionTeamWorksInfo {
+  padding: 130px 0;
+  h3 {
+    @extend %subTitle;
+    text-align: center;
+  }
+  .ItemTeamWorks {
+    margin-top: 24px;
+    h2 {
+      @extend %bodyDesktop;
+      text-align: center;
+      line-height: 11px;
+    }
+  }
+}
+
+.sectionInfoWorks {
+  img {
+    width: 100%;
+    margin: 40px 0 ;
+  }
+  .imageBannerBottom {
+    margin: 0 ;
+  }
+}
+
+
+.sectionInfoThink {
+    h4 {
+        @extend %H3Desktop;
+        margin: 40px 0;
+    }
+    p {
+        @extend %bodyDesktop;
+    }
+    .imageBannerThinkInfo {
+        width: 100%;
+    }
+}
+.sectionInfoCulture {
+  padding: 130px 0 100px 0;
+  h3 {
+    @extend %subTitle;
+    margin-bottom: 40px;
+  }
+  .wrapInfoCulture {
+    h2 {
+      @extend %H2Desktop;
+    }
+    h4 {
+      @extend %bodyDesktop;
+    }
+    img {
+      width: 100%;
+      margin: 150px auto;
+    }
+  }
+}
+.sectionListCareers {
+  padding: 130px 0 40px 0;
+  h3 {
+    @extend %subTitle;
+    margin-bottom: 40px;
+  }
+  .wrapItemListCareers {
+    padding: 34px 0 40px 0;
+    border-bottom: 1px solid $colorGray979797;
+    h2 {
+      @extend %H2Desktop;
+    }
+    p {
+      @extend %bodyDesktop;
+    }
+  }
+}
+
+.sectionInfoCareers {
+  padding: 130px 0 40px 0;
+  h3 {
+    @extend %subTitle;
+    margin-bottom: 40px;
+  }
+  .wrapItemInfoCareer {
+    h2 {
+      @extend %H2Desktop;
+    }
+    p {
+      @extend %bodyDesktop;
+    }
+  }
+}
+
+.appFooter {
+  background-color: $colorBlack;
+  color: $colorWhite;
+  padding: 40px 0;
+  a {
+    color: $colorWhite;
+    text-decoration: none;
+  }
+  h3 {
+    @extend %subTitle;
+    margin-bottom: 13px;
+  }
+
+  .wrapTitleFooter {
+    border-bottom: 1px solid $colorWhite;
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+    h2 {
+      @extend %H3Desktop;
+    }
+    button {
+      width: 100%;
+      background-color: $colorWhite;
+      color: $colorBlack;
+      font-size: 14px;
+      line-height: 16px;
+      font-family: $fontFrank;
+      padding: 22px 0;
+      border-radius: 0px;
+    }
+  }
+  .wrapSocialFooter {
+    ul {
+      display: flex;
+      gap: 41px;
+      li {
+      }
+    }
+  }
+  .wrapAdressFooter {
+    display: flex;
+    gap: 11px;
+    h4 {
+      @extend %bodyDesktop;
+    }
+  }
+  .wrapTermFooter {
+    margin-top: 40px;
+    ul {
+      display: flex;
+      gap: 10px;
+    }
+  }
+  p {
+    text-align: right;
+    margin-top: 40px;
+  }
+}
+
+
+.titlu {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.fadeIn {
+  opacity: 1;
+}
