@@ -6,14 +6,19 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import React, { useState, useEffect } from "react";
 
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
-function ListWorks() {
+import ListThink from './ListThink';
+
+
+function Think() {
     let params = useParams();
-    const url = "https://www.suffix.works/api-v2/works/"+params.lang+"";
+    const { t, i18n } = useTranslation();
+   
+    const url = "https://www.suffix.works/api-v2/think/"+params.lang+"";
+
     const [data, setData] = useState([]);
-
-
 
     const getWork = () => {
         const config = {
@@ -42,13 +47,13 @@ function ListWorks() {
                 <Container>
                     <Row>
                         {
-                            data.map(user => {
+                            data.think_info?.map(user => {
                                 return <Col lg={6} key={user.id}>
-                                    <Link to={`/works/${params.lang}/${user.slug}`}>
+                                    <Link to={`/think/${user.slug}&lang=${params.lang}`}>
                                         <div className='ItemListWorks'>
-                                            <img src={user.thumbnails}></img>
+                                            <img src={user.image_webp}></img>
+                                            <p>{user.category}</p>
                                             <h2>{user.title}</h2>
-                                            <p>{user.type}</p>
                                         </div>
                                     </Link>
                                     
@@ -62,4 +67,4 @@ function ListWorks() {
     );
 }
 
-export default ListWorks;
+export default Think;

@@ -398,6 +398,10 @@ select {
 }
 
 .sectionListWorks {
+  a {
+    color: $colorBlack;
+    text-decoration: none;
+  }
   .ItemListWorks {
     margin-bottom: 40px;
     img {
@@ -471,6 +475,70 @@ select {
       margin: 150px auto;
     }
   }
+
+}
+.sectionInfoContact {
+  padding-bottom: 130px;
+  h3 {
+    @extend %subTitle;
+    margin-bottom: 40px;
+  }
+  h1 {
+    @extend %H1Desktop;
+  }
+  h2 {
+    @extend %bodyDesktop;
+  }
+  form {
+    margin-top: 40px;
+    margin-bottom: 130px;
+    input {
+      width: 100%;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 400;
+      font-family: $fontHelvetica;
+      border: none;
+      background-color: transparent;
+      border-bottom: 1px solid $colorBlack;
+      line-height: 31.2px; 
+      padding-bottom: 9px;
+      margin-bottom: 24px;
+    }
+    textarea {
+      height: 225px;
+      width: 100%;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 22.4px; 
+      font-family: $fontHelvetica;
+      border: none;
+      background-color: transparent;
+      border-bottom: 1px solid $colorBlack;
+      line-height: 31.2px; 
+    }
+    .btnSubmit {
+      background-color: $colorBlack;
+      height: 60px;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 16px; /* 114.286% */
+      color: $colorWhite;
+      margin-top: 20px;
+      font-family: $fontFrank;
+    }
+  }
+ 
+  .wrapContactLink {
+    margin-top: 40px;
+    button {
+      background-color: transparent;
+      border: none;
+      @extend %bodyDesktop;
+    }
+  }
 }
 .sectionListCareers {
   padding: 130px 0 40px 0;
@@ -478,14 +546,30 @@ select {
     @extend %subTitle;
     margin-bottom: 40px;
   }
+  a {
+    color: $colorBlack;
+    text-decoration: none;
+  }
   .wrapItemListCareers {
     padding: 34px 0 40px 0;
     border-bottom: 1px solid $colorGray979797;
+   
     h2 {
       @extend %H2Desktop;
     }
     p {
       @extend %bodyDesktop;
+    }
+    ul {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      li {
+        @extend %bodyDesktop;
+      }
+    }
+    a {
+      color: $colorBlack;
+      text-decoration: none;
     }
   }
 }
@@ -503,6 +587,18 @@ select {
     p {
       @extend %bodyDesktop;
     }
+  }
+  .btnApply {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid $colorBlack;
+    color: $colorBlack;
+    border-radius: 0px;
+    padding: 23px 0;
+    font-family: $fontFrank;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
   }
 }
 
@@ -573,4 +669,29 @@ select {
 
 .fadeIn {
   opacity: 1;
+}
+.modal {
+  background-color: $colorBlack;
+  .modal-dialog {
+    background-color: $colorBlack;
+    .modal-content {
+      background-color: $colorBlack;
+      text-align: center;
+      h2 {
+        @extend %subTitle;
+        color: $colorWhite;
+        margin-bottom: 26px;
+      }
+      h1 {
+        @extend %H1Desktop;
+        color: $colorWhite;
+        margin-bottom: 40px;
+      }
+      a {
+        @extend %subTitle;
+        color: $colorWhite;
+        margin-bottom: 89px;
+      }
+    }
+  }
 }

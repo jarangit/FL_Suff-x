@@ -12,6 +12,7 @@ function ListClient() {
     const [lang, setLang] = useState("en");
 
 
+
     const getWork = () => {
         const config = {
             headers: {
@@ -21,7 +22,7 @@ function ListClient() {
         return axios.get(url, config)
             .then(res => {
                 console.log(res)
-                setData(res);
+                setData(res.data);
             })
             .catch(err => console.log(err))
         // return fetch(url)
@@ -33,44 +34,18 @@ function ListClient() {
         getWork();
     }, []);
 
-    const listItemCient = [
-        {
-            id: 1,
-            name: 'Automotive',
-            client: [
-                "Benz BKK Group",
-                "Honda Cub House"
-            ]
-        },
-        {
-            id: 2,
-            name: 'Digital Product',
-            client: [
-                "Butler",
-                "Fourleaf",
-                "Health at home",
-                "Mochamp",
-                "Mespace",
-                "Popatee",
-                "Sixlab",
-                "Tripily"
-            ]
-        }
-    ]
-
-    // const client = [];
 
     return (
         <section className='sectionListCareers'>
-            {/* <div className='wrapPage'>
+            <div className='wrapPage'>
                 <Container>
                     <h3>Clients</h3>
                     {
-                        listItemCient.map((industries) => {
+                        data.industries?.map((industrie, index) => {
                             return <Row className='wrapItemListCareers'>
                                 <Col lg={6}>
-                                    <div key={industries.id} className='ItemListCareers'>
-                                        <h2>{industries.name}</h2>
+                                    <div key={industrie.name} className='ItemListCareers'>
+                                        <h2>{industrie.name}</h2>
                                     </div>
                                 </Col>
                                 <Col lg={6}>
@@ -78,7 +53,7 @@ function ListClient() {
                                         <ul>
 
                                             {
-                                                industries.client.map((index) => {
+                                                industrie.client.map((index) => {
                                                     return <li key={index} className='list'>{index}</li>
                                                 })
 
@@ -90,16 +65,16 @@ function ListClient() {
                         })
                     }
                 </Container>
-            </div> */}
-            <div className="App">
-                <h1 style={{ color: "green" }}>using JavaScript inbuilt FETCH API</h1>
+            </div>
+            {/* <div className="App">
+                <h1 style={{ color: "green" }}>using Axios Library to Fetch Data</h1>
                 <center>
                     {data.map((dataObj, index) => {
                         return (
                             <div
                                 style={{
                                     width: "15em",
-                                    backgroundColor: "#35D841",
+                                    backgroundColor: "#CD8FFD",
                                     padding: 2,
                                     borderRadius: 10,
                                     marginBlock: 10,
@@ -110,7 +85,7 @@ function ListClient() {
                         );
                     })}
                 </center>
-            </div>
+            </div> */}
         </section>
     );
 }

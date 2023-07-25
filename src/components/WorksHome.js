@@ -3,14 +3,45 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link, Router, Routes } from 'react-router-dom';
-import { React, useState } from 'react'
 import Accordion from 'react-bootstrap/Accordion';
 
-
+import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { useTranslation } from 'react-i18next';
+import { useParams } from "react-router-dom";
 
 function WorksHome() {
     // const [list, setList] = useState([])
     // const [active, setActive] = useState(null)
+
+    let params = useParams();
+    const { t, i18n } = useTranslation();
+    const url = "https://www.suffix.works/api-v2/home/" + params.lang + "";
+    const [data, setData] = useState([]);
+    // const [lang, setLang] = useState("en");
+
+
+    const getWork = () => {
+        const config = {
+            headers: {
+                Authorization: 'Basic c3VmZml4OnN1ZmZpeDIwMjEq',
+            }
+        };
+        return axios.get(url, config)
+            .then(res => {
+                console.log(res)
+                setData(res.data);
+            })
+            .catch(err => console.log(err))
+        // return fetch(url)
+        //     .then((res) => res.json())
+        //     .then((d) => setData(d))
+    }
+
+    useEffect(() => {
+        getWork();
+    }, []);
+
     const [currentTab, setCurrentTab] = useState('1');
     const tabs = [
         {
@@ -67,7 +98,7 @@ function WorksHome() {
                         <Row>
                             <Col lg={6}>
                                 <div className='wrapSubTitleWorksHome'>
-                                    <h2>We provide digital strategy & execution including marketing,communication,website ,application.</h2>
+                                    <h2>{data.work_description}</h2>
                                 </div>
                                 <div className='wrapCaseStudy'>
                                     <h3>Case Study</h3>

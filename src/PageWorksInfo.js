@@ -4,8 +4,14 @@ import TeamWorksInfo from './components/TeamWorksInfo.js';
 import InfoWorks from './components/InfoWorks.js';
 
 
+import { useTranslation } from 'react-i18next';
+import { useParams } from "react-router-dom";
 
-function PageWorks() {                
+
+function PageWorksInfo() {   
+  // let { lang } = useParams();
+  // const { i18n } = useTranslation();
+  // i18n.changeLanguage(lang);             
   return (
     <div>
         <TitleWorksInfo />
@@ -15,4 +21,4 @@ function PageWorks() {
   );
 }
 
-export default PageWorks;
+export default PageWorksInfo;

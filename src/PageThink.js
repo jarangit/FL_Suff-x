@@ -1,14 +1,23 @@
 import './App.scss';
-import TitlePage from './components/TitlePage.js';
-import ListWorks from './components/ListWorks.js';
+import TitlePageThink from './components/TitlePageThink.js';
+// import ListThink from './components/ListThink.js';
+import Think from './components/Thinks.js'
+import { useTranslation } from 'react-i18next';
+import { useParams } from "react-router-dom";
+// import AppHeader from './components/AppHeader';
 
-function PageWorks() {                
+function PageThink() {     
+  // let { lang } = useParams();
+  // const { i18n } = useTranslation();
+  // i18n.changeLanguage(lang);
+           
   return (
     <div>
-        <TitlePage />
-        <ListWorks />
+        {/* <AppHeader /> */}
+        <TitlePageThink />
+        <Think />
     </div>
   );
 }
 
-export default PageWorks;
+export default PageThink;

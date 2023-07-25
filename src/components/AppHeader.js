@@ -4,34 +4,38 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link, NavLink } from 'react-router-dom';
 import { React, useState } from 'react'
-
+import { Button } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 
 function AppHeader() {
+    const { t } = useTranslation();
     const [toggle, setToggle] = useState(false);
     const handleClick = () => {
         setToggle(!toggle);
     };
+
+    const handleChangeLang = (lang) => {
+        window.location.href = '/' + lang;
+    };
+    // const { i18n } = useTranslation();
+
+    // const handleLanguageChange = (e) => {
+    //   const newLang = e.target.value;
+    //   i18n.changeLanguage(newLang);
+    // };
+  
 
     return (
         <header>
             <section className='sectionHeader'>
                 <div className='appHeader'>
                     <div className='wrapLange'>
-                        <NavLink>
-
-                        </NavLink>
-                        <a>
-                            <img src='/images/icon/iconLang.svg'></img>
-                            EN
-                        </a>
-                        <p>
-                            |
-                        </p>
-                        <a>
-                            {/* <img src='/images/icon/iconLang.svg'></img> */}
-                            TH
-                        </a>
+                        {/* {t('Travel App')} */}
+                        <Button onClick={() => handleChangeLang('en')}> <img src='/images/icon/iconLang.svg'></img>
+                            EN</Button>
+                        <Button onClick={() => handleChangeLang('th')}> <img src='/images/icon/iconLang.svg'></img>
+                            TH</Button>
                     </div>
                     <div className='logo'>
                         <Link to='/'>
@@ -45,7 +49,7 @@ function AppHeader() {
                             <div className="hambergerBar"></div>
                         </div>
                     </div>
-                    {toggle ?
+                    {toggle ? 
                         <div className='wrapMenuNavigation'>
                             <Container>
                                 <Row>
@@ -58,18 +62,13 @@ function AppHeader() {
                                                 <li>-</li>
                                                 <li><Link to="/works">works</Link></li>
                                                 <li>-</li>
-                                                <li><Link to="/worksInfo">worksInfo</Link></li>
-                                                <li>-</li>
                                                 <li><Link to="/think">think</Link></li>
-                                                <li>-</li>
-                                                <li><Link to="/thinkInfo">thinkInfo</Link></li>
                                                 <li>-</li>
                                                 <li><Link to="/client">client</Link></li>
                                                 <li>-</li>
                                                 <li><Link to="/culture">culture</Link></li>
                                                 <li>-</li>
-                                                <li><Link to="/carrers">careers</Link></li>
-                                                <li><Link to="/carrersInfo">carrersInfo</Link></li>
+                                                <li><Link to="/careers">careers</Link></li>
                                             </ul>
                                         </div>
                                     </Col>

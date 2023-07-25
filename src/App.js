@@ -15,25 +15,99 @@ import PageCulture from './PageCulture';
 import PageCareers from './PageCareers';
 import PageCareersInfo from './PageCareersInfo';
 import PageContact from './PageContact';
+import PageSiteMaps from './PageSiteMaps';
+import PagePolicy from './PagePrivacyPolicy';
 
-
+import { useTranslation } from 'react-i18next';
+import { useParams } from "react-router-dom";
 
 function App() {
+
+  let { lang } = useParams();
+  const { i18n } = useTranslation();
+  i18n.changeLanguage(lang);
+
   return (
     <div>
       <AppHeader />
       <Routes>
-        <Route path='/' element={<PageHome />}></Route>
+        <Route path='/:lang?/' element={<PageHome />}></Route>
         <Route path='/project' element={<PageProject />}></Route>
-        <Route path='/works' element={<PageWorks />}></Route>
-        <Route path='/worksInfo' element={<PageWorksInfo />}></Route>
-        <Route path='/think' element={<PageThink />}></Route>
-        <Route path='/thinkInfo' element={<PageThinkInfo />}></Route>
+        <Route path='/works/:lang?' element={<PageWorks />}></Route>
+        {/* <Route path="/works/:lang/:slug" element={<PageWorksInfo />}></Route> */}
+        {/* <Route path="works/:lang?"
+          // the matching param might be available to the loader
+          loader={({ params }) => {
+            console.log(params["lang"]); // "en"
+          }}
+          // and the action
+          action={({ params }) => { }}
+          element={<PageWorks />}
+        />; */}
+         <Route
+          // this path will match URLs like
+          // - /categories
+          // - /en/categories
+          // - /fr/categories
+          path="/works/:lang?/:slug"
+          // the matching param might be available to the loader
+          loader={({ params }) => {
+            console.log(params["lang"]); // "en"
+          }}
+          // and the action
+          action={({ params }) => { }}
+          element={<PageWorksInfo />}
+        />;
+        {/* <Route path='/think/:lang/' element={<PageThink />}></Route> */}
+        {/* <Route path='/think/:slug' element={<PageThinkInfo />}></Route> */}
+        <Route
+          // this path will match URLs like
+          // - /categories
+          // - /en/categories
+          // - /fr/categories
+          path="think/:lang?"
+          // the matching param might be available to the loader
+          loader={({ params }) => {
+            console.log(params["lang"]); // "en"
+          }}
+          // and the action
+          action={({ params }) => { }}
+          element={<PageThink />}
+        />;
+        <Route
+          // this path will match URLs like
+          // - /categories
+          // - /en/categories
+          // - /fr/categories
+          path="think/:slug&lang?"
+          // the matching param might be available to the loader
+          loader={({ params }) => {
+            console.log(params["lang"]); // "en"
+          }}
+          // and the action
+          action={({ params }) => { }}
+          element={<PageThinkInfo />}
+        />;
         <Route path='/client' element={<PageClients />}></Route>
-        <Route path='/culture' element={<PageCulture />}></Route>
-        <Route path='/carrers' element={<PageCareers />}></Route>
-        <Route path='/carrersInfo' element={<PageCareersInfo />}></Route>
+        <Route
+          // this path will match URLs like
+          // - /categories
+          // - /en/categories
+          // - /fr/categories
+          path="culture/:lang?"
+          // the matching param might be available to the loader
+          loader={({ params }) => {
+            console.log(params["lang"]); // "en"
+          }}
+          // and the action
+          action={({ params }) => { }}
+          element={<PageCulture />}
+        />;
+        <Route path='/careers' element={<PageCareers />}></Route>
+        <Route path='/position/:slug' element={<PageCareersInfo />}></Route>
         <Route path='/contact' element={<PageContact />}></Route>
+        <Route path='/sitemap' element={<PageSiteMaps />}></Route>
+        <Route path='/policy' element={<PagePolicy />}></Route>
       </Routes>
       <AppFooter />
     </div>
