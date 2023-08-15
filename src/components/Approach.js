@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import axios from 'axios';
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useTranslation } from 'react-i18next';
 import { useParams } from "react-router-dom";
 
@@ -14,6 +14,7 @@ function Approach() {
     const url = "https://www.suffix.works/api-v2/home/" + params.lang + "";
     const [data, setData] = useState([]);
     // const [lang, setLang] = useState("en");
+
 
 
     const getWork = () => {
@@ -45,12 +46,23 @@ function Approach() {
                         <div className='wrapApproach'>
                             <h3>Approach</h3>
                             <h2>
-                                <div dangerouslySetInnerHTML = {{__html: data.approach}}></div>
+                                <div dangerouslySetInnerHTML={{ __html: data.approach }}></div>
                             </h2>
                             <h3>Overall</h3>
-                            <h2 className='textRun'>
-                                251 Works, 67 Digital Strategic Plan, 41 Social Media Management, 42 Media Plan, 105 Websites, 24 Identity Design, 5 Mobile Applications
-                            </h2>
+                            <div className='wrapTextApproach'>
+                                {
+                                    data.overall?.map(user => {
+                                        return <div key={user.name} className='wrapArticleApproach'>
+                                            <h2 className='textRun'>{user.total}</h2>
+                                            <h2 className='textRun'>{user.name}</h2>
+                                        </div>
+
+                                    })
+                                }
+                            </div>
+                            {/* <h2 className='textRun'>
+                                {data.overall} Works, 67 Digital Strategic Plan, 41 Social Media Management, 42 Media Plan, 105 Websites, 24 Identity Design, 5 Mobile Applications
+                            </h2> */}
                         </div>
                     </Col>
                     <Col lg={2}></Col>

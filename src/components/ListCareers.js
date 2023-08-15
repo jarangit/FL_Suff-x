@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
 // const listItemCareers = [
 //     {
@@ -21,12 +22,11 @@ import { Link } from 'react-router-dom';
 
 
 function ListCareers() {
-    const url = "https://www.suffix.works/api-v2/career/en";
+    let params = useParams();
+    const url = "https://www.suffix.works/api-v2/career/"+params.lang+"";
     const [data, setData] = useState([]);
     const [lang, setLang] = useState("en");
-
-
-
+    
     const getWork = () => {
         const config = {
             headers: {
@@ -54,9 +54,9 @@ function ListCareers() {
                     <h3>Careers</h3>
                     {
                         data.map(user => {
-                            return <div>
-                                <Link to={`/position/${user.id}`}>
-                                <Row key={user.id} className='wrapItemListCareers'>
+                            return <div key={user.id}>
+                                <Link to={`/position/${params.lang}/${user.id}`}>
+                                <Row  className='wrapItemListCareers'>
                                     <Col lg={6}>
                                         <div className='ItemListCareers'>
                                             <h3>Position</h3>

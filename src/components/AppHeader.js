@@ -11,9 +11,12 @@ import { useTranslation } from 'react-i18next';
 function AppHeader() {
     const { t } = useTranslation();
     const [toggle, setToggle] = useState(false);
+    const [isActive, setIsActive] = useState(false);
     const handleClick = () => {
         setToggle(!toggle);
+        setIsActive(current => !current);
     };
+    
 
     const handleChangeLang = (lang) => {
         window.location.href = '/' + lang;
@@ -43,10 +46,12 @@ function AppHeader() {
                         </Link>
                     </div>
                     <div className='menuHam'>
-                        <div className="hambergerBox" onClick={handleClick} >
-                            <div className="hambergerBar"></div>
-                            <div className="hambergerBar"></div>
-                            <div className="hambergerBar"></div>
+                        <div className={isActive ? 'menuHamActive' : ''} onClick={handleClick} >
+                            <div className="hambergerBox">
+                                <div className="hambergerBar"></div>
+                                <div className="hambergerBar"></div>
+                                <div className="hambergerBar"></div>
+                            </div>
                         </div>
                     </div>
                     {toggle ? 
@@ -58,17 +63,17 @@ function AppHeader() {
                                     <Col>
                                         <div className='wrapListMenuNavigation'>
                                             <ul>
-                                                <li><Link to="/project">project</Link></li>
+                                                <li onClick={handleClick}><Link to="/project/en">project</Link></li>
                                                 <li>-</li>
-                                                <li><Link to="/works">works</Link></li>
+                                                <li onClick={handleClick}><Link to="/works/en">works</Link></li>
                                                 <li>-</li>
-                                                <li><Link to="/think">think</Link></li>
+                                                <li onClick={handleClick}><Link to="/think/en">think</Link></li>
                                                 <li>-</li>
-                                                <li><Link to="/client">client</Link></li>
+                                                <li onClick={handleClick}><Link to="/client/en">client</Link></li>
                                                 <li>-</li>
-                                                <li><Link to="/culture">culture</Link></li>
+                                                <li onClick={handleClick}><Link to="/culture/en">culture</Link></li>
                                                 <li>-</li>
-                                                <li><Link to="/careers">careers</Link></li>
+                                                <li onClick={handleClick}><Link to="/careers/en">careers</Link></li>
                                             </ul>
                                         </div>
                                     </Col>

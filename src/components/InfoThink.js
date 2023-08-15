@@ -11,7 +11,8 @@ function InfoThink() {
     const { slug } = useParams();
     let params = useParams();
     const getWork = (slugUrl) => {
-        const url = `https://www.suffix.works/api-v2/think-info/${params.lang}?slug=${slugUrl}`;
+        const selectLang = params.lang;
+        const url = `https://www.suffix.works/api-v2/think-info/${selectLang}?slug=${slugUrl}`;
         const config = {
             headers: {
                 Authorization: 'Basic c3VmZml4OnN1ZmZpeDIwMjEq',
@@ -44,11 +45,13 @@ function InfoThink() {
                                 <img src={data.image_webp}></img>
                             </Col>
                             <Col lg={{ span: 10, offset: 1 }}>
-                                <p>{data.detail}</p>
+                                {/* <p>{data.detail}</p>  */}
+                                <div dangerouslySetInnerHTML={{ __html: data.detail }}></div>
+
                             </Col>
                             <Col lg={12}>
 
-                        
+
                             </Col>
                         </Row>
                     </Container>

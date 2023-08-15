@@ -23,10 +23,10 @@ import { useParams } from "react-router-dom";
 function InfoCulture() {
     let params = useParams();
     const { t, i18n } = useTranslation();
-    const url = "https://www.suffix.works/api-v2/culture/"+params.lang+"";
+    const url = "https://www.suffix.works/api-v2/culture/" + params.lang + "";
     const [data, setData] = useState([]);
     // const [lang, setLang] = useState("en");
-    
+
 
     const getWork = () => {
         const config = {
@@ -48,7 +48,7 @@ function InfoCulture() {
     useEffect(() => {
         getWork();
     }, []);
-    
+
     return (
         <section className='sectionInfoCulture'>
             <div className='wrapPage'>
@@ -62,13 +62,17 @@ function InfoCulture() {
                         <Col sm={{ span: 5, offset: 1 }}>
                             <div className='wrapInfoCulture'>
                                 <h3>Thinking</h3>
-                                {data.thinking}
+                                {/* {data.thinking} */}
+                                <div dangerouslySetInnerHTML={{ __html: data.thinking }}></div>
+
                             </div>
                         </Col>
                         <Col sm={6}>
                             <div className='wrapInfoCulture'>
                                 <h3>How we work</h3>
-                                {data.work}
+                                {/* {data.work} */}
+                                <div dangerouslySetInnerHTML={{ __html: data.work }}></div>
+
                             </div>
                         </Col>
                         <Col>
@@ -81,14 +85,15 @@ function InfoCulture() {
                         <Col sm={{ span: 5, offset: 1 }}>
                             <div className='wrapInfoCulture'>
                                 <h3>Thinking</h3>
-                                {data.founder}
+                                {/* {data.founder} */}
+                                <p dangerouslySetInnerHTML={{ __html: data.founder }}></p>
+
                             </div>
                         </Col>
                         <Col sm={6}>
                             <div className='wrapInfoCulture'>
                                 <h3>How we work</h3>
-                                <h4 dangerouslySetInnerHTML = {{__html: data.description}}></h4>
-
+                                <h4 dangerouslySetInnerHTML={{ __html: data.description }}></h4>
                                 {/* {data.description} */}
                             </div>
                         </Col>

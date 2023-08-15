@@ -79,7 +79,7 @@ function App() {
           // - /categories
           // - /en/categories
           // - /fr/categories
-          path="think/:slug&lang?"
+          path="/think/:lang?/:slug"
           // the matching param might be available to the loader
           loader={({ params }) => {
             console.log(params["lang"]); // "en"
@@ -88,7 +88,7 @@ function App() {
           action={({ params }) => { }}
           element={<PageThinkInfo />}
         />;
-        <Route path='/client' element={<PageClients />}></Route>
+        <Route path='/client/:lang?' element={<PageClients />}></Route>
         <Route
           // this path will match URLs like
           // - /categories
@@ -103,8 +103,34 @@ function App() {
           action={({ params }) => { }}
           element={<PageCulture />}
         />;
-        <Route path='/careers' element={<PageCareers />}></Route>
-        <Route path='/position/:slug' element={<PageCareersInfo />}></Route>
+              <Route
+          // this path will match URLs like
+          // - /categories
+          // - /en/categories
+          // - /fr/categories
+          path="careers/:lang?"
+          // the matching param might be available to the loader
+          loader={({ params }) => {
+            console.log(params["lang"]); // "en"
+          }}
+          // and the action
+          action={({ params }) => { }}
+          element={<PageCareers />}
+        />;
+        <Route
+          // this path will match URLs like
+          // - /categories
+          // - /en/categories
+          // - /fr/categories
+          path="/position/:lang?/:slug"
+          // the matching param might be available to the loader
+          loader={({ params }) => {
+            console.log(params["lang"]); // "en"
+          }}
+          // and the action
+          action={({ params }) => { }}
+          element={<PageCareersInfo />}
+        />;
         <Route path='/contact' element={<PageContact />}></Route>
         <Route path='/sitemap' element={<PageSiteMaps />}></Route>
         <Route path='/policy' element={<PagePolicy />}></Route>

@@ -4,9 +4,12 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link, Router, Routes } from 'react-router-dom';
 import Accordion from 'react-bootstrap/Accordion';
+import styled from "styled-components";
+import ReactDOM from "react-dom";
 
 import axios from 'axios';
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
+
 import { useTranslation } from 'react-i18next';
 import { useParams } from "react-router-dom";
 
@@ -42,54 +45,64 @@ function WorksHome() {
         getWork();
     }, []);
 
+
+    const [headerColor, setClassPosition] = useState("static")
+
+
+    const listenScrollEvent = () => {
+        window.scrollY > 800 &&  window.scrollY < 1200
+            ? setClassPosition("fixed")
+            : setClassPosition("static")
+    }
+    // Similar to componentDidMount and componentDidUpdate:
+    useEffect(() => {
+        window.addEventListener("scroll", listenScrollEvent)
+    })
+
+
     const [currentTab, setCurrentTab] = useState('1');
-    const tabs = [
-        {
-            id: 1,
-            tabTitle: 'J.P. Morgan',
-            image: '/images/home/works/1.jpg',
-            title: "Create Marketing Material for J.P. Morgan",
-        },
-        {
-            id: 2,
-            tabTitle: 'Dusit Central Park',
-            image: '/images/home/works/1.jpg',
-            title: "Create Marketing Material for J.P. Morgan",
-        },
-        {
-            id: 3,
-            tabTitle: 'TIPCO Asphalt',
-            image: '/images/home/works/1.jpg',
-            title: "Create Marketing Material for J.P. Morgan",
-        },
-        {
-            id: 4,
-            tabTitle: 'CUB house',
-            image: '/images/home/works/1.jpg',
-            title: "Create Marketing Material for J.P. Morgan",
-        },
-        {
-            id: 5,
-            tabTitle: 'First Choice',
-            image: '/images/home/works/1.jpg',
-            title: "Create Marketing Material for J.P. Morgan",
-        }
-    ];
+    // const tabs = [
+    //     {
+    //         id: 1,
+    //         tabTitle: 'J.P. Morgan',
+    //         image: '/images/home/works/1.jpg',
+    //         title: "Create Marketing Material for J.P. Morgan",
+    //     },
+    //     {
+    //         id: 2,
+    //         tabTitle: 'Dusit Central Park',
+    //         image: '/images/home/works/1.jpg',
+    //         title: "Create Marketing Material for J.P. Morgan",
+    //     },
+    //     {
+    //         id: 3,
+    //         tabTitle: 'TIPCO Asphalt',
+    //         image: '/images/home/works/1.jpg',
+    //         title: "Create Marketing Material for J.P. Morgan",
+    //     },
+    //     {
+    //         id: 4,
+    //         tabTitle: 'CUB house',
+    //         image: '/images/home/works/1.jpg',
+    //         title: "Create Marketing Material for J.P. Morgan",
+    //     },
+    //     {
+    //         id: 5,
+    //         tabTitle: 'First Choice',
+    //         image: '/images/home/works/1.jpg',
+    //         title: "Create Marketing Material for J.P. Morgan",
+    //     }
+    // ];
 
     const handleTabClick = (e) => {
         setCurrentTab(e.target.id);
     }
 
 
+    
     return (
         <div className='wrapPage'>
-            <div className='tabs'>
-
-            </div>
-            <div className='content'>
-
-            </div>
-            <section className='sectionWorksHome'>
+            <section className='sectionWorksHome' style={{ position: headerColor }}>
                 <div className="wrapTitleWorksHome">
                     <h3>Works</h3>
                 </div>
@@ -103,23 +116,24 @@ function WorksHome() {
                                 <div className='wrapCaseStudy'>
                                     <h3>Case Study</h3>
                                     <div className='wrapListCaseStudyCase'>
-                                        {tabs.map((tab, i) =>
-                                            <button key={i} id={tab.id} disabled={currentTab === `${tab.id}`} onClick={(handleTabClick)}>
-                                                {tab.tabTitle}
-                                            </button>
-                                        )}
+                                        <ul>
+                                            {data.works?.map((tab, i) =>
+                                                <li  key={i} id={tab.id}>{tab.name}</li>
+                                            )}
+                                        </ul>
+                                       
                                     </div>
 
                                 </div>
                             </Col>
                             <Col lg={6}>
                                 <div className='wrapContentCaseStudy'>
-                                    {tabs.map((tab, i) =>
-                                        <div key={i}>
-                                            {currentTab === `${tab.id}` && <div>
+                                    {data.works?.map((tab, i) =>
+                                        <div key={i} className='itemContentCaseStudy'>
+                                            <div>
                                                 <img src={tab.image}></img>
-                                                <h2 className='title'>{tab.title}</h2>
-                                            </div>}
+                                                <h2 className='title'>{tab.highlight}</h2>
+                                            </div>
                                         </div>
                                     )}
                                 </div>
@@ -135,5 +149,6 @@ function WorksHome() {
         </div>
     );
 }
+
 
 export default WorksHome;

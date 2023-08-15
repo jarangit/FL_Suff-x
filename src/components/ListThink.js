@@ -79,16 +79,50 @@ import { useTranslation } from 'react-i18next';
 
 function ListThink(props) {
     const { t } = useTranslation();
+    let params = useParams();
+    const url = "https://www.suffix.works/api-v2/think/" + params.lang + "";
+    const [data, setData] = useState([]);
+    const [lang, setLang] = useState("en");
+
+    const getWork = () => {
+        const config = {
+            headers: {
+                Authorization: 'Basic c3VmZml4OnN1ZmZpeDIwMjEq',
+            }
+        };
+        return axios.get(url, config)
+            .then(res => {
+                console.log(res)
+                setData(res.data);
+            })
+            .catch(err => console.log(err))
+        // return fetch(url)
+        //     .then((res) => res.json())
+        //     .then((d) => setData(d))
+    }
+
+    useEffect(() => {
+        getWork();
+    }, []);
     return (
         <section className='sectionListWorks'>
             <div className='wrapPage'>
                 <Container>
                     <Row>
-                        <div className='ItemListWorks'>
-                            <img src={props.data.image_webp}></img>
-                            <p>{props.data.category}</p>
-                            <h2>{props.data.title}</h2>
-                        </div>
+
+                        {
+                            data.think_info?.map(user => {
+                                return <div key={user.id}>
+                                    <Link to={`/think/${params.lang}/${user.slug}`}>
+                                        <div className='ItemListWorks'>
+                                            <img src={data.image_webp}></img>
+                                            <p>{data.category}</p>
+                                            <h2>{data.title}</h2>
+                                        </div>
+                                    </Link>
+                                </div>
+                            })
+                        }
                     </Row>
                 </Container>
             </div>

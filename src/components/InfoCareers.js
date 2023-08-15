@@ -8,8 +8,6 @@ import { Link, useParams } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-
-
 // const listInClient = [
 //     {
 //         id: 1,
@@ -23,9 +21,10 @@ function InfoCareers() {
     const [lang, setLang] = useState("en");
 
     const { slug } = useParams();
-
+    let params = useParams();
     const getWork = (slugUrl) => {
-        const url = `https://www.suffix.works/api-v2/position/en?id=${slugUrl}`;
+        const selectLang = params.lang;
+        const url = `https://www.suffix.works/api-v2/position/${selectLang}?id=${slugUrl}`;
         const config = {
             headers: {
                 Authorization: 'Basic c3VmZml4OnN1ZmZpeDIwMjEq',
@@ -51,6 +50,13 @@ function InfoCareers() {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+
+    const [showApply, setShowApply] = useState(false);
+
+    const handleCloseApply = () => setShowApply(false);
+    const handleShowApply = () => setShowApply(true);
+
 
     const [inputs, setInputs] = useState({});
 
@@ -99,7 +105,7 @@ function InfoCareers() {
             .then(response => response.text())
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
-
+            setShowApply(true);
 
 
     }
@@ -162,41 +168,70 @@ function InfoCareers() {
                             </Button>
 
                             <Modal show={show} onHide={handleClose}>
-                                <h2>Apply for</h2>
-                                <h1 >{data.name}</h1>
-                                <Link>Apply with Linkedin</Link>
-                                <form onSubmit={handleSubmit}>
-                                    <input id="idCareer" value={data.id}></input>
-                                    <input
-                                        type="text"
-                                        name="full_name"
-                                        id="full_name"
-                                        value={inputs.full_name || ""}
-                                        onChange={handleChange}
-                                    />
-                                    <input
-                                        type="text"
-                                        name="email"
-                                        id="email"
-                                        value={inputs.email || ""}
-                                        onChange={handleChange}
-                                    />
-                                    <input
-                                        type="text"
-                                        name="phone_number"
-                                        id="phone_number"
-                                        value={inputs.phone_number || ""}
-                                        onChange={handleChange}
-                                    />
-                                    <input
-                                        type="file"
-                                        name="cv"
-                                        id="cv"
-                                        value={inputs.cv || ""}
-                                        onChange={onChangeFile}
-                                    />
-                                    <input type="submit" />
-                                </form>
+                                <button className='btnClosePopup' onClick={handleClose}>
+                                    <div className='btnClose'>
+                                        <div className='lineClose'></div>
+                                        <div className='lineClose'></div>
+                                    </div>
+                                </button>
+                                <div className='wrapFormCareer'>
+                                    <h2>Apply for</h2>
+                                    <h1 >{data.name}</h1>
+                                    <Link>Apply with Linkedin</Link>
+                                    <form onSubmit={handleSubmit}>
+                                        <input id="idCareer" value={data.id}></input>
+                                        <input
+                                            type="text"
+                                            name="full_name"
+                                            id="full_name"
+                                            placeholder="Name"
+                                            value={inputs.full_name || ""}
+                                            onChange={handleChange}
+                                        />
+                                        <input
+                                            type="text"
+                                            name="email"
+                                            id="email"
+                                            placeholder="Email"
+                                            value={inputs.email || ""}
+                                            onChange={handleChange}
+                                        />
+                                        <input
+                                            type="text"
+                                            name="phone_number"
+                                            id="phone_number"
+                                            placeholder="Phone"
+                                            value={inputs.phone_number || ""}
+                                            onChange={handleChange}
+                                        />
+                                        <label className="textFile" for="cv">Upload Resume  (Maximum 2mb)</label>
+                                        <input
+                                            type="file"
+                                            name="cv"
+                                            id="cv"
+                                            value={inputs.cv || ""}
+                                            onChange={onChangeFile}
+                                        />
+                                        <input className='btnSubmit' type="submit" value="Apply" />
+                                    </form>
+                                </div>
+                            </Modal>
+                            <Modal show={showApply} onHide={handleCloseApply}>
+                                <button className='btnClosePopup' onClick={handleCloseApply}>
+                                    <div className='btnClose'>
+                                        <div className='lineClose'></div>
+                                        <div className='lineClose'></div>
+                                    </div>
+                                </button>
+                                <div className='wrapApplyDone'>
+                                    <h2>Apply for</h2>
+                                    <h1 >{data.name}</h1>
+                                    <p>Thank you. <br></br>
+                                        We try to be as responsive as possible. <br></br>
+                                        We'll get back to you soon. 
+                                    </p>
+
+                                </div>
                             </Modal>
                         </Col>
                     </Row>

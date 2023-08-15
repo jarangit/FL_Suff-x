@@ -66,7 +66,6 @@ function InfoContact() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(inputs);
         //     var myHeaders = new Headers();
         //     myHeaders.append("Content-Type", "application/json");
         //     myHeaders.append("Authorization", "Basic c3VmZml4OnN1ZmZpeDIwMjEq");
@@ -134,8 +133,8 @@ function InfoContact() {
                             <h3>Enquiry</h3>
                             <h2>What services are you looking for</h2>
                             <FormGroup>
-                                <FormControlLabel required control={<Checkbox />} label="Required" />
-                                <FormControlLabel required control={<Checkbox />} label="Required" />
+                                <FormControlLabel required control={<Checkbox />} label="Digital Strategy: Marketing & Communication" />
+                                <FormControlLabel required control={<Checkbox />} label="Digital Executiion: Website & Application  " />
                                 <TextField
                                     required
                                     id="standard-required"

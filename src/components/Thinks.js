@@ -49,7 +49,7 @@ function Think() {
                         {
                             data.think_info?.map(user => {
                                 return <Col lg={6} key={user.id}>
-                                    <Link to={`/think/${user.slug}&lang=${params.lang}`}>
+                                    <Link to={`/think/${params.lang}/${user.slug}`}>
                                         <div className='ItemListWorks'>
                                             <img src={user.image_webp}></img>
                                             <p>{user.category}</p>

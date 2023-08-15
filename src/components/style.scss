@@ -173,6 +173,36 @@ select {
         transition: top 0.3s ease 0.1s, transform 0.3s ease-out 0.7s;
       }
     }
+    .menuHamActive {
+      position: fixed;
+      top: 40px;
+      right: 40px;
+      z-index: 2;
+      .hambergerBar {
+        background-color: $colorWhite;
+      }
+      .hambergerBar:nth-of-type(1) {
+        top: 10px;
+        transform: rotate(45deg);
+        -moz-transition: top 0.3s ease 0.1s, -moz-transform 0.3s ease-out 0.5s;
+        -o-transition: top 0.3s ease 0.1s, -o-transform 0.3s ease-out 0.5s;
+        -webkit-transition: top 0.3s ease, -webkit-transform 0.3s ease-out;
+        -webkit-transition-delay: 0.1s, 0.5s;
+        transition: top 0.3s ease 0.1s, transform 0.3s ease-out 0.5s;
+      }
+      .hambergerBar:nth-of-type(2) {
+        display: none;
+      }
+      .hambergerBar:nth-of-type(3) {
+        top: 10px;
+        transform: rotate(-45deg);
+        -moz-transition: top 0.3s ease 0.1s, -moz-transform 0.3s ease-out 0.7s;
+        -o-transition: top 0.3s ease 0.1s, -o-transform 0.3s ease-out 0.7s;
+        -webkit-transition: top 0.3s ease, -webkit-transform 0.3s ease-out;
+        -webkit-transition-delay: 0.1s, 0.7s;
+        transition: top 0.3s ease 0.1s, transform 0.3s ease-out 0.7s;
+      }
+    }
     .animateMenuHead {
       -moz-transition: -moz-transform 0.3s ease 0.5s;
       -o-transition: -o-transform 0.3s ease 0.5s;
@@ -191,11 +221,18 @@ select {
   padding: 125px 0 163px 0;
   h2 {
     @extend %H1Desktop;
-    margin-top: 10px;
-    margin-bottom: 30px;
   }
   h3 {
     @extend %subTitle;
+    margin-top: 10px;
+    // margin-bottom: 30px;
+  }
+  .wrapTextApproach {
+    display: flex;
+    flex-wrap: wrap;
+    .wrapArticleApproach {
+      display: flex;
+    }
   }
 }
 .wrapTitleWorksHome {
@@ -207,6 +244,9 @@ select {
 }
 
 .sectionWorksHome {
+  top: 0;
+  width: 100%;
+  overflow-y: scroll;
   .wrapWorksHome {
     position: relative;
     padding: 0 0 153px 0;
@@ -250,7 +290,7 @@ select {
           @extend %H1Desktop;
           color: $colorGray;
           cursor: pointer;
-        //   line-height: normal;
+          //   line-height: normal;
           a {
             @extend %H1Desktop;
             text-decoration: none;
@@ -258,26 +298,33 @@ select {
           }
         }
         .active {
-            color: $colorBlack;
+          color: $colorBlack;
         }
       }
       .wrapListCaseStudyCase {
         button {
-            @extend %H1Desktop;
-            display: block;
-            background-color: transparent;
-            border-radius: 0px;
-            border: none;
-            color: $colorGray;
+          @extend %H1Desktop;
+          display: block;
+          background-color: transparent;
+          border-radius: 0px;
+          border: none;
+          color: $colorGray;
         }
         button:disabled {
-            color: $colorBlack;
+          color: $colorBlack;
         }
-
       }
     }
     .wrapContentCaseStudy {
-
+      img {
+        max-width: 460px;
+      }
+      .itemContentCaseStudy {
+        margin-bottom: 100px;
+      }
+      .itemContentCaseStudy:nth-child(even) {
+        margin-left: 124px;
+      }
     }
     img {
       width: 100%;
@@ -437,25 +484,24 @@ select {
 .sectionInfoWorks {
   img {
     width: 100%;
-    margin: 40px 0 ;
+    margin: 40px 0;
   }
   .imageBannerBottom {
-    margin: 0 ;
+    margin: 0;
   }
 }
 
-
 .sectionInfoThink {
-    h4 {
-        @extend %H3Desktop;
-        margin: 40px 0;
-    }
-    p {
-        @extend %bodyDesktop;
-    }
-    .imageBannerThinkInfo {
-        width: 100%;
-    }
+  h4 {
+    @extend %H3Desktop;
+    margin: 40px 0;
+  }
+  p {
+    @extend %bodyDesktop;
+  }
+  .imageBannerThinkInfo {
+    width: 100%;
+  }
 }
 .sectionInfoCulture {
   padding: 130px 0 100px 0;
@@ -475,7 +521,6 @@ select {
       margin: 150px auto;
     }
   }
-
 }
 .sectionInfoContact {
   padding-bottom: 130px;
@@ -501,7 +546,7 @@ select {
       border: none;
       background-color: transparent;
       border-bottom: 1px solid $colorBlack;
-      line-height: 31.2px; 
+      line-height: 31.2px;
       padding-bottom: 9px;
       margin-bottom: 24px;
     }
@@ -511,12 +556,12 @@ select {
       font-size: 16px;
       font-style: normal;
       font-weight: 400;
-      line-height: 22.4px; 
+      line-height: 22.4px;
       font-family: $fontHelvetica;
       border: none;
       background-color: transparent;
       border-bottom: 1px solid $colorBlack;
-      line-height: 31.2px; 
+      line-height: 31.2px;
     }
     .btnSubmit {
       background-color: $colorBlack;
@@ -530,7 +575,7 @@ select {
       font-family: $fontFrank;
     }
   }
- 
+
   .wrapContactLink {
     margin-top: 40px;
     button {
@@ -553,7 +598,7 @@ select {
   .wrapItemListCareers {
     padding: 34px 0 40px 0;
     border-bottom: 1px solid $colorGray979797;
-   
+
     h2 {
       @extend %H2Desktop;
     }
@@ -661,7 +706,6 @@ select {
   }
 }
 
-
 .titlu {
   opacity: 0;
   transition: opacity 1s ease;
@@ -691,6 +735,118 @@ select {
         @extend %subTitle;
         color: $colorWhite;
         margin-bottom: 89px;
+        display: block;
+      }
+    }
+  }
+  .btnClosePopup {
+    background-color: transparent;
+    border: none;
+    position: fixed;
+    top: 61px;
+    right: 143px;
+    .btnClose {
+      width: 33px;
+      height: 33px;
+      .lineClose {
+        width: 33px;
+        height: 4px;
+        background-color: $colorWhite;
+        position: absolute;
+      }
+      .lineClose:nth-of-type(1) {
+        top: 10px;
+        transform: rotate(45deg);
+      }
+      .lineClose:nth-of-type(2) {
+        top: 10px;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+  .modal-content {
+    .wrapFormCareer{
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 558px;
+    }
+    form {
+      input {
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid $colorWhite;
+        color: $colorWhite;
+        margin-bottom: 24px;
+        padding-bottom: 9px;
+      }
+      input::placeholder {
+        /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: $colorGray;
+
+        opacity: 1; /* Firefox */
+      }
+
+      input:-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        color: $colorGray;
+
+      }
+
+      input::-ms-input-placeholder {
+        /* Microsoft Edge */
+        color: $colorGray;
+
+      }
+      #idCareer {
+        display: none;
+      }
+      .textFile {
+        width: 100%;
+        border: 1px solid $colorWhite;
+        font-family: $fontFrank;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+        height: 60px;
+        margin: 0 auto;
+        margin-bottom: 51px;
+        color: $colorWhite;
+        padding-top: 20px;
+      }
+      #cv {
+        opacity: 0;
+        display: none;
+      }
+      .btnSubmit {
+        width: 100%;
+        border: 1px solid $colorWhite;
+        font-family: $fontFrank;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+        width: 166px;
+        height: 60px;
+        margin: 0 auto;
+      }
+    }
+    .wrapApplyDone{
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 558px;
+      p{
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%;
+        color: $colorWhite;
+        font-family: $fontHelvetica;
       }
     }
   }
