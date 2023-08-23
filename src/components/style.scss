@@ -251,6 +251,11 @@ select {
     position: relative;
     padding: 0 0 153px 0;
 
+    .wrapTextLeftworksHome {
+      top: 5%;
+      left: 5%;
+      // width: 40%;
+    }
     .wrapSubTitleWorksHome {
       h2 {
         animation-name: slideUp;
@@ -259,19 +264,6 @@ select {
         animation-fill-mode: forwards;
         display: inline;
         @extend %bodyDesktop;
-      }
-      @keyframes slideUp {
-        0%,
-        50% {
-          transform: translateY(100%);
-          opacity: 0;
-        }
-
-        60%,
-        100% {
-          transform: translate(0px, 0px);
-          opacity: 1;
-        }
       }
     }
 
@@ -315,9 +307,27 @@ select {
         }
       }
     }
+
+    @keyframes slideUp {
+        0%,
+        50% {
+          transform: translateY(100%);
+          opacity: 0;
+        }
+
+        60%,
+        100% {
+          transform: translate(0px, 0px);
+          opacity: 1;
+        }
+      }
     .wrapContentCaseStudy {
       img {
         max-width: 460px;
+        // animation-name: slideUp;
+        // animation-duration: 4s;
+        // animation-timing-function: ease-in;
+        // animation-fill-mode: forwards;
       }
       .itemContentCaseStudy {
         margin-bottom: 100px;
@@ -850,4 +860,121 @@ select {
       }
     }
   }
+}
+
+
+.navigation {
+  background-color: rgb(200, 242, 251);
+  width: max-content;
+  display: block;
+  padding: 0.2rem 0.6rem;
+  z-index: 2;
+  position: fixed;
+  left: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 4rem;
+  display: flex;
+  gap: 0.8rem;
+  border-radius: 3rem;
+}
+.navigation ul {
+  display: flex;
+  width: 350px;
+}
+.navigation ul li {
+  position: relative;
+  list-style: none;
+  width: 70px;
+  height: 70px;
+  z-index: 1;
+}
+.navigation ul li a {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+}
+.navigation ul li .icon {
+  position: relative;
+  display: block;
+  line-height: 75px;
+  font-size: 1.7em;
+  text-align: center;
+  transition: 0.5s;
+  color: #04499d;
+}
+.navigation ul li.active a .icon {
+  transform: translateY(-40px);
+  font-size: 1.7em;
+  color: rgb(116, 204, 236);
+}
+.navigation ul li a .text {
+  position: absolute;
+  color: black;
+  font-weight: 600;
+  font-size: 1.05em;
+  letter-spacing: 0.05em;
+  transition: 0.5s;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.navigation ul li.active a .text {
+  opacity: 1;
+  transform: translateY(10px);
+  font-size: 0.9em;
+  color: black;
+  font-weight: 600;
+}
+.indicator {
+  position: absolute;
+  top: -50%;
+  width: 70px;
+  height: 70px;
+  background: #032a59;
+  border-radius: 50%;
+  border: 6px solid var(--clr);
+  transition: 0.5s;
+}
+.indicator::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -22px;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border-top-right-radius: 20px;
+  box-shadow: 1px -10px 0 0 black;
+}
+.indicator::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border-top-left-radius: 20px;
+  box-shadow: -1px -10px 0 0 black;
+}
+
+.navigation ul li:nth-child(1).active ~ .indicator {
+  transform: translateX(calc(70px * 0));
+}
+.navigation ul li:nth-child(2).active ~ .indicator {
+  transform: translateX(calc(70px * 1));
+}
+.navigation ul li:nth-child(3).active ~ .indicator {
+  transform: translateX(calc(70px * 2));
+}
+.navigation ul li:nth-child(4).active ~ .indicator {
+  transform: translateX(calc(70px * 3));
+}
+.navigation ul li:nth-child(5).active ~ .indicator {
+  transform: translateX(calc(70px * 4));
 }

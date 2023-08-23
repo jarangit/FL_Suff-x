@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.b83fd0e8.css",
-    "main.js": "/static/js/main.eab21e0b.js",
+    "main.css": "/static/css/main.1e314463.css",
+    "main.js": "/static/js/main.c5c3c5a2.js",
     "static/js/787.9e737518.chunk.js": "/static/js/787.9e737518.chunk.js",
     "static/media/linotype_-_helvetica_neue_lt_thai_regular-webfont.woff": "/static/media/linotype_-_helvetica_neue_lt_thai_regular-webfont.32f17cd538f3ecc136c5.woff",
     "static/media/linotype_-_helvetica_neue_lt_thai_bold-webfont.woff": "/static/media/linotype_-_helvetica_neue_lt_thai_bold-webfont.b24ab6a788155aba256e.woff",
     "static/media/linotype_-_helvetica_neue_lt_thai_regular-webfont.woff2": "/static/media/linotype_-_helvetica_neue_lt_thai_regular-webfont.013ef16c1a708672f989.woff2",
     "static/media/linotype_-_helvetica_neue_lt_thai_bold-webfont.woff2": "/static/media/linotype_-_helvetica_neue_lt_thai_bold-webfont.d32a5ac9d4777b080a0a.woff2",
     "index.html": "/index.html",
-    "main.b83fd0e8.css.map": "/static/css/main.b83fd0e8.css.map",
-    "main.eab21e0b.js.map": "/static/js/main.eab21e0b.js.map",
+    "main.1e314463.css.map": "/static/css/main.1e314463.css.map",
+    "main.c5c3c5a2.js.map": "/static/js/main.c5c3c5a2.js.map",
     "787.9e737518.chunk.js.map": "/static/js/787.9e737518.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b83fd0e8.css",
-    "static/js/main.eab21e0b.js"
+    "static/css/main.1e314463.css",
+    "static/js/main.c5c3c5a2.js"
   ]
 }

@@ -12,10 +12,35 @@ import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 
 import { useTranslation } from 'react-i18next';
 import { useParams } from "react-router-dom";
+import Navbar from "./listWorksHome.js";
 
 function WorksHome() {
     // const [list, setList] = useState([])
     // const [active, setActive] = useState(null)
+
+
+    const divs = [
+        {
+            id: "Home",
+            bgColor: "grey",
+        },
+        {
+            id: "Skills",
+            bgColor: "white",
+        },
+        {
+            id: "Projects",
+            bgColor: "skyblue",
+        },
+        {
+            id: "About",
+            bgColor: "lightgreen",
+        },
+        {
+            id: "Contact",
+            bgColor: "lightsalmon",
+        },
+    ];
 
     let params = useParams();
     const { t, i18n } = useTranslation();
@@ -50,7 +75,7 @@ function WorksHome() {
 
 
     const listenScrollEvent = () => {
-        window.scrollY > 800 &&  window.scrollY < 1200
+        window.scrollY > 850 && window.scrollY < 3300
             ? setClassPosition("fixed")
             : setClassPosition("static")
     }
@@ -98,38 +123,51 @@ function WorksHome() {
         setCurrentTab(e.target.id);
     }
 
+    const observerRefs = useRef([]);
 
-    
+    useEffect(() => {
+        console.log(observerRefs.current);
+    }, [observerRefs.current]);
+
     return (
         <div className='wrapPage'>
-            <section className='sectionWorksHome' style={{ position: headerColor }}>
+
+            <section className='sectionWorksHome'>
                 <div className="wrapTitleWorksHome">
                     <h3>Works</h3>
                 </div>
                 <div className='wrapWorksHome'>
+                    <div className='wrapTextLeftworksHome' style={{ position: headerColor }}>
+                        <Navbar observerRefs={observerRefs} />
+                </div>
                     <Container>
                         <Row>
                             <Col lg={6}>
-                                <div className='wrapSubTitleWorksHome'>
-                                    <h2>{data.work_description}</h2>
-                                </div>
-                                <div className='wrapCaseStudy'>
-                                    <h3>Case Study</h3>
-                                    <div className='wrapListCaseStudyCase'>
-                                        <ul>
-                                            {data.works?.map((tab, i) =>
-                                                <li  key={i} id={tab.id}>{tab.name}</li>
-                                            )}
-                                        </ul>
-                                       
+                                {/* <div className='wrapTextLeftworksHome' style={{ position: headerColor }}>
+                                    <div className='wrapSubTitleWorksHome'>
+                                        <h2>{data.work_description}</h2>
                                     </div>
+                                    <Navbar observerRefs={observerRefs} />
+                                    <div className='wrapCaseStudy'>
+                                        <h3>Case Study</h3>
+                                        <div className='wrapListCaseStudyCase'>
+                                            <ul>
+                                                {data.works?.map((tab, i) =>
+                                                    <li key={i} id={tab.id}>{tab.name}</li>
+                                                )}
+                                            </ul>
 
-                                </div>
+                                        </div>
+
+                                    </div>
+                                </div> */}
                             </Col>
                             <Col lg={6}>
                                 <div className='wrapContentCaseStudy'>
                                     {data.works?.map((tab, i) =>
-                                        <div key={i} className='itemContentCaseStudy'>
+                                        <div id={tab.id} key={i} className='itemContentCaseStudy'
+                                            style={{ height: "420px" }}
+                                            ref={(el) => (observerRefs.current[i] = el)}>
                                             <div>
                                                 <img src={tab.image}></img>
                                                 <h2 className='title'>{tab.highlight}</h2>
@@ -137,6 +175,17 @@ function WorksHome() {
                                         </div>
                                     )}
                                 </div>
+                                {/* <Navbar observerRefs={observerRefs} />
+                                {divs.map((div, key) => {
+                                    return (
+                                        <div
+                                            id={div.id.toLowerCase()}
+                                            style={{ height: "420px", backgroundColor: div.bgColor }}
+                                        >
+                                            <h1 ref={(el) => (observerRefs.current[key] = el)}>{div.id}</h1>
+                                        </div>
+                                    );
+                                })} */}
                             </Col>
                         </Row>
                     </Container>
