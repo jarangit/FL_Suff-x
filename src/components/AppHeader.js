@@ -90,8 +90,6 @@ function AppHeader() {
                                     <Col>
                                         <div className='wrapListMenuNavigation'>
                                             <ul>
-                                                <li onClick={handleClick}><Link to="/project/en">project</Link></li>
-                                                <li>-</li>
                                                 <li onClick={handleClick}><Link to={`/works/${lang}`}>works</Link></li>
                                                 <li>-</li>
                                                 <li onClick={handleClick}><Link to={`/think/${lang}`}>think</Link></li>

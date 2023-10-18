@@ -8,6 +8,25 @@ import { useParams } from "react-router-dom";
 import axios from 'axios';
 
 
+
+const items = [
+    {
+      text: "Home",
+    },
+    {
+      text: "Skills",
+    },
+    {
+      text: "Projects",
+    },
+    {
+      text: "About",
+    },
+    {
+      text: "Contact",
+    },
+  ];
+
 function Navbar({ observerRefs }) {
 
     let params = useParams();
@@ -33,44 +52,39 @@ function Navbar({ observerRefs }) {
         //     .then((d) => setData(d))
     }
 
-    // useEffect(() => {
-    //     getWork();
-    // }, []);
+    useEffect(() => {
+        getWork();
+    }, []);
+
 
     const [visibleKey, setVisibleKey] = useState(0);
     const observers = useRef([]);
-
+  
     const onClick = (item, key) => {
-        setVisibleKey(key);
+      setVisibleKey(key);
     };
-
+  
     const observerCallback = async (e, key) => {
-        if (e.length && e[0].isIntersecting) {
-            setVisibleKey(key);
-        }
+      if (e.length && e[0].isIntersecting) {
+        setVisibleKey(key);
+      }
     };
-
-    // useEffect(() => {
-    //     getWork();
-    // }, []);
-
+  
     useEffect(() => {
-        getWork();
-        if (observerRefs.current?.length && observers.current) {
-            Array.from(Array(10).keys()).forEach((_u, key) => {
-                observers.current[key] = new IntersectionObserver((e) =>
-                    observerCallback(e, key)
-                );
-                if (observerRefs.current[key]) { 
-                    observers.current[key].observe(observerRefs.current[key]);
-                }
-            });
-        }
-        return () =>
-            observers.current?.forEach((observer) => observer?.current?.disconnect());
+      if (observerRefs.current?.length && observers.current) {
+        Array.from(Array(10).keys()).forEach((_u, key) => {
+          observers.current[key] = new IntersectionObserver((e) =>
+            observerCallback(e, key)
+          );
+          if (observerRefs.current[key]) {
+            observers.current[key].observe(observerRefs.current[key]);
+          }
+        });
+      }
+      return () =>
+        observers.current?.forEach((observer) => observer?.current?.disconnect());
     }, [observerRefs, observers]);
-
-   
+  
 
     return (
         <>
@@ -88,9 +102,9 @@ function Navbar({ observerRefs }) {
                                             <h3>Case Study</h3>
                                             <div className='wrapListCaseStudyCase'>
                                                 <ul>
-                                                    {data.works?.map((tab, i) =>
-                                                        <li key={`item-${i}`} id={tab.id}
-                                                        className={`tab${i === visibleKey ? " active" : ""}`}
+                                                    {data.works?.map((tab, key) =>
+                                                        <li name={tab.id} key={`tab-${key}`}
+                                                        className={`list${key === visibleKey ? " active" : ""}`}
                                                         >{tab.name}</li>
                                                     )}
                                                 </ul>
@@ -101,17 +115,17 @@ function Navbar({ observerRefs }) {
                                     </div>
                                     {/* <div className="navigation">
                                         <ul>
-                                            {items.map((item, key) => {
+                                            {data.works?.map((item, key) => {
                                                 return (
                                                     <li
-                                                        name={item.text.toLowerCase()}
+                                                        name={item.text}
                                                         key={`item-${key}`}
                                                         className={`list${key === visibleKey ? " active" : ""}`}
                                                         onClick={() => onClick(item, key)}
                                                     >
-                                                        <a href={`#${item.text.toLowerCase()}`}>
+                                                        <a href={`#${item.id}`}>
                                                             <span className="icon">{<item.icon />}</span>
-                                                            <span className="text">{item.text}</span>
+                                                            <span className="text">{item.name}</span>
                                                         </a>
                                                     </li>
                                                 );
