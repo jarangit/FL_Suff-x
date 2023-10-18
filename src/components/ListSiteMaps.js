@@ -42,14 +42,14 @@ function ListSiteMaps() {
                 <Container>
                     <h3>Sitemap</h3>
                     <Row className='wrapItemListCareers'>
-                        <Col lg={6}>
+                        <Col lg={6} sm={12} xs={12}>
                             <div>
                                 <h2><Link path='/'>Home</Link></h2>
                             </div>
                         </Col>
                     </Row>
                     <Row className='wrapItemListCareers'>
-                        <Col lg={6}>
+                        <Col lg={6} sm={12} xs={12}>
                             <div>
                                 <h2><Link path='/'>Work</Link></h2>
                             </div>
@@ -63,6 +63,60 @@ function ListSiteMaps() {
 
                                 }
                             </ul>
+                        </Col>
+                    </Row>
+                    <Row className='wrapItemListCareers'>
+                        <Col lg={6} sm={12} xs={12}>
+                            <div>
+                                <h2><Link path='/'>Clients</Link></h2>
+                            </div>
+                        </Col>
+                        <Col>
+                        </Col>
+                    </Row>
+                    <Row className='wrapItemListCareers'>
+                        <Col lg={6} sm={12} xs={12}>
+                            <div>
+                                <h2><Link path='/'>Culture</Link></h2>
+                            </div>
+                        </Col>
+                        <Col>
+                        </Col>
+                    </Row>
+
+                    <Row className='wrapItemListCareers'>
+                        <Col lg={6} sm={12} xs={12}>
+                            <div>
+                                <h2><Link path='/'>Think</Link></h2>
+                            </div>
+                        </Col>
+                        <Col>
+                        <ul>
+                                {
+                                    data.thinks?.map((index) => {
+                                        return <li key={index} className='list'>{index}</li>
+                                    })
+
+                                }
+                            </ul>
+                        </Col>
+                    </Row>
+                    <Row className='wrapItemListCareers'>
+                        <Col lg={6} sm={12} xs={12}>
+                            <div>
+                                <h2><Link path='/'>Career</Link></h2>
+                            </div>
+                        </Col>
+                        <Col>
+                        </Col>
+                    </Row>
+                    <Row className='wrapItemListCareers wrapItemListCareersContact'>
+                        <Col lg={6} sm={12} xs={12}>
+                            <div>
+                                <h2><Link path='/'>Contact</Link></h2>
+                            </div>
+                        </Col>
+                        <Col>
                         </Col>
                     </Row>
                 </Container>

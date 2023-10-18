@@ -7,23 +7,6 @@ import { useTranslation } from 'react-i18next';
 import { useParams } from "react-router-dom";
 import axios from 'axios';
 
-const items = [
-    {
-        text: "Home",
-    },
-    {
-        text: "Skills",
-    },
-    {
-        text: "Projects",
-    },
-    {
-        text: "About",
-    },
-    {
-        text: "Contact",
-    },
-];
 
 function Navbar({ observerRefs }) {
 

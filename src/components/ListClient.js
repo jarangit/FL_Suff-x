@@ -43,12 +43,12 @@ function ListClient() {
                     {
                         data.industries?.map((industrie, index) => {
                             return <Row className='wrapItemListCareers'>
-                                <Col lg={6}>
+                                <Col lg={6} sm={6} xs={12}>
                                     <div key={industrie.name} className='ItemListCareers'>
                                         <h2>{industrie.name}</h2>
                                     </div>
                                 </Col>
-                                <Col lg={6}>
+                                <Col lg={6} sm={6} xs={12}>
                                     <div className='ItemListCareers'>
                                         <ul>
 

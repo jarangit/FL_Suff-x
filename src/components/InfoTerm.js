@@ -2,16 +2,20 @@ import './style.scss';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import axios from 'axios';
 import React, { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import { useTranslation } from 'react-i18next';
+import { useParams } from "react-router-dom";
 
-function TitleThinkInfo() {
+function InfoPolicy() {
+    let params = useParams();
+    const { t, i18n } = useTranslation();
+    const url = "https://www.suffix.works/api-v2/terms/en";
     const [data, setData] = useState([]);
-    const { slug } = useParams();
+    // const [lang, setLang] = useState("en");
 
-    const getWork = (slugUrl) => {
-        const url = `https://www.suffix.works/api-v2/think-info/en?slug=${slugUrl}`;
+
+    const getWork = () => {
         const config = {
             headers: {
                 Authorization: 'Basic c3VmZml4OnN1ZmZpeDIwMjEq',
@@ -29,19 +33,19 @@ function TitleThinkInfo() {
     }
 
     useEffect(() => {
-        getWork(slug);
-    }, [slug]);
-
+        getWork();
+    }, []);
     return (
-        <section className='sectionTitlePage sectionTitleWorksInfo'>
+        <section className='sectionInfoCareers'>
             <div className='wrapPage'>
-                <Container>
+                <Container >
                     <Row>
-                        <Col lg={{ span: 10, offset: 1 }}>
-                            <h3>Think</h3>
-                            <h3>{data.category}</h3>
-                            <h2 dangerouslySetInnerHTML={{ __html: data.title }}></h2>
-                            {/* <div className='titleWorkInfo' dangerouslySetInnerHTML={{ __html: data.title }}></div> */}
+                        <Col>
+                            <h3>Privacy Policy</h3></Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <div dangerouslySetInnerHTML={{ __html: data.description }}></div>
                         </Col>
                     </Row>
                 </Container>
@@ -50,4 +54,4 @@ function TitleThinkInfo() {
     );
 }
 
-export default TitleThinkInfo;
+export default InfoPolicy;

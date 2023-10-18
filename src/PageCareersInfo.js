@@ -1,12 +1,13 @@
 import './App.scss';
 import InfoCareers from './components/InfoCareers.js';
+import AppHeader from './components/AppHeader';
 
 
-
-function PageCareersInfo() {                
+function PageCareersInfo() {
   return (
     <div>
-         <InfoCareers />
+      <AppHeader />
+      <InfoCareers />
     </div>
   );
 }

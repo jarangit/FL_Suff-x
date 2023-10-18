@@ -6,6 +6,11 @@ $colorGray: #ededed;
 $colorDarkGray: #c4c4c4;
 $colorGray979797: #979797;
 
+// Screen Size
+$desktopS: 1440px;
+$tabletScreen: 1108px;
+$mobileScreen: 600px;
+
 %subTitle14px {
   font-weight: 400;
   font-size: 14px;
@@ -24,6 +29,14 @@ $colorGray979797: #979797;
   font-size: 58px;
   line-height: 69px;
   font-family: $fontHelvetica;
+  @media (max-width: $tabletScreen) {
+    font-size: 54px;
+    line-height: 64px;
+  }
+  @media (max-width: $mobileScreen) {
+    font-size: 32px;
+    line-height: 38px;
+  }
 }
 
 %H2Desktop {
@@ -31,6 +44,13 @@ $colorGray979797: #979797;
   font-size: 46px;
   line-height: 55px;
   font-family: $fontHelvetica;
+  @media (max-width: $tabletScreen) {
+    font-size: 28px;
+  }
+  @media (max-width: $mobileScreen) {
+    font-size: 22px;
+    line-height: 26px;
+  }
 }
 
 %H3Desktop {
@@ -38,6 +58,9 @@ $colorGray979797: #979797;
   font-size: 30px;
   line-height: 36px;
   font-family: $fontHelvetica;
+  @media (max-width: $tabletScreen) {
+    font-size: 22px;
+  }
 }
 
 %bodyDesktop {
@@ -45,6 +68,9 @@ $colorGray979797: #979797;
   font-size: 24px;
   line-height: 130%;
   font-family: $fontHelvetica;
+  @media (max-width: $tabletScreen) {
+    font-size: 22px;
+  }
 }
 
 a {
@@ -69,6 +95,13 @@ li {
   list-style: none;
 }
 
+.container {
+  @media (max-width: $mobileScreen) {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+  }
+}
+
 input,
 select {
   -webkit-appearance: none;
@@ -79,10 +112,35 @@ select {
     display: flex;
     justify-content: space-between;
     padding: 38px 62px;
+    @media (max-width: $mobileScreen) {
+      padding: 30px;
+    }
     .wrapLange {
       display: flex;
       gap: 4px;
       align-items: center;
+      ul {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+        li {
+          color: $colorGray;
+          @extend %subTitle14px;
+          a {
+            text-decoration: none;
+            img {
+              display: none;
+              
+            }
+          }
+          .active {
+            color: $colorBlack;
+            img {
+              display: block;
+            }
+          }
+        }
+      }
       a {
         display: flex;
         gap: 4px;
@@ -97,6 +155,19 @@ select {
         color: $colorGray;
         @extend %subTitle14px;
       }
+      button {
+        img {
+          display: none;
+        }
+      }
+      .btnLangActive {
+        a {
+          color: $colorBlack;
+        }
+        img {
+          display: block;
+        }
+      }
     }
   }
   .wrapMenuNavigation {
@@ -110,6 +181,7 @@ select {
     align-items: center;
     background-color: $colorBlack;
     overflow-y: scroll;
+    z-index: 9;
     .wrapListMenuNavigation {
       ul {
         li {
@@ -177,7 +249,7 @@ select {
       position: fixed;
       top: 40px;
       right: 40px;
-      z-index: 2;
+      z-index: 99;
       .hambergerBar {
         background-color: $colorWhite;
       }
@@ -428,18 +500,32 @@ select {
 
 .sectionTitlePage {
   padding: 130px 0;
+  @media (max-width: $tabletScreen) {
+    padding: 105px 0;
+  }
   h2 {
     @extend %H1Desktop;
     margin-top: 10px;
-    margin-bottom: 30px;
+    // margin-bottom: 30px;
   }
   h3 {
     @extend %subTitle;
+  }
+  .titleWorkInfo {
+    // p {
+    //   @extend %H1Desktop;
+    //   span {
+    //     @extend %H1Desktop;
+    //   }
+    // }
   }
 }
 
 .sectionTitleWorksInfo {
   padding: 130px 0 140px 0;
+  @media (max-width: $mobileScreen) {
+    padding: 100px 0;
+  }
   h2 {
     margin-bottom: 40px;
   }
@@ -468,10 +554,29 @@ select {
       @extend %H3Desktop;
       margin-top: 40px;
       margin-bottom: 20px;
+      @media (max-width: $tabletScreen) {
+        margin-top: 32px;
+        margin-bottom: 16px;
+      }
     }
     p {
       @extend %subTitle;
     }
+  }
+  button {
+    width: 166px;
+    color: $colorBlack;
+    text-align: center;
+    font-family: $fontFrank;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    padding: 22px 0;
+    background-color: transparent;
+    margin: 0 auto;
+    line-height: 16px; /* 114.286% */
+    margin-top: 90px;
+    margin-bottom: 40px;
   }
 }
 
@@ -512,14 +617,24 @@ select {
   .imageBannerThinkInfo {
     width: 100%;
   }
+  img {
+    width: 100%;
+    margin-bottom: 24px;
+  }
 }
 .sectionInfoCulture {
   padding: 130px 0 100px 0;
   h3 {
     @extend %subTitle;
     margin-bottom: 40px;
+    @media (max-width: $mobileScreen) {
+      margin-bottom: 32px;
+    }
   }
   .wrapInfoCulture {
+    @media (max-width: $mobileScreen) {
+      margin-bottom: 105px;
+    }
     h2 {
       @extend %H2Desktop;
     }
@@ -529,6 +644,12 @@ select {
     img {
       width: 100%;
       margin: 150px auto;
+      @media (max-width: $tabletScreen) {
+        margin: 105px auto;
+      }
+      @media (max-width: $mobileScreen) {
+        margin: 0px;
+      }
     }
   }
 }
@@ -600,6 +721,9 @@ select {
   h3 {
     @extend %subTitle;
     margin-bottom: 40px;
+    @media (max-width: $mobileScreen) {
+      margin-bottom: 0px;
+    }
   }
   a {
     color: $colorBlack;
@@ -608,9 +732,21 @@ select {
   .wrapItemListCareers {
     padding: 34px 0 40px 0;
     border-bottom: 1px solid $colorGray979797;
-
+    @media (max-width: $mobileScreen) {
+      padding: 23px 0;
+    }
+    .ItemListCareers {
+      h3 {
+        @media (max-width: $mobileScreen) {
+          margin-bottom: 32px;
+        }
+      }
+    }
     h2 {
       @extend %H2Desktop;
+      @media (max-width: $mobileScreen) {
+        margin-bottom: 32px;
+      }
     }
     p {
       @extend %bodyDesktop;
@@ -618,6 +754,9 @@ select {
     ul {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      @media (max-width: $tabletScreen) {
+        grid-template-columns: 1fr;
+      }
       li {
         @extend %bodyDesktop;
       }
@@ -626,6 +765,9 @@ select {
       color: $colorBlack;
       text-decoration: none;
     }
+  }
+  .wrapItemListCareersContact {
+    border-bottom: 0px;
   }
 }
 
@@ -664,6 +806,10 @@ select {
   a {
     color: $colorWhite;
     text-decoration: none;
+    @media (max-width: $mobileScreen) {
+      margin-bottom: 28px;
+      display: block;
+    }
   }
   h3 {
     @extend %subTitle;
@@ -686,6 +832,9 @@ select {
       font-family: $fontFrank;
       padding: 22px 0;
       border-radius: 0px;
+      @media (max-width: $mobileScreen) {
+        margin-top: 17px;
+      }
     }
   }
   .wrapSocialFooter {
@@ -693,14 +842,36 @@ select {
       display: flex;
       gap: 41px;
       li {
+        a {
+          @media (max-width: $mobileScreen) {
+            margin-bottom: 0px;
+          }
+        }
       }
     }
   }
   .wrapAdressFooter {
     display: flex;
     gap: 11px;
+    @media (max-width: $mobileScreen) {
+      margin-bottom: 28px;
+    }
     h4 {
       @extend %bodyDesktop;
+    }
+  }
+  .wrapTermAndCoppyRight {
+    p {
+      @media (max-width: $mobileScreen) {
+        text-align: center;
+      }
+    }
+    .wrapTermFooter {
+      ul {
+        @media (max-width: $mobileScreen) {
+          justify-content: center;
+        }
+      }
     }
   }
   .wrapTermFooter {
@@ -708,6 +879,13 @@ select {
     ul {
       display: flex;
       gap: 10px;
+      li {
+        a {
+          @media (max-width: $mobileScreen) {
+            margin-bottom: 0px;
+          }
+        }
+      }
     }
   }
   p {
@@ -977,4 +1155,27 @@ select {
 }
 .navigation ul li:nth-child(5).active ~ .indicator {
   transform: translateX(calc(70px * 4));
+}
+
+
+.sectionListThink {
+  .ItemListWorks {
+    p {
+      margin-top: 38px;
+      margin-bottom: 0;
+    }
+    h2 {
+      margin-top: 5px;
+    }
+  }
+}
+
+.sectionShareThinkInfo {
+  padding-bottom: 0;
+  .wrapBtnShareInfoThink {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 26px;
+  }
 }

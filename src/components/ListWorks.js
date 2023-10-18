@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 
 function ListWorks() {
     let params = useParams();
-    const url = "https://www.suffix.works/api-v2/works/"+params.lang+"";
+    const url = "https://www.suffix.works/api-v2/works/" + params.lang + "";
     const [data, setData] = useState([]);
 
 
@@ -35,14 +35,17 @@ function ListWorks() {
         getWork();
     }, []);
 
+    const [expanded, setExpanded] = useState(false)
+    const dataForDisplay = expanded ? data : data.slice(10, 20)
+
     return (
         <section className='sectionListWorks'>
             <div className='wrapPage'>
                 <Container>
                     <Row>
                         {
-                            data.map(user => {
-                                return <Col lg={6} key={user.id}>
+                            dataForDisplay.map(user => {
+                                return <Col lg={6} sm={6} xs={12} key={user.id}>
                                     <Link to={`/works/${params.lang}/${user.slug}`}>
                                         <div className='ItemListWorks'>
                                             <img src={user.thumbnails}></img>
@@ -50,10 +53,13 @@ function ListWorks() {
                                             <p>{user.type}</p>
                                         </div>
                                     </Link>
-                                    
                                 </Col>
                             })
                         }
+                        <button type="button" onClick={() => setExpanded(!expanded)}>
+                            {expanded ? 'Show Less' : 'Show More'}
+                        </button>
+
                     </Row>
                 </Container>
             </div>

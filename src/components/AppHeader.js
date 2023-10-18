@@ -1,4 +1,5 @@
 import './style.scss';
+import i18n from '../i18n.js';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -6,39 +7,65 @@ import { Link, NavLink } from 'react-router-dom';
 import { React, useState } from 'react'
 import { Button } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-
+import { useParams } from "react-router-dom";
+import { Routes, Route } from 'react-router-dom';
+import PageWorks from '../PageWorks';
 
 function AppHeader() {
     const { t } = useTranslation();
     const [toggle, setToggle] = useState(false);
     const [isActive, setIsActive] = useState(false);
+    const [isLangActive, setLangIsActive] = useState(false);
+
     const handleClick = () => {
         setToggle(!toggle);
         setIsActive(current => !current);
     };
-    
+
+    let { lang } = useParams();
+    console.log(lang);
+    // const { i18n } = useTranslation();
+    // i18n.changeLanguage(lang);
 
     const handleChangeLang = (lang) => {
         window.location.href = '/' + lang;
+
     };
+
+
+    // const changeLanguage = (lng) => {
+    //     i18n.changeLanguage(lng);
+    // }
+
     // const { i18n } = useTranslation();
 
     // const handleLanguageChange = (e) => {
     //   const newLang = e.target.value;
     //   i18n.changeLanguage(newLang);
     // };
-  
+
 
     return (
         <header>
             <section className='sectionHeader'>
                 <div className='appHeader'>
                     <div className='wrapLange'>
-                        {/* {t('Travel App')} */}
-                        <Button onClick={() => handleChangeLang('en')}> <img src='/images/icon/iconLang.svg'></img>
-                            EN</Button>
-                        <Button onClick={() => handleChangeLang('th')}> <img src='/images/icon/iconLang.svg'></img>
-                            TH</Button>
+                        {/* <button onClick={() => changeLanguage('en')}>en</button>
+                    <button onClick={() => changeLanguage('th')}>th</button> */}
+
+                        <ul>
+                            <li> <img src='/images/icon/iconLang.svg'></img> </li>
+                            <li><NavLink exact activeClassName="btnLangActive" to='/en' >  EN </NavLink></li>
+                            <li> | </li>
+                            <li><NavLink activeClassName="btnLangActive" to='/th'> TH</NavLink></li>
+                        </ul>
+
+                        {/* <Button className={isLangActive ? 'btnLangActive' : ''} onClick={() => handleChangeLang('en')}> <img src='/images/icon/iconLang.svg'></img>
+                            EN
+                        </Button>
+                        <Button className={isLangActive ? 'btnLangActive' : ''} onClick={() => handleChangeLang('th')}> <img src='/images/icon/iconLang.svg'></img>
+                            TH
+                        </Button> */}
                     </div>
                     <div className='logo'>
                         <Link to='/'>
@@ -54,7 +81,7 @@ function AppHeader() {
                             </div>
                         </div>
                     </div>
-                    {toggle ? 
+                    {toggle ?
                         <div className='wrapMenuNavigation'>
                             <Container>
                                 <Row>
@@ -65,15 +92,15 @@ function AppHeader() {
                                             <ul>
                                                 <li onClick={handleClick}><Link to="/project/en">project</Link></li>
                                                 <li>-</li>
-                                                <li onClick={handleClick}><Link to="/works/en">works</Link></li>
+                                                <li onClick={handleClick}><Link to={`/works/${lang}`}>works</Link></li>
                                                 <li>-</li>
-                                                <li onClick={handleClick}><Link to="/think/en">think</Link></li>
+                                                <li onClick={handleClick}><Link to={`/think/${lang}`}>think</Link></li>
                                                 <li>-</li>
-                                                <li onClick={handleClick}><Link to="/client/en">client</Link></li>
+                                                <li onClick={handleClick}><Link to={`/client/${lang}`}>client</Link></li>
                                                 <li>-</li>
-                                                <li onClick={handleClick}><Link to="/culture/en">culture</Link></li>
+                                                <li onClick={handleClick}><Link to={`/culture/${lang}`}>culture</Link></li>
                                                 <li>-</li>
-                                                <li onClick={handleClick}><Link to="/careers/en">careers</Link></li>
+                                                <li onClick={handleClick}><Link to={`/careers/${lang}`}>careers</Link></li>
                                             </ul>
                                         </div>
                                     </Col>

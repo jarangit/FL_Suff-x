@@ -5,7 +5,9 @@ import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
-
+import {
+    FacebookShareCount,
+} from "react-share";
 function InfoThink() {
     const [data, setData] = useState([]);
     const { slug } = useParams();
@@ -41,16 +43,12 @@ function InfoThink() {
 
                     <Container >
                         <Row>
-                            <Col lg={12}>
+                            <Col lg={{ span: 10, offset: 1 }}>
                                 <img src={data.image_webp}></img>
                             </Col>
                             <Col lg={{ span: 10, offset: 1 }}>
                                 {/* <p>{data.detail}</p>  */}
                                 <div dangerouslySetInnerHTML={{ __html: data.detail }}></div>
-
-                            </Col>
-                            <Col lg={12}>
-
 
                             </Col>
                         </Row>

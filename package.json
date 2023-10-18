@@ -15,6 +15,7 @@
     "html-to-text": "^9.0.5",
     "http-proxy-middleware": "^2.0.6",
     "i18next": "^23.2.11",
+    "i18next-browser-languagedetector": "^7.1.0",
     "i18next-http-backend": "^2.2.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
@@ -24,6 +25,7 @@
     "react-router": "^6.13.0",
     "react-router-dom": "^6.13.0",
     "react-scripts": "5.0.1",
+    "react-share-social": "^0.1.55",
     "sass": "^1.63.4",
     "styled-components": "^6.0.4",
     "web-vitals": "^2.1.4"

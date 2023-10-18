@@ -42,7 +42,7 @@ function Think() {
     }, []);
 
     return (
-        <section className='sectionListWorks'>
+        <section className='sectionListWorks sectionListThink'>
             <div className='wrapPage'>
                 <Container>
                     <Row>

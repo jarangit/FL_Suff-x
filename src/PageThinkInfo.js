@@ -2,15 +2,16 @@ import './App.scss';
 import TitleThinkInfo from './components/TitleThinkInfo.js';
 import WriterThinkInfo from './components/WriterThinkInfo.js';
 import InfoThink from './components/InfoThink.js';
-
-
-
-function PageThinkInfo() {                
+import ShareThinkInfo from './components/ShareThinkInfo.js';
+import AppHeader from './components/AppHeader';
+function PageThinkInfo() {
   return (
     <div>
-        <TitleThinkInfo />
-        <InfoThink />
-        <WriterThinkInfo />
+      <AppHeader />
+      <TitleThinkInfo />
+      <InfoThink />
+      <ShareThinkInfo />
+      <WriterThinkInfo />
     </div>
   );
 }

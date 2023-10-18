@@ -1,8 +1,9 @@
 import './App.scss';
 import AppHeader from './components/AppHeader.js';
 import AppFooter from './components/AppFooter.js';
-
-import { Routes, Route } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from "react";
+import { Routes, Route,Navigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PageHome from './PageHome.js';
 import PageProject from './PageProject.js';
@@ -17,20 +18,22 @@ import PageCareersInfo from './PageCareersInfo';
 import PageContact from './PageContact';
 import PageSiteMaps from './PageSiteMaps';
 import PagePolicy from './PagePrivacyPolicy';
+import PageTerm from './PageTerm';
 
 import { useTranslation } from 'react-i18next';
 import { useParams } from "react-router-dom";
 
 function App() {
 
-  let { lang } = useParams();
-  const { i18n } = useTranslation();
-  i18n.changeLanguage(lang);
-
+  // let { lang } = useParams();
+  // const { i18n } = useTranslation();
+  // i18n.changeLanguage(lang);
   return (
     <div>
-      <AppHeader />
+      {/* <AppHeader /> */}
       <Routes>
+        <Route path="/" element={<Navigate to={`/en`} replace />} />
+
         <Route path='/:lang?/' element={<PageHome />}></Route>
         <Route path='/project' element={<PageProject />}></Route>
         <Route path='/works/:lang?' element={<PageWorks />}></Route>
@@ -44,7 +47,7 @@ function App() {
           action={({ params }) => { }}
           element={<PageWorks />}
         />; */}
-         <Route
+        <Route
           // this path will match URLs like
           // - /categories
           // - /en/categories
@@ -103,7 +106,7 @@ function App() {
           action={({ params }) => { }}
           element={<PageCulture />}
         />;
-              <Route
+        <Route
           // this path will match URLs like
           // - /categories
           // - /en/categories
@@ -134,6 +137,7 @@ function App() {
         <Route path='/contact' element={<PageContact />}></Route>
         <Route path='/sitemap' element={<PageSiteMaps />}></Route>
         <Route path='/policy' element={<PagePolicy />}></Route>
+        <Route path='/term' element={<PageTerm />}></Route>
       </Routes>
       <AppFooter />
     </div>

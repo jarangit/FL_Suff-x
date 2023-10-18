@@ -105,14 +105,14 @@ function ListThink(props) {
         getWork();
     }, []);
     return (
-        <section className='sectionListWorks'>
+        <section className='sectionListWorks sectionListThink'>
             <div className='wrapPage'>
                 <Container>
                     <Row>
 
                         {
                             data.think_info?.map(user => {
-                                return <div key={user.id}>
+                                return <Col lg={6} sm={6} xs={12} key={user.id} >
                                     <Link to={`/think/${params.lang}/${user.slug}`}>
                                         <div className='ItemListWorks'>
                                             <img src={data.image_webp}></img>
@@ -120,9 +120,10 @@ function ListThink(props) {
                                             <h2>{data.title}</h2>
                                         </div>
                                     </Link>
-                                </div>
+                                </Col>
                             })
                         }
+
                     </Row>
                 </Container>
             </div>

@@ -13,7 +13,8 @@ function PageCulture() {
 
   return (
     <div>
-         <InfoCulture />
+        <AppHeader />
+        <InfoCulture />
     </div>
   );
 }

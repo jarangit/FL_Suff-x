@@ -1,15 +1,15 @@
 import './App.scss';
-import InfoContact from './components/InfoContact.js';
+import InfoTerm from './components/InfoTerm.js';
 import AppHeader from './components/AppHeader';
 
 
-function PageContact() {
+function PagePolicy() {
   return (
     <div>
       <AppHeader />
-      <InfoContact />
+      <InfoTerm />
     </div>
   );
 }
 
-export default PageContact;
+export default PagePolicy;

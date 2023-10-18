@@ -2,7 +2,7 @@ import './App.scss';
 import TitleWorksInfo from './components/TitleWorksInfo.js';
 import TeamWorksInfo from './components/TeamWorksInfo.js';
 import InfoWorks from './components/InfoWorks.js';
-
+import AppHeader from './components/AppHeader';
 
 import { useTranslation } from 'react-i18next';
 import { useParams } from "react-router-dom";
@@ -14,6 +14,7 @@ function PageWorksInfo() {
   // i18n.changeLanguage(lang);             
   return (
     <div>
+        <AppHeader />
         <TitleWorksInfo />
         <InfoWorks />
         <TeamWorksInfo />

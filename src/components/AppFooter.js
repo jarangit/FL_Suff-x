@@ -4,71 +4,101 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
+import React, { useState, useEffect } from "react";
+import { useTranslation } from 'react-i18next';
+import { useParams } from "react-router-dom";
+import axios from 'axios';
 
 function AppFooter() {
+    let params = useParams();
+    const { t, i18n } = useTranslation();
+    const [data, setData] = useState([]);
+    const [lang, setLang] = useState("en");
+    const url = "https://www.suffix.works/api-v2/contact/en";
+
+    const getWork = () => {
+        const config = {
+            headers: {
+                Authorization: 'Basic c3VmZml4OnN1ZmZpeDIwMjEq',
+            }
+        };
+        return axios.get(url, config)
+            .then(res => {
+                console.log(res)
+                setData(res.data);
+            })
+            .catch(err => console.log(err))
+        // return fetch(url)
+        //     .then((res) => res.json())
+        //     .then((d) => setData(d))
+    }
+
+    useEffect(() => {
+        getWork();
+    }, []);
+
     return (
         <footer className='appFooter'>
             <Container>
                 <Row className='wrapTitleFooter'>
-                    <Col lg={6}>
+                    <Col lg={6} sm={6} xs={12}>
                         <h2>Starting a new project or
                             want to collaborate with us?</h2>
                     </Col>
-                    <Col lg={{ span: 3, offset: 3 }}>
+                    <Col lg={{ span: 3, offset: 3 }} sm={6} xs={12}>
                         <Button>Get in touch</Button>
                     </Col>
                 </Row>
                 <Row>
-                    <Col lg={3}>
+                    <Col lg={3} sm={6} xs={12}>
                         <h3>Address</h3>
                         <div className='wrapAdressFooter'>
                             <img src="/images/icon/iconMap.svg"></img>
                             <h4>SUFFIX</h4>
                         </div>
                     </Col>
-                    <Col lg={3}>
+                    <Col lg={3} sm={6} xs={12}>
                         <h3>Email</h3>
-                        <Link to="mailto:hi@suffix.works">hi@suffix.works</Link>
+                        <Link to={`mailto:${data.email}`}>{data.email}</Link>
 
                     </Col>
-                    <Col lg={3}>
+                    <Col lg={3} sm={6} xs={12}>
                         <h3>Telephone</h3>
-                        <Link to="tel:021852476">+66 21852476</Link>
+                        <Link to={`tel:${data.telephone}`}>{data.telephone}</Link>
 
                     </Col>
 
-                    <Col lg={3}>
-                        <h3>Social</h3>
+                    <Col lg={3} sm={6} xs={12}>
+                        <h3>Connect</h3>
                         <div className='wrapSocialFooter'>
                             <ul>
                                 <li>
-                                    <Link to="/project"><img src="/images/icon/iconLinkedIn.svg"></img></Link>
+                                    <Link to={data.linkedin_url}><img src="/images/icon/iconLinkedIn.svg"></img></Link>
                                 </li>
                                 <li>
-                                    <Link to="/project"><img src="/images/icon/iconIg.svg"></img></Link>
+                                    <Link to={data.instagram_url}><img src="/images/icon/iconIg.svg"></img></Link>
                                 </li>
                                 <li>
-                                    <Link to="/project"><img src="/images/icon/iconFB.svg"></img></Link>
+                                    <Link to={data.facebook_url}><img src="/images/icon/iconFB.svg"></img></Link>
                                 </li>
                             </ul>
                         </div>
                     </Col>
 
                 </Row>
-                <Row>
-                    <Col>
+                <Row className='wrapTermAndCoppyRight'>
+                    <Col xs={12}>
                         <div className='wrapTermFooter'>
                             <ul>
-                                <li><Link>Term of use</Link></li>
+                                <li><Link to="/term">Term of use</Link></li>
                                 <li> | </li>
-                                <li><Link>Privacy</Link></li>
+                                <li><Link to="/policy">Privacy</Link></li>
                                 <li> | </li>
-                                <li><Link>Sitemap</Link></li>
+                                <li><Link to="/sitemap">Sitemap</Link></li>
                             </ul>
                         </div>
                     </Col>
-                    <Col>
+                    <Col xs={12}>
                         <p> © SUFFIX.,CO.LTD.</p>
                     </Col>
                 </Row>

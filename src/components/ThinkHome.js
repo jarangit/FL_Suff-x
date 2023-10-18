@@ -2,7 +2,7 @@ import './style.scss';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
@@ -32,7 +32,7 @@ function ThinkHome() {
     const url = "https://www.suffix.works/api-v2/home/en";
     const [data, setData] = useState([]);
     const [lang, setLang] = useState("en");
-
+    let params = useParams();
 
 
     const getWork = () => {
@@ -65,12 +65,13 @@ function ThinkHome() {
                         {
                             data.thinks?.map(user => {
                                 return <Col lg={4} key={user.id}>
-                                    <a>
+                                    <Link to={`/think/${params.lang}/${user.slug}`}>
                                         <div className='ItemThinkHome'>
                                             <img src={user.image}></img>
-                                            <h2>{user.name}</h2>
+                                            {/* <h2>{user.name}</h2> */}
+                                            <div dangerouslySetInnerHTML={{ __html: user.name }}></div>
                                         </div>
-                                    </a>
+                                    </Link>
                                 </Col>
                             })
                         }
