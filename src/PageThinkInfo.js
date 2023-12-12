@@ -4,6 +4,7 @@ import WriterThinkInfo from './components/WriterThinkInfo.js';
 import InfoThink from './components/InfoThink.js';
 import ShareThinkInfo from './components/ShareThinkInfo.js';
 import AppHeader from './components/AppHeader';
+
 function PageThinkInfo() {
   return (
     <div>

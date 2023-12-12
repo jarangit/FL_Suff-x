@@ -1,0 +1,99 @@
+import './style.scss';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
+import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { useTranslation } from 'react-i18next';
+import { useParams } from "react-router-dom";
+import { Link, Router, Routes } from 'react-router-dom';
+
+function InfoServices() {
+    let params = useParams();
+    const { t, i18n } = useTranslation();
+    const url = "https://www.suffix.works/api-v2/service/" + params.lang + "";
+    const [data, setData] = useState([]);
+    // const [lang, setLang] = useState("en");
+
+    let { lang } = useParams();
+    const getWork = () => {
+        const config = {
+            headers: {
+                Authorization: 'Basic c3VmZml4OnN1ZmZpeDIwMjEq',
+            }
+        };
+        return axios.get(url, config)
+            .then(res => {
+                console.log(res)
+                setData(res.data);
+            })
+            .catch(err => console.log(err))
+        // return fetch(url)
+        //     .then((res) => res.json())
+        //     .then((d) => setData(d))
+    }
+
+    useEffect(() => {
+        getWork();
+    }, []);
+
+    return (
+        <section className='sectionInfoServices'>
+            <div className='wrapPage'>
+                <Container>
+                    <Row>
+                        <Col sm={12}>
+                            <h3>Services</h3>
+                            <h1>{data.text}</h1>
+                            {/* <h2 dangerouslySetInnerHTML={{ __html: data.text.toString().replace(/(<([^>]+)>)/ig, '') }}></h2> */}
+                            <hr></hr>
+                        </Col>
+                    </Row>
+                    {
+                        data.items?.map(user => {
+                            return <div key={user.id}>
+                                <Row className='listServices'>
+                                    <Col sm={12} lg={6}>
+                                        <div className='wrapInfoServices'>
+                                            {/* <h4>{user.text}</h4> */}
+                                            <p dangerouslySetInnerHTML={{ __html: user.text.toString().replace(/\r?\n|\r/g, '') }}></p>
+                                        </div>
+                                    </Col>
+                                    <Col sm={12} lg={6}>
+                                        <div className='wrapInfoServices'>
+                                            <h3>Approach</h3>
+                                            {/* <h4>{user.Approach}</h4> */}
+                                            <p dangerouslySetInnerHTML={{ __html: user.approach.toString().replace(/\r?\n|\r/g, '') }}></p>
+                                        </div>
+                                    </Col>
+                                </Row>
+                            </div>
+
+                        })
+                    }
+                    <Row>
+
+                        <Col sm={12} className='wrapBtn'>
+                            <Link to={`/contact/${lang}`}> <button>Get in touch</button></Link>
+                        </Col>
+
+                        <Col sm={12} lg={6}>
+                            <div className='wrapInfoServices'>
+                                <h4 dangerouslySetInnerHTML={{ __html: data.item_footer?.text.toString().replace(/\r?\n|\r/g, '') }}></h4>
+                            </div>
+                        </Col>
+                        <Col sm={12} lg={6}>
+                            <div className='wrapInfoServices'>
+                                <h3>Approach</h3>
+                                <p dangerouslySetInnerHTML={{ __html: data.item_footer?.approach.toString().replace(/\r?\n|\r/g, '') }}></p>
+                            </div>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
+        </section>
+    );
+}
+
+export default InfoServices;

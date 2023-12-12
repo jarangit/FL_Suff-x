@@ -15,17 +15,21 @@ function TitleThinkInfo() {
         const config = {
             headers: {
                 Authorization: 'Basic c3VmZml4OnN1ZmZpeDIwMjEq',
-            }
+                // 'Content-Type': 'application/json'
+            },
+            // body: JSON.stringify(data)
+
         };
         return axios.get(url, config)
             .then(res => {
-                console.log(res)
+                // console.log(res)
                 setData(res.data);
             })
             .catch(err => console.log(err))
         // return fetch(url)
         //     .then((res) => res.json())
         //     .then((d) => setData(d))
+        
     }
 
     useEffect(() => {
@@ -33,15 +37,16 @@ function TitleThinkInfo() {
     }, [slug]);
 
     return (
-        <section className='sectionTitlePage sectionTitleWorksInfo'>
+        <section className='sectionTitlePage sectionTitleWorksInfo sectionTitleThinkInfo'>
             <div className='wrapPage'>
                 <Container>
                     <Row>
                         <Col lg={{ span: 10, offset: 1 }}>
                             <h3>Think</h3>
-                            <h3>{data.category}</h3>
-                            <h2 dangerouslySetInnerHTML={{ __html: data.title }}></h2>
-                            {/* <div className='titleWorkInfo' dangerouslySetInnerHTML={{ __html: data.title }}></div> */}
+                            <h3 className='titleCate'>{data.category}</h3>
+                            {/* <h2>{JSON.stringify(data.title)}</h2> */}
+                            <h2 dangerouslySetInnerHTML={{ __html: data.title?.replace(/(<([^>]+)>)/ig, '') }}></h2>
+                            {/* <div className='titleWorkInfo' dangerouslySetInnerHTML={{ __html: data.title.replace(/(<([^>]+)>)/ig, '') }}></div> */}
                         </Col>
                     </Row>
                 </Container>

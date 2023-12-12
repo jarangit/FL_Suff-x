@@ -5,7 +5,8 @@ import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
-
+import MetaTags from 'react-meta-tags';
+import { Helmet } from "react-helmet";
 
 import {
     FacebookShareButton,
@@ -40,10 +41,15 @@ function ShareThinkInfo() {
         getWork(slug);
     }, [slug]);
 
-    const shareUrl = "https://www.suffix.works/think/" + params.lang + "/" + slug +"";
+    const shareUrl = "https://delicate-beignet-5f898e.netlify.app/think/" + params.lang + "/" + slug + "";
 
     return (
         <section className='sectionTeamWorksInfo sectionShareThinkInfo'>
+            <Helmet>
+                <meta property="og:title" content={data.title} />
+                <meta property="og:title" content="Updated!!" />
+                <meta property="og:image" content={data.image_webp} />
+            </Helmet>
             <div className='wrapPage'>
                 <Container>
                     <Row>
@@ -61,6 +67,8 @@ function ShareThinkInfo() {
 
                                 <FacebookShareButton
                                     url={shareUrl}
+                                    imageURL={data.think_info?.image}
+                                    quote={data.title}
                                 >
                                     <img src='../.././images/icon/facebook.svg' />
 

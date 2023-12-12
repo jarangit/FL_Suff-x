@@ -2,11 +2,14 @@ import './style.scss';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
+import AnimatedNumbers from "react-animated-numbers";
+import AnimatedNumber from "animated-number-react";
 import axios from 'axios';
 import React, { useState, useEffect, useRef } from "react";
 import { useTranslation } from 'react-i18next';
 import { useParams } from "react-router-dom";
+import CountUp from 'react-countup';
+import FadeInSection from './animateFadeIn';
 
 function Approach() {
     let params = useParams();
@@ -15,7 +18,8 @@ function Approach() {
     const [data, setData] = useState([]);
     // const [lang, setLang] = useState("en");
 
-
+    const [num, setNum] = React.useState(331231);
+    
 
     const getWork = () => {
         const config = {
@@ -41,31 +45,31 @@ function Approach() {
         <div className='wrapPage'>
             <Container>
                 <Row>
-                    <Col lg={2}></Col>
-                    <Col lg={8}>
+                    <Col lg={1}></Col>
+                    <Col lg={10} sm={12}>
+                    <FadeInSection>
                         <div className='wrapApproach'>
-                            <h3>Approach</h3>
-                            <h2>
-                                <div dangerouslySetInnerHTML={{ __html: data.approach }}></div>
-                            </h2>
+                            <h3 className='example-style'>Approach</h3>
+                            <h2 className='titleApproach' dangerouslySetInnerHTML={{ __html: data.approach?.toString().replace(/(<([^>]+)>)/ig, '') }}></h2>
                             <h3>Overall</h3>
                             <div className='wrapTextApproach'>
                                 {
                                     data.overall?.map(user => {
-                                        return <div key={user.name} className='wrapArticleApproach'>
-                                            <h2 className='textRun'>{user.total}</h2>
-                                            <h2 className='textRun'>{user.name}</h2>
+                                        return <div key={user.index} className='wrapArticleApproach'>
+                                            <CountUp end={user.total}
+                                              duration={5} />
+                                            {/* <h2 className='textRun'>{user.total}</h2> */}
+                                            <span className='textRun'>{user.name}, </span>
+                                         
                                         </div>
 
                                     })
                                 }
                             </div>
-                            {/* <h2 className='textRun'>
-                                {data.overall} Works, 67 Digital Strategic Plan, 41 Social Media Management, 42 Media Plan, 105 Websites, 24 Identity Design, 5 Mobile Applications
-                            </h2> */}
                         </div>
+                        </FadeInSection>
                     </Col>
-                    <Col lg={2}></Col>
+                    <Col lg={1}></Col>
                 </Row>
             </Container>
 

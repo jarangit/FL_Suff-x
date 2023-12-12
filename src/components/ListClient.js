@@ -40,6 +40,8 @@ function ListClient() {
             <div className='wrapPage'>
                 <Container>
                     <h3>Clients</h3>
+                    <h1>{data.title}</h1>
+                    <h3>Client List</h3>
                     {
                         data.industries?.map((industrie, index) => {
                             return <Row className='wrapItemListCareers'>

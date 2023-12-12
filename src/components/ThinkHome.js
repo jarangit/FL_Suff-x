@@ -7,7 +7,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
 import { useParams } from "react-router-dom";
-
+import FadeInSection from './animateFadeIn';
 // const listThinkHome = [
 //     {
 //         id: 1,
@@ -44,7 +44,7 @@ function ThinkHome() {
         return axios.get(url, config)
             .then(res => {
                 console.log(res)
-                setData(res.data);
+                setData(res.data.thinks);
             })
             .catch(err => console.log(err))
         // return fetch(url)
@@ -59,28 +59,34 @@ function ThinkHome() {
     return (
         <div className='wrapPage'>
             <section className='sectionThinkHome'>
-                <h3>Think</h3>
+                <FadeInSection>
+                    <h3>Think</h3>
+                </FadeInSection>
                 <Container>
                     <Row>
                         {
-                            data.thinks?.map(user => {
+                            data.map(user => {
                                 return <Col lg={4} key={user.id}>
                                     <Link to={`/think/${params.lang}/${user.slug}`}>
-                                        <div className='ItemThinkHome'>
-                                            <img src={user.image}></img>
-                                            {/* <h2>{user.name}</h2> */}
-                                            <div dangerouslySetInnerHTML={{ __html: user.name }}></div>
-                                        </div>
+                                        <FadeInSection>
+                                            <div className='ItemThinkHome'>
+                                                <img src={user.image}></img>
+                                                {/* <h2>{user.name}</h2> */}
+                                                <h2 dangerouslySetInnerHTML={{ __html: user.name.replace(/(<([^>]+)>)/ig, '') }}></h2>
+                                                {/* <div dangerouslySetInnerHTML={{ __html: user.name }}></div> */}
+                                            </div>
+                                        </FadeInSection>
                                     </Link>
+
                                 </Col>
                             })
                         }
 
                     </Row>
                 </Container>
-                <a>
-                    <button>All Client</button>
-                </a>
+                <Link to={`/think/${lang}`}>
+                    <button>View Our Thoughts</button>
+                </Link>
             </section>
         </div>
     );

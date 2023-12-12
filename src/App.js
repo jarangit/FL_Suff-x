@@ -3,7 +3,7 @@ import AppHeader from './components/AppHeader.js';
 import AppFooter from './components/AppFooter.js';
 import { Redirect } from 'react-router-dom';
 import React, { useState, useEffect, useRef } from "react";
-import { Routes, Route,Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PageHome from './PageHome.js';
 import PageProject from './PageProject.js';
@@ -16,21 +16,26 @@ import PageCulture from './PageCulture';
 import PageCareers from './PageCareers';
 import PageCareersInfo from './PageCareersInfo';
 import PageContact from './PageContact';
+import PageServices from './PageServices';
 import PageSiteMaps from './PageSiteMaps';
 import PagePolicy from './PagePrivacyPolicy';
 import PageTerm from './PageTerm';
+import HelmetMetaData from "./components/HelmetMetaData";
+
+import {FacebookShareButton, FacebookIcon} from "react-share";
+
 
 import { useTranslation } from 'react-i18next';
 import { useParams } from "react-router-dom";
 
 function App() {
-
   // let { lang } = useParams();
   // const { i18n } = useTranslation();
   // i18n.changeLanguage(lang);
   return (
     <div>
       {/* <AppHeader /> */}
+      {/* <HelmetMetaData></HelmetMetaData> */}
       <Routes>
         <Route path="/" element={<Navigate to={`/en`} replace />} />
 
@@ -134,14 +139,64 @@ function App() {
           action={({ params }) => { }}
           element={<PageCareersInfo />}
         />;
-        <Route path='/contact' element={<PageContact />}></Route>
-        <Route path='/sitemap' element={<PageSiteMaps />}></Route>
+        <Route
+          // this path will match URLs like
+          // - /categories
+          // - /en/categories
+          // - /fr/categories
+          path="contact/:lang?"
+          // the matching param might be available to the loader
+          loader={({ params }) => {
+            console.log(params["lang"]); // "en"
+          }}
+          // and the action
+          action={({ params }) => { }}
+          element={<PageContact />}
+        />;
+        <Route
+          // this path will match URLs like
+          // - /categories
+          // - /en/categories
+          // - /fr/categories
+          path="services/:lang?"
+          // the matching param might be available to the loader
+          loader={({ params }) => {
+            console.log(params["lang"]); // "en"
+          }}
+          // and the action
+          action={({ params }) => { }}
+          element={<PageServices />}
+        />;
+        {/* <Route path='/contact' element={<PageContact />}></Route> */}
+        <Route
+          // this path will match URLs like
+          // - /categories
+          // - /en/categories
+          // - /fr/categories
+          path="sitemap/:lang?"
+          // the matching param might be available to the loader
+          loader={({ params }) => {
+            console.log(params["lang"]); // "en"
+          }}
+          // and the action
+          action={({ params }) => { }}
+          element={<PageSiteMaps />}
+        />;
         <Route path='/policy' element={<PagePolicy />}></Route>
         <Route path='/term' element={<PageTerm />}></Route>
       </Routes>
+        {/* <FacebookShareButton
+          url={"http://www.camperstribe.com"}
+          quote={"CampersTribe - World is yours to explore"}
+         
+        >
+          <FacebookIcon size={36} />
+        </FacebookShareButton> */}
       <AppFooter />
     </div>
   );
 }
 
 export default App;
+
+

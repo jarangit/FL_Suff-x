@@ -45,6 +45,7 @@ function InfoWorks() {
     useEffect(() => {
         getWork(slug);
     }, [slug]);
+    
 
     return (
         <section className='sectionInfoWorks'>
@@ -52,12 +53,15 @@ function InfoWorks() {
                 <Container key={data.id}>
                     <Row>
                         <Col lg={12}>
-                            <img src={data.thumbnails}></img>
+                            <img className='imageThumbnail' src={data.thumbnails}></img>
                         </Col>
-                        <Col lg={{ span: 10, offset: 1 }}>
-                            <h4>Process</h4>
-                            <div dangerouslySetInnerHTML={{ __html: data.process }}></div>
-                            {/* <p dangerouslySetInnerHTML>{data.process}</p> */}
+                        <Col md={{ span: 12, offset: 0 }} lg={{ span: 10, offset: 1 }} sm={{ span: 12, offset: 0 }}>
+                            <div className='wrapDescProcess'>
+                                <h4>Process</h4>
+                                <p dangerouslySetInnerHTML={{ __html: data.process?.toString().replace(/\r?\n|\r/g, '<br>') }}></p>
+                            </div>
+                            {/* <div dangerouslySetInnerHTML={{ __html: data.process }}></div> */}
+                           
                         </Col>
                         <Col lg={12}>
 

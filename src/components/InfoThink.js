@@ -8,6 +8,9 @@ import { useParams } from 'react-router-dom';
 import {
     FacebookShareCount,
 } from "react-share";
+import { ReactTinyLink } from 'react-tiny-link'
+
+import { Helmet } from "react-helmet";
 function InfoThink() {
     const [data, setData] = useState([]);
     const { slug } = useParams();
@@ -35,9 +38,24 @@ function InfoThink() {
         getWork(slug);
     }, [slug]);
 
+    function createMarkup() {
+        return {
+            __html: data.detail
+        };
+    };
 
     return (
         <section className='sectionInfoThink'>
+            {/* <Helmet>
+                <title>{data.title}</title>
+                <meta property="og:url" content={ogUrl} />
+                <meta property="og:type" content={props.type} />
+                <meta property="og:title" content={data.title} />
+                <meta property="og:title" content="Updated!!" />
+
+                <meta property="og:description" content={props.desc} />
+                <meta property="og:image" content={data.image_webp} />
+            </Helmet> */}
             <div className='wrapPage'>
                 {
 
@@ -48,8 +66,13 @@ function InfoThink() {
                             </Col>
                             <Col lg={{ span: 10, offset: 1 }}>
                                 {/* <p>{data.detail}</p>  */}
-                                <div dangerouslySetInnerHTML={{ __html: data.detail }}></div>
-
+                                <h4>{data.sub_title}</h4>
+                                {/* <p dangerouslySetInnerHTML={{ __html: data.detail.toString().replace(/\r?\n|\r/g, '<br>') }}></p> */}
+                                {/* <p>{data.detail }</p> */}
+                                <div
+                                    dangerouslySetInnerHTML={{ __html: data.detail }}
+                                />
+                                {/* <div dangerouslySetInnerHTML={{ __html: createMarkup }}></div> */}
                             </Col>
                         </Row>
                     </Container>

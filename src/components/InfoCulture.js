@@ -54,45 +54,46 @@ function InfoCulture() {
             <div className='wrapPage'>
                 <Container>
                     <Row>
-                        <Col sm={{ span: 10, offset: 1 }}>
+                        <Col sm={12} lg={{ span: 5, offset: 0 }} md={{ span: 10, offset: 1 }}>
                             <h3>Culture</h3>
                         </Col>
                     </Row>
                     <Row>
-                        <Col sm={{ span: 5, offset: 1 }}>
+                        <Col sm={12} lg={{ span: 5, offset: 0 }} md={{ span: 10, offset: 1 }}>
                             <div className='wrapInfoCulture'>
                                 <h3>Thinking</h3>
                                 {/* {data.thinking} */}
-                                <div dangerouslySetInnerHTML={{ __html: data.thinking }}></div>
+                                {/* <div dangerouslySetInnerHTML={{ __html: data.thinking }}></div> */}
+                                <h2 dangerouslySetInnerHTML={{ __html: data.thinking?.toString().replace(/(<([^>]+)>)/ig, '') }}></h2>
 
                             </div>
                         </Col>
-                        <Col sm={6}>
+                        <Col sm={12} md={{ span: 10, offset: 1 }} lg={{ span: 5, offset: 1 }}>
                             <div className='wrapInfoCulture'>
                                 <h3>How we work</h3>
                                 {/* {data.work} */}
-                                <div dangerouslySetInnerHTML={{ __html: data.work }}></div>
+                                <h4 dangerouslySetInnerHTML={{ __html: data.work?.toString().replace(/(<([^>]+)>)/ig, '') }}></h4>
 
                             </div>
                         </Col>
-                        <Col>
+                        <Col sm={12}>
                             <div className='wrapInfoCulture'>
                                 <img src={data.imageCultureTop}></img>
                             </div>
                         </Col>
                     </Row>
                     <Row>
-                        <Col sm={{ span: 5, offset: 1 }}>
-                            <div className='wrapInfoCulture'>
-                                <h3>Thinking</h3>
+                        <Col sm={12} lg={{ span: 5, offset: 0 }}>
+                            <div className='wrapInfoCulture wrapInfoCultureBottom'>
+                                <h3>About</h3>
                                 {/* {data.founder} */}
-                                <p dangerouslySetInnerHTML={{ __html: data.founder }}></p>
+                                <h2 dangerouslySetInnerHTML={{ __html: data.founder?.toString().replace(/(<([^>]+)>)/ig, '') }}></h2>
 
                             </div>
                         </Col>
-                        <Col sm={6}>
-                            <div className='wrapInfoCulture'>
-                                <h3>How we work</h3>
+                        <Col sm={12} lg={{ span: 5, offset: 1 }}>
+                            <div className='wrapInfoCulture wrapInfoCultureBottom'>
+                                <h3>Expertise</h3>
                                 <h4 dangerouslySetInnerHTML={{ __html: data.description }}></h4>
                                 {/* {data.description} */}
                             </div>

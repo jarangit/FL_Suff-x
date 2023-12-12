@@ -5,14 +5,17 @@ import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
 
 function ListSiteMaps() {
+    let params = useParams();
 
-    const url = "https://www.suffix.works/api-v2/sitemaps/en";
+    const url = "https://www.suffix.works/api-v2/sitemaps/" + params.lang + "";
     const [data, setData] = useState([]);
     const [lang, setLang] = useState("en");
 
-
+   
 
     const getWork = () => {
         const config = {
@@ -58,7 +61,12 @@ function ListSiteMaps() {
                             <ul>
                                 {
                                     data.works?.map((index) => {
-                                        return <li key={index} className='list'>{index}</li>
+                                        return <li key={index} className='list'>
+                                            <Link to={`/works/${params.lang}/${index.slug}`}>
+                                                <p dangerouslySetInnerHTML={{ __html: index.name.replace(/(<([^>]+)>)/ig, '') }}></p>
+                                            </Link>
+                                            {/* <p dangerouslySetInnerHTML={{ __html: index.replace(/(<([^>]+)>)/ig, '') }}></p> */}
+                                        </li>
                                     })
 
                                 }
@@ -91,10 +99,14 @@ function ListSiteMaps() {
                             </div>
                         </Col>
                         <Col>
-                        <ul>
+                            <ul>
                                 {
                                     data.thinks?.map((index) => {
-                                        return <li key={index} className='list'>{index}</li>
+                                        return <li key={index} className='list'>
+                                             <Link to={`/think/${params.lang}/${index.slug}`}>
+                                                <p dangerouslySetInnerHTML={{ __html: index.name.replace(/(<([^>]+)>)/ig, '') }}></p>
+                                            </Link>
+                                        </li>
                                     })
 
                                 }

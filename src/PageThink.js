@@ -5,6 +5,8 @@ import Think from './components/Thinks.js'
 import { useTranslation } from 'react-i18next';
 import { useParams } from "react-router-dom";
 import AppHeader from './components/AppHeader';
+import {Helmet} from "react-helmet";
+import HelmetMetaData from "./components/HelmetMetaData";
 
 function PageThink() {
   // let { lang } = useParams();
@@ -13,9 +15,12 @@ function PageThink() {
 
   return (
     <div>
+
       <AppHeader />
+      <HelmetMetaData></HelmetMetaData>
       <TitlePageThink />
       <Think />
+
     </div>
   );
 }

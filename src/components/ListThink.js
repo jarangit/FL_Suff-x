@@ -80,7 +80,7 @@ import { useTranslation } from 'react-i18next';
 function ListThink(props) {
     const { t } = useTranslation();
     let params = useParams();
-    const url = "https://www.suffix.works/api-v2/think/" + params.lang + "";
+    const url = "https://www.suffix.works/api-v2/think/en";
     const [data, setData] = useState([]);
     const [lang, setLang] = useState("en");
 
@@ -111,13 +111,13 @@ function ListThink(props) {
                     <Row>
 
                         {
-                            data.think_info?.map(user => {
-                                return <Col lg={6} sm={6} xs={12} key={user.id} >
+                            data.think_info?.map((user, index) => {
+                                return <Col lg={6} sm={6} xs={12} key={index} >
                                     <Link to={`/think/${params.lang}/${user.slug}`}>
                                         <div className='ItemListWorks'>
-                                            <img src={data.image_webp}></img>
-                                            <p>{data.category}</p>
-                                            <h2>{data.title}</h2>
+                                            <img src={user.image}></img>
+                                            <p>{user.category}</p>
+                                             <h2 dangerouslySetInnerHTML={{ __html: user.title.toString().replace(/\r?\n|\r/g, '') }}></h2>
                                         </div>
                                     </Link>
                                 </Col>

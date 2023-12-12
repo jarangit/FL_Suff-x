@@ -42,11 +42,13 @@ function AppFooter() {
             <Container>
                 <Row className='wrapTitleFooter'>
                     <Col lg={6} sm={6} xs={12}>
-                        <h2>Starting a new project or
+                        <h2>Starting a new project or <br></br>
                             want to collaborate with us?</h2>
                     </Col>
                     <Col lg={{ span: 3, offset: 3 }} sm={6} xs={12}>
-                        <Button>Get in touch</Button>
+                    <Link to={`/contact/${lang}`}>
+                        <button>Keep in touch</button>
+                    </Link>
                     </Col>
                 </Row>
                 <Row>
@@ -69,7 +71,7 @@ function AppFooter() {
                     </Col>
 
                     <Col lg={3} sm={6} xs={12}>
-                        <h3>Connect</h3>
+                        <h3>Social</h3>
                         <div className='wrapSocialFooter'>
                             <ul>
                                 <li>
@@ -87,18 +89,18 @@ function AppFooter() {
 
                 </Row>
                 <Row className='wrapTermAndCoppyRight'>
-                    <Col xs={12}>
+                    <Col xs={12} sm={6}>
                         <div className='wrapTermFooter'>
                             <ul>
                                 <li><Link to="/term">Term of use</Link></li>
                                 <li> | </li>
                                 <li><Link to="/policy">Privacy</Link></li>
                                 <li> | </li>
-                                <li><Link to="/sitemap">Sitemap</Link></li>
+                                <li><Link  to={`/sitemap/${lang}`}>Sitemap</Link></li>
                             </ul>
                         </div>
                     </Col>
-                    <Col xs={12}>
+                    <Col xs={12} sm={6}>
                         <p> © SUFFIX.,CO.LTD.</p>
                     </Col>
                 </Row>

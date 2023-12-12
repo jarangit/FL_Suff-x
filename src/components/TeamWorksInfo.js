@@ -68,7 +68,7 @@ function TeamWorksInfo() {
                 <Container>
                     <Row>
                         <Col>
-                            <h3>Client</h3>
+                            <h3>Team</h3>
                             <div className='wrapItemTeamWorks'>
                                 {
                                     data.position?.map(user => {

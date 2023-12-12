@@ -47,13 +47,13 @@ function Think() {
                 <Container>
                     <Row>
                         {
-                            data.think_info?.map(user => {
-                                return <Col lg={6} key={user.id}>
+                            data.think_info?.map((user, index) => {
+                                return <Col lg={6} sm={6} xs={12} key={index} >
                                     <Link to={`/think/${params.lang}/${user.slug}`}>
                                         <div className='ItemListWorks'>
                                             <img src={user.image_webp}></img>
                                             <p>{user.category}</p>
-                                            <h2>{user.title}</h2>
+                                            <h2 dangerouslySetInnerHTML={{ __html: user.title.toString().replace(/\r?\n|\r/g, '') }}></h2>
                                         </div>
                                     </Link>
                                     

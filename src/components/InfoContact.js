@@ -5,20 +5,24 @@ import Col from 'react-bootstrap/Col';
 import { useForm } from "react-hook-form"
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
-
+import { useParams } from "react-router-dom";
+import Button from '@mui/material/Button';
 import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import { FormGroup, Checkbox, FormControlLabel } from '@mui/material';
 import { useFormControl } from '@mui/material/FormControl';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import Modal from 'react-bootstrap/Modal';
 
 function InfoContact() {
-    const url = "https://www.suffix.works/api-v2/contact/en";
+    let params = useParams();
+    const url = "https://www.suffix.works/api-v2/contact/" + params.lang + "";
     const [data, setData] = useState([]);
     const [lang, setLang] = useState("en");
 
-
+    const [showApply, setShowApply] = useState(false);
+    const handleCloseApply = () => setShowApply(false);
 
     const getWork = () => {
         const config = {
@@ -118,6 +122,7 @@ function InfoContact() {
             .then(response => response.text())
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
+        setShowApply(true);
 
     }
     return (
@@ -125,25 +130,82 @@ function InfoContact() {
             <div className='wrapPage'>
                 <Container>
                     <Row>
-                        <Col lg={6}>
+                        <Col lg={{ span: 5, offset: 0 }} sm={{ span: 10, offset: 1 }}>
                             <h3>Get in touch</h3>
-                            <h1>{data.description}</h1>
+                            <h1>{data.touch}</h1>
                         </Col>
-                        <Col lg={5}>
+                        <Col lg={{ span: 6, offset: 1 }} sm={{ span: 10, offset: 1 }}>
                             <h3>Enquiry</h3>
                             <h2>What services are you looking for</h2>
-                            <FormGroup>
+                            <form onSubmit={handleSubmit}>
+                                <FormControlLabel control={<Checkbox />} label="Digital Strategy: Marketing & Communication" />
+                                <FormControlLabel control={<Checkbox />} label="Digital Executiion: Website & Application  " />
+                                <TextField
+                                    required
+                                    id="full_name"
+                                    label="Name"
+                                    variant="standard"
+                                    value={inputs.full_name}
+                                />
+                                <TextField
+                                    required
+                                    id="email"
+                                    label="Email"
+                                    variant="standard"
+                                    value={inputs.email}
+                                />
+                                <TextField
+                                    required
+                                    id="phone_number"
+                                    label="Phone"
+                                    variant="standard"
+                                    value={inputs.phone_number}
+                                />
+                                <p>Please tell us a little more about your inquiry.</p>
+                                <TextField
+                                    required
+                                    id="message"
+                                    label="Add a note here"
+                                    variant="standard"
+                                    value={inputs.message}
+                                />
+                                <input type="submit" className='btnSubmit' />
+                            </form>
+                            {/* <FormGroup onSubmit={handleSubmit}>
                                 <FormControlLabel required control={<Checkbox />} label="Digital Strategy: Marketing & Communication" />
                                 <FormControlLabel required control={<Checkbox />} label="Digital Executiion: Website & Application  " />
                                 <TextField
                                     required
-                                    id="standard-required"
-                                    label="Required"
+                                    id="full_name"
+                                    label="name"
                                     variant="standard"
+                                    value={inputs.full_name}
                                 />
-                            </FormGroup>
-                            <form onSubmit={handleSubmit}>
-                                {/* <FormControlLabel required control={<Checkbox defaultChecked />} label="Label" /> */}
+                                <TextField
+                                    required
+                                    id="email"
+                                    label="email"
+                                    variant="standard"
+                                    value={inputs.email}
+                                />
+                                <TextField
+                                    required
+                                    id="phone_number"
+                                    label="phone"
+                                    variant="standard"
+                                    value={inputs.phone_number}
+                                />
+                                <TextField
+                                    required
+                                    id="message"
+                                    label="Add a note here"
+                                    variant="standard"
+                                    value={inputs.message}
+                                />
+                                <Button variant="contained">Contained</Button>
+                            </FormGroup> */}
+                            {/* <form onSubmit={handleSubmit}>
+                                <FormControlLabel required control={<Checkbox defaultChecked />} label="Label" />
 
                                 <input
                                     type="text"
@@ -180,15 +242,36 @@ function InfoContact() {
                                     rows={4}
                                 />
                                 <input type="submit" className='btnSubmit' />
-                            </form>
+                            </form> */}
                         </Col>
+                        <Modal show={showApply} onHide={handleCloseApply}>
+                            <button className='btnClosePopup' onClick={handleCloseApply}>
+                                <div className='btnClose'>
+                                    <div className='lineClose'></div>
+                                    <div className='lineClose'></div>
+                                </div>
+                            </button>
+                            <div className='wrapApplyDone'>
+                                {/* <h2>Apply for</h2>
+                                    <h1 >{data.name}</h1> */}
+                                <p>Thank you. <br></br>
+                                    We try to be as responsive as possible. <br></br>
+                                    We'll get back to you soon.
+                                </p>
+
+                            </div>
+                        </Modal>
                     </Row>
                     <Row>
-                        <Col lg={6}>
-                            <h3>Location</h3>
-
+                        <Col lg={{ span: 5, offset: 0 }} md={{ span: 10, offset: 1 }}>
+                            <div className='desktopOnly'>
+                                <h3>Location</h3>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.8313608242784!2d100.57783755076106!3d13.72865770148003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29e5343dcafdd%3A0xd71ac4aa2c33bd01!2sSUFFIX!5e0!3m2!1sen!2sth!4v1601447432576!5m2!1sen!2sth"
+                                ></iframe>
+                            </div>
                         </Col>
-                        <Col lg={6}>
+                        <Col lg={{ span: 6, offset: 1 }} sm={{ span: 10, offset: 1 }}>
                             <h3>Address</h3>
                             <h2 dangerouslySetInnerHTML={{ __html: data.address }}></h2>
                             {/* <h2>{data.address}</h2> */}
@@ -205,6 +288,11 @@ function InfoContact() {
                                 </Col>
                             </Row>
 
+                            <div className='tabletMobile'>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.8313608242784!2d100.57783755076106!3d13.72865770148003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29e5343dcafdd%3A0xd71ac4aa2c33bd01!2sSUFFIX!5e0!3m2!1sen!2sth!4v1601447432576!5m2!1sen!2sth"
+                                ></iframe>
+                            </div>
                         </Col>
                     </Row>
                 </Container>

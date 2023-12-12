@@ -5,9 +5,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import './i18n';
-import {I18nextProvider} from "react-i18next";
+import { I18nextProvider } from "react-i18next";
 import i18next from "i18next";
 import './i18n';
+import { CookiesProvider } from 'react-cookie';
 
 i18next.init({
   interpolation: { escapeValue: false },  // React already does escaping
@@ -17,7 +18,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <CookiesProvider defaultSetOptions={{ path: '/' }}>
+        <App />
+      </CookiesProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
