@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 import React, { useState, useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 
 // const listClientsHome = [
 //     {
@@ -46,7 +47,7 @@ function ClientsHome() {
     const [data, setData] = useState([]);
     const [lang, setLang] = useState("en");
 
-
+    const { t, i18n } = useTranslation();
 
     const getWork = () => {
         const config = {
@@ -75,7 +76,7 @@ function ClientsHome() {
                 <Container>
                     <Row>
                         <Col>
-                            <h3>Clients</h3>
+                            <h3>{t('Clients')}</h3>
                             <div className='wrapListClientHome'>
                                 <ul>
                                     {
@@ -89,7 +90,7 @@ function ClientsHome() {
                     </Row>
                 </Container>
                 <a>
-                    <button>All Client</button>
+                    <button>{t('All Client')}</button>
                 </a>
             </section>
         </div>

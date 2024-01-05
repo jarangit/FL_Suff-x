@@ -22,3 +22,16 @@
     font-style: normal;
 
 }
+
+
+
+
+
+@font-face {
+    font-family: 'helvetica_neue67MdCnOb';
+    src: url('helvetica_neue_67_medium_condensed_oblique-webfont.woff2') format('woff2'),
+         url('helvetica_neue_67_medium_condensed_oblique-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}

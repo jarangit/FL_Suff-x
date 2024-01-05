@@ -7,7 +7,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-
+import { useTranslation } from 'react-i18next';
 // const listInClient = [
 //     {
 //         id: 1,
@@ -19,7 +19,7 @@ import Modal from 'react-bootstrap/Modal';
 function InfoCareers() {
     const [data, setData] = useState([]);
     const [lang, setLang] = useState("en");
-
+    const { t, i18n } = useTranslation();
     const { slug } = useParams();
     let params = useParams();
     const getWork = (slugUrl) => {
@@ -105,7 +105,7 @@ function InfoCareers() {
             .then(response => response.text())
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
-            setShowApply(true);
+        setShowApply(true);
 
 
     }
@@ -116,39 +116,41 @@ function InfoCareers() {
                 <Container>
                     <Row>
                         <Col lg={{ span: 5, offset: 1 }}>
-                            <h3>Careers</h3></Col>
+                            <h3>{t('careers')}</h3></Col>
                     </Row>
                     <Row>
                         <Col lg={{ span: 5, offset: 1 }}>
                             <div className='wrapItemInfoCareer'>
-                                <h3>Position</h3>
+                                <h3>{t('Position')}</h3>
                                 <h2>{data.name}</h2>
                             </div>
                         </Col>
                         <Col lg={6}>
                             <div className='wrapItemInfoCareer'>
-                                <h3>Why this role important for SUFFIX</h3>
-                                <div dangerouslySetInnerHTML={{ __html: data.description_job }}></div>
+                                <h3>{t('role')}</h3>
+                                {/* <h4 dangerouslySetInnerHTML={{ __html: data.description_job }}></h4> */}
+                                <h4 dangerouslySetInnerHTML={{ __html: data.description_job?.toString().replace(/\r?\n|\r/g, '') }}></h4>
+                                {/* <h4 dangerouslySetInnerHTML={{ __html: data.description_job?.toString().replace(/\r?\n|\r/g, '<br>') }}></h4> */}
                                 {/* <p>{data.description_job}</p> */}
                             </div>
                             <div className='wrapItemInfoCareer'>
-                                <h3>What does SUFFIX offer you?</h3>
-                                <div dangerouslySetInnerHTML={{ __html: data.offer }}></div>
+                                <h3>{t('offer')}</h3>
+                                <p dangerouslySetInnerHTML={{ __html: data.offer?.toString().replace(/\r?\n|\r/g, '<br>') }}></p>
                                 {/* <p>{data.offer}</p> */}
                             </div>
                             <div className='wrapItemInfoCareer'>
-                                <h3>What will you be doing? (Responsibilities)</h3>
-                                <div dangerouslySetInnerHTML={{ __html: data.responsibilities }}></div>
-                                {/* <p>{data.responsibilities}</p> */}
+                                <h3>{t('Responsibilities')}</h3>
+                                <p dangerouslySetInnerHTML={{ __html: data.responsibilities?.toString().replace(/\r?\n|\r/g, '<br>') }}></p>
                             </div>
                             <div className='wrapItemInfoCareer'>
-                                <h3>Relevant experience and mindset</h3>
-                                <div dangerouslySetInnerHTML={{ __html: data.mindset }}></div>
+                                <h3>{t('mindset')}</h3>
+                                <p dangerouslySetInnerHTML={{ __html: data.mindset?.toString().replace(/\r?\n|\r/g, '<br>') }}></p>
                                 {/* <p>{data.mindset}</p> */}
                             </div>
                             <div className='wrapItemInfoCareer'>
-                                <h3>Application Stack</h3>
-                                <p>{data.stack}</p>
+                                <h3>{t('Application')}</h3>
+                                <p dangerouslySetInnerHTML={{ __html: data.stack?.toString().replace(/\r?\n|\r/g, '<br>') }}></p>
+                                {/* <p>{data.stack}</p> */}
                                 {/* <ul>
                                     {
                                         data.stack?.map((index) => {
@@ -163,8 +165,8 @@ function InfoCareers() {
                     </Row>
                     <Row>
                         <Col lg={{ span: 2, offset: 5 }}>
-                            <Button className="btnApply" variant="primary" onClick={handleShow}>
-                                Apply
+                            <Button className="btnApply" onClick={handleShow}>
+                                {t('Apply')}
                             </Button>
 
                             <Modal show={show} onHide={handleClose}>
@@ -175,11 +177,12 @@ function InfoCareers() {
                                     </div>
                                 </button>
                                 <div className='wrapFormCareer'>
-                                    <h2>Apply for</h2>
+                                    <h2>{t('Apply for')}</h2>
                                     <h1 >{data.name}</h1>
-                                    <Link>Apply with Linkedin</Link>
+                                    {/* <Link to={data.url_linkedin}>Apply with Linkedin</Link> */}
                                     <form onSubmit={handleSubmit}>
                                         <input id="idCareer" value={data.id}></input>
+                                        <label className="textRequire" for="full_name">Required</label>
                                         <input
                                             type="text"
                                             name="full_name"
@@ -188,6 +191,8 @@ function InfoCareers() {
                                             value={inputs.full_name || ""}
                                             onChange={handleChange}
                                         />
+                                        <label className="textRequire" for="email">Required</label>
+
                                         <input
                                             type="text"
                                             name="email"
@@ -196,6 +201,8 @@ function InfoCareers() {
                                             value={inputs.email || ""}
                                             onChange={handleChange}
                                         />
+                                         <label className="textRequire" for="phone_number">Required</label>
+
                                         <input
                                             type="text"
                                             name="phone_number"
@@ -204,6 +211,8 @@ function InfoCareers() {
                                             value={inputs.phone_number || ""}
                                             onChange={handleChange}
                                         />
+                                        <label className="textRequire" for="phone_number">Required</label>
+
                                         <label className="textFile" for="cv">Upload Resume  (Maximum 2mb)</label>
                                         <input
                                             type="file"
@@ -228,7 +237,7 @@ function InfoCareers() {
                                     <h1 >{data.name}</h1>
                                     <p>Thank you. <br></br>
                                         We try to be as responsive as possible. <br></br>
-                                        We'll get back to you soon. 
+                                        We'll get back to you soon.
                                     </p>
 
                                 </div>

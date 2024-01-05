@@ -7,7 +7,8 @@ import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
-
+import { useTranslation } from 'react-i18next';
+import FadeInSection from './animateFadeIn';
 
 // const listTeamWorks = [
 //     {
@@ -38,6 +39,7 @@ function TeamWorksInfo() {
     const [lang, setLang] = useState("en");
 
     const { slug } = useParams();
+    const { t } = useTranslation();
 
     const getWork = (slugUrl) => {
         const url = `https://www.suffix.works/api-v2/work-detail/en?slug=${slugUrl}`;
@@ -68,15 +70,17 @@ function TeamWorksInfo() {
                 <Container>
                     <Row>
                         <Col>
-                            <h3>Team</h3>
+                            <h3>{t('Team')}</h3>
                             <div className='wrapItemTeamWorks'>
                                 {
                                     data.position?.map(user => {
                                         return <Col>
+                                          <FadeInSection>                            
                                             <div className='ItemTeamWorks' key={user.positionName}>
                                                 <h3>{user.positionName}</h3>
                                                 <h2>{user.fullName}</h2>
                                             </div>
+                                            </FadeInSection>
                                         </Col>
                                     })
                                 }

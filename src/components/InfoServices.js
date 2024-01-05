@@ -8,6 +8,7 @@ import React, { useState, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
 import { useParams } from "react-router-dom";
 import { Link, Router, Routes } from 'react-router-dom';
+import FadeInSection from './animateFadeIn';
 
 function InfoServices() {
     let params = useParams();
@@ -44,28 +45,34 @@ function InfoServices() {
                 <Container>
                     <Row>
                         <Col sm={12}>
-                            <h3>Services</h3>
-                            <h1>{data.text}</h1>
-                            {/* <h2 dangerouslySetInnerHTML={{ __html: data.text.toString().replace(/(<([^>]+)>)/ig, '') }}></h2> */}
-                            <hr></hr>
+                            <FadeInSection>
+                                <h3>{t('services')}</h3>
+                                <h1>{data.text}</h1>
+                                {/* <h2 dangerouslySetInnerHTML={{ __html: data.text.toString().replace(/(<([^>]+)>)/ig, '') }}></h2> */}
+                                <hr></hr>
+                            </FadeInSection>
                         </Col>
                     </Row>
                     {
                         data.items?.map(user => {
                             return <div key={user.id}>
                                 <Row className='listServices'>
-                                    <Col sm={12} lg={6}>
-                                        <div className='wrapInfoServices'>
-                                            {/* <h4>{user.text}</h4> */}
-                                            <p dangerouslySetInnerHTML={{ __html: user.text.toString().replace(/\r?\n|\r/g, '') }}></p>
-                                        </div>
+                                    <Col sm={12} lg={6} className='listItem'>
+                                        <FadeInSection>
+                                            <div className='wrapInfoServices'>
+                                                {/* <h4>{user.text}</h4> */}
+                                                <p dangerouslySetInnerHTML={{ __html: user.text.toString().replace(/\r?\n|\r/g, '<br>') }}></p>
+                                            </div>
+                                        </FadeInSection>
                                     </Col>
-                                    <Col sm={12} lg={6}>
-                                        <div className='wrapInfoServices'>
-                                            <h3>Approach</h3>
-                                            {/* <h4>{user.Approach}</h4> */}
-                                            <p dangerouslySetInnerHTML={{ __html: user.approach.toString().replace(/\r?\n|\r/g, '') }}></p>
-                                        </div>
+                                    <Col sm={12} lg={6} className='listItem'>
+                                        <FadeInSection>
+                                            <div className='wrapInfoServices'>
+                                                <h3>{t('Approach')}</h3>
+                                                {/* <h4>{user.Approach}</h4> */}
+                                                <p dangerouslySetInnerHTML={{ __html: user.approach.toString().replace(/\r?\n|\r/g, '') }}></p>
+                                            </div>
+                                        </FadeInSection>
                                     </Col>
                                 </Row>
                             </div>
@@ -78,16 +85,20 @@ function InfoServices() {
                             <Link to={`/contact/${lang}`}> <button>Get in touch</button></Link>
                         </Col>
 
-                        <Col sm={12} lg={6}>
-                            <div className='wrapInfoServices'>
-                                <h4 dangerouslySetInnerHTML={{ __html: data.item_footer?.text.toString().replace(/\r?\n|\r/g, '') }}></h4>
-                            </div>
+                        <Col sm={12} lg={6} className='listItem'>
+                            <FadeInSection>
+                                <div className='wrapInfoServices'>
+                                    <h4 dangerouslySetInnerHTML={{ __html: data.item_footer?.text.toString().replace(/\r?\n|\r/g, '<br>') }}></h4>
+                                </div>
+                            </FadeInSection>
                         </Col>
-                        <Col sm={12} lg={6}>
-                            <div className='wrapInfoServices'>
-                                <h3>Approach</h3>
-                                <p dangerouslySetInnerHTML={{ __html: data.item_footer?.approach.toString().replace(/\r?\n|\r/g, '') }}></p>
-                            </div>
+                        <Col sm={12} lg={6} className='listItem'>
+                            <FadeInSection>
+                                <div className='wrapInfoServices'>
+                                    <h3>Approach</h3>
+                                    <p dangerouslySetInnerHTML={{ __html: data.item_footer?.approach.toString().replace(/\r?\n|\r/g, '') }}></p>
+                                </div>
+                            </FadeInSection>
                         </Col>
                     </Row>
                 </Container>

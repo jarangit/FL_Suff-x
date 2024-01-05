@@ -13,13 +13,13 @@ import FadeInSection from './animateFadeIn';
 
 function Approach() {
     let params = useParams();
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const url = "https://www.suffix.works/api-v2/home/" + params.lang + "";
     const [data, setData] = useState([]);
     // const [lang, setLang] = useState("en");
 
     const [num, setNum] = React.useState(331231);
-    
+
 
     const getWork = () => {
         const config = {
@@ -47,26 +47,26 @@ function Approach() {
                 <Row>
                     <Col lg={1}></Col>
                     <Col lg={10} sm={12}>
-                    <FadeInSection>
-                        <div className='wrapApproach'>
-                            <h3 className='example-style'>Approach</h3>
-                            <h2 className='titleApproach' dangerouslySetInnerHTML={{ __html: data.approach?.toString().replace(/(<([^>]+)>)/ig, '') }}></h2>
-                            <h3>Overall</h3>
-                            <div className='wrapTextApproach'>
-                                {
-                                    data.overall?.map(user => {
-                                        return <div key={user.index} className='wrapArticleApproach'>
-                                            <CountUp end={user.total}
-                                              duration={5} />
-                                            {/* <h2 className='textRun'>{user.total}</h2> */}
-                                            <span className='textRun'>{user.name}, </span>
-                                         
-                                        </div>
+                        <FadeInSection>
+                            <div className='wrapApproach'>
+                                <h3 className='example-style'>{t('Approach')}</h3>
+                                <h2 className='titleApproach' dangerouslySetInnerHTML={{ __html: data.approach?.toString().replace(/(<([^>]+)>)/ig, '') }}></h2>
+                                <h3>{t('Overall')}</h3>
+                                <div className='wrapTextApproach'>
+                                    {
+                                        data.overall?.map((user, index) => {
+                                            return <span key={user.index}>
+                                                <span><CountUp end={user.total}
+                                                    duration={5} /> </span>
+                                                {/* <h2 className='textRun'>{user.total}</h2> */}
+                                                {/* <span className='textRun'>{user.name}, </span> */}
+                                                <span>{user.name}<span>, </span></span>
+                                            </span>
 
-                                    })
-                                }
+                                        })
+                                    }
+                                </div>
                             </div>
-                        </div>
                         </FadeInSection>
                     </Col>
                     <Col lg={1}></Col>

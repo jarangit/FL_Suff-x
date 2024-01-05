@@ -6,11 +6,12 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 import { useParams } from "react-router-dom";
+import FadeInSection from './animateFadeIn';
 
 function InfoPolicy() {
     let params = useParams();
     const { t, i18n } = useTranslation();
-    const url = "https://www.suffix.works/api-v2/terms/en";
+    const url = "https://www.suffix.works/api-v2/terms/" + params.lang + "";
     const [data, setData] = useState([]);
     // const [lang, setLang] = useState("en");
 
@@ -36,19 +37,22 @@ function InfoPolicy() {
         getWork();
     }, []);
     return (
-        <section className='sectionInfoCareers'>
+        <section className='sectionInfoCareers sectionInfoPolicy'>
             <div className='wrapPage'>
-                <Container >
-                    <Row>
-                        <Col>
-                            <h3>Privacy Policy</h3></Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <div dangerouslySetInnerHTML={{ __html: data.description }}></div>
-                        </Col>
-                    </Row>
-                </Container>
+                <FadeInSection>
+                    <Container >
+                        <Row>
+                            <Col>
+                                <h3>{t('Term of use')}</h3></Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <p dangerouslySetInnerHTML={{ __html: data.description?.toString().replace(/\r?\n|\r/g, '<br>') }}></p>
+                                {/* <div dangerouslySetInnerHTML={{ __html: data.description }}></div> */}
+                            </Col>
+                        </Row>
+                    </Container>
+                </FadeInSection>
             </div>
         </section>
     );

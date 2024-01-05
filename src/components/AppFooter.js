@@ -42,36 +42,40 @@ function AppFooter() {
             <Container>
                 <Row className='wrapTitleFooter'>
                     <Col lg={6} sm={6} xs={12}>
-                        <h2>Starting a new project or <br></br>
-                            want to collaborate with us?</h2>
+                        {/* <h2>{t('title_footer')}</h2> */}
+                        <h2  dangerouslySetInnerHTML={{ __html: t('title_footer').toString().replace(/(<([^>]+)>)/ig, '<br>') }}></h2>
+
                     </Col>
                     <Col lg={{ span: 3, offset: 3 }} sm={6} xs={12}>
                     <Link to={`/contact/${lang}`}>
-                        <button>Keep in touch</button>
+                        <button>{t('Keep in touch')}</button>
                     </Link>
+                    </Col>
+                    <Col>
+                    <hr></hr>
                     </Col>
                 </Row>
                 <Row>
                     <Col lg={3} sm={6} xs={12}>
-                        <h3>Address</h3>
+                        <h3>{t('Address')}</h3>
                         <div className='wrapAdressFooter'>
                             <img src="/images/icon/iconMap.svg"></img>
-                            <h4>SUFFIX</h4>
+                            <h4>{t('location_footer')}</h4>
                         </div>
                     </Col>
                     <Col lg={3} sm={6} xs={12}>
-                        <h3>Email</h3>
+                        <h3>{t('Email')}</h3>
                         <Link to={`mailto:${data.email}`}>{data.email}</Link>
 
                     </Col>
                     <Col lg={3} sm={6} xs={12}>
-                        <h3>Telephone</h3>
+                        <h3>{t('Telephone')}</h3>
                         <Link to={`tel:${data.telephone}`}>{data.telephone}</Link>
 
                     </Col>
 
                     <Col lg={3} sm={6} xs={12}>
-                        <h3>Social</h3>
+                        <h3>{t('Social')}</h3>
                         <div className='wrapSocialFooter'>
                             <ul>
                                 <li>
@@ -92,11 +96,11 @@ function AppFooter() {
                     <Col xs={12} sm={6}>
                         <div className='wrapTermFooter'>
                             <ul>
-                                <li><Link to="/term">Term of use</Link></li>
+                                <li><Link to={`/term/${lang}`}>{t('Term of use')}</Link></li>
                                 <li> | </li>
-                                <li><Link to="/policy">Privacy</Link></li>
+                                <li><Link to={`/policy/${lang}`}>{t('Privacy')}</Link></li>
                                 <li> | </li>
-                                <li><Link  to={`/sitemap/${lang}`}>Sitemap</Link></li>
+                                <li><Link  to={`/sitemap/${lang}`}>{t('Sitemap')}</Link></li>
                             </ul>
                         </div>
                     </Col>

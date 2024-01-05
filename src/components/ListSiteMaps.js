@@ -6,6 +6,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import FadeInSection from './animateFadeIn';
 
 
 function ListSiteMaps() {
@@ -43,30 +44,37 @@ function ListSiteMaps() {
         <section className='sectionListCareers'>
             <div className='wrapPage'>
                 <Container>
+                <FadeInSection>
                     <h3>Sitemap</h3>
+                    </FadeInSection>
                     <Row className='wrapItemListCareers'>
                         <Col lg={6} sm={12} xs={12}>
                             <div>
+                            <FadeInSection>
                                 <h2><Link path='/'>Home</Link></h2>
+                                </FadeInSection>
                             </div>
                         </Col>
                     </Row>
                     <Row className='wrapItemListCareers'>
-                        <Col lg={6} sm={12} xs={12}>
+                        <Col lg={6} sm={12} xs={12} className='listItem'>
                             <div>
+                            <FadeInSection>
                                 <h2><Link path='/'>Work</Link></h2>
+                                </FadeInSection>
                             </div>
                         </Col>
-                        <Col>
+                        <Col className='listItem'>
                             <ul>
                                 {
                                     data.works?.map((index) => {
-                                        return <li key={index} className='list'>
+                                        return      <FadeInSection> <li key={index} className='list'>
                                             <Link to={`/works/${params.lang}/${index.slug}`}>
                                                 <p dangerouslySetInnerHTML={{ __html: index.name.replace(/(<([^>]+)>)/ig, '') }}></p>
                                             </Link>
                                             {/* <p dangerouslySetInnerHTML={{ __html: index.replace(/(<([^>]+)>)/ig, '') }}></p> */}
                                         </li>
+                                        </FadeInSection>
                                     })
 
                                 }
@@ -76,7 +84,9 @@ function ListSiteMaps() {
                     <Row className='wrapItemListCareers'>
                         <Col lg={6} sm={12} xs={12}>
                             <div>
+                            <FadeInSection>
                                 <h2><Link path='/'>Clients</Link></h2>
+                                </FadeInSection>
                             </div>
                         </Col>
                         <Col>
@@ -85,7 +95,9 @@ function ListSiteMaps() {
                     <Row className='wrapItemListCareers'>
                         <Col lg={6} sm={12} xs={12}>
                             <div>
+                            <FadeInSection>
                                 <h2><Link path='/'>Culture</Link></h2>
+                                </FadeInSection>
                             </div>
                         </Col>
                         <Col>
@@ -93,20 +105,23 @@ function ListSiteMaps() {
                     </Row>
 
                     <Row className='wrapItemListCareers'>
-                        <Col lg={6} sm={12} xs={12}>
+                        <Col lg={6} sm={12} xs={12} className='listItem'>
                             <div>
+                            <FadeInSection>
                                 <h2><Link path='/'>Think</Link></h2>
+                                </FadeInSection>
                             </div>
                         </Col>
-                        <Col>
+                        <Col className='listItem'>
                             <ul>
                                 {
                                     data.thinks?.map((index) => {
-                                        return <li key={index} className='list'>
+                                        return <FadeInSection><li key={index} className='list'>
                                              <Link to={`/think/${params.lang}/${index.slug}`}>
                                                 <p dangerouslySetInnerHTML={{ __html: index.name.replace(/(<([^>]+)>)/ig, '') }}></p>
                                             </Link>
                                         </li>
+                                        </FadeInSection> 
                                     })
 
                                 }
@@ -116,7 +131,9 @@ function ListSiteMaps() {
                     <Row className='wrapItemListCareers'>
                         <Col lg={6} sm={12} xs={12}>
                             <div>
+                            <FadeInSection>
                                 <h2><Link path='/'>Career</Link></h2>
+                                        </FadeInSection> 
                             </div>
                         </Col>
                         <Col>
@@ -125,7 +142,9 @@ function ListSiteMaps() {
                     <Row className='wrapItemListCareers wrapItemListCareersContact'>
                         <Col lg={6} sm={12} xs={12}>
                             <div>
+                            <FadeInSection>
                                 <h2><Link path='/'>Contact</Link></h2>
+                                </FadeInSection> 
                             </div>
                         </Col>
                         <Col>

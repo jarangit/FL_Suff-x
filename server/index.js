@@ -13,6 +13,10 @@ app.use(express.static(
     path.resolve(__dirname, '..', 'build'),
     { maxAge: '30d' },
 ));
+
+app.use(require('prerender-node').set('prerenderToken', '91UGtTyD0O8yNEcViBis'));
+
+
 // here we serve the index.html page
 app.get('/*', async(req, res, next) => {
     fs.readFile(indexPath, 'utf8', (err, htmlData) => {

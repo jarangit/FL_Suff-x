@@ -4,6 +4,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 import React, { useState, useEffect } from "react";
+import FadeInSection from './animateFadeIn';
+import Fade from "@material-ui/core/Fade";
 import { useParams } from 'react-router-dom';
 import {
     FacebookShareCount,
@@ -44,17 +46,30 @@ function InfoThink() {
         };
     };
 
+
+    const regex = /(<([^>]+)>)/gi;
+    const titlePage = data.title?.replace(regex, "");
+
+    useEffect(() => {
+        // document.getElementsByClassName("textInfo").classList.add("hold-transition")
+        var elements = document.getElementsByClassName('textInfo');
+        for (var i = 0; i<elements.length; i++) {
+        //    elements[i].parentElement.classList.add('input-fieldset-awesome');
+           elements[i].parentElement.classList.add('input-fieldset-awesome');
+        }
+    },);
     return (
         <section className='sectionInfoThink'>
             {/* <Helmet>
-                <title>{data.title}</title>
-                <meta property="og:url" content={ogUrl} />
-                <meta property="og:type" content={props.type} />
-                <meta property="og:title" content={data.title} />
-                <meta property="og:title" content="Updated!!" />
 
-                <meta property="og:description" content={props.desc} />
-                <meta property="og:image" content={data.image_webp} />
+                <title>{titlePage}</title>
+                <meta property="og:url" content={data.slugUrl} />
+                <meta property="og:type" content={data.type} />
+                <meta property="og:title" content={data.title} />
+                <meta property="og:description" content={data.desc} />
+                <meta property="og:image" content={data.image} />
+                <meta name="twitter:image" content={data.image} />
+
             </Helmet> */}
             <div className='wrapPage'>
                 {
@@ -62,17 +77,24 @@ function InfoThink() {
                     <Container >
                         <Row>
                             <Col lg={{ span: 10, offset: 1 }}>
-                                <img src={data.image_webp}></img>
+                                <FadeInSection>
+                                    <img src={data.image_webp}></img>
+                                </FadeInSection>
                             </Col>
                             <Col lg={{ span: 10, offset: 1 }}>
-                                {/* <p>{data.detail}</p>  */}
-                                <h4>{data.sub_title}</h4>
-                                {/* <p dangerouslySetInnerHTML={{ __html: data.detail.toString().replace(/\r?\n|\r/g, '<br>') }}></p> */}
-                                {/* <p>{data.detail }</p> */}
-                                <div
+                                <FadeInSection>
+                                    {/* <p>{data.detail}</p>  */}
+                                    <h4>{data.sub_title}</h4>
+                                    {/* <p dangerouslySetInnerHTML={{ __html: data.detail.toString().replace(/\r?\n|\r/g, '<br>') }}></p> */}
+                                    {/* <p>{data.detail }</p> */}
+                                </FadeInSection>
+
+                                <div className='textInfo'
                                     dangerouslySetInnerHTML={{ __html: data.detail }}
                                 />
-                                {/* <div dangerouslySetInnerHTML={{ __html: createMarkup }}></div> */}
+                                {/* <FadeInSection>
+                                   
+                                  </FadeInSection> */}
                             </Col>
                         </Row>
                     </Container>

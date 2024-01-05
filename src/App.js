@@ -22,16 +22,20 @@ import PagePolicy from './PagePrivacyPolicy';
 import PageTerm from './PageTerm';
 import HelmetMetaData from "./components/HelmetMetaData";
 
-import {FacebookShareButton, FacebookIcon} from "react-share";
+import { FacebookShareButton, FacebookIcon } from "react-share";
 
 
 import { useTranslation } from 'react-i18next';
 import { useParams } from "react-router-dom";
+import ScrollToTop from './components/ScrollToTop.js';
 
 function App() {
   // let { lang } = useParams();
   // const { i18n } = useTranslation();
   // i18n.changeLanguage(lang);
+  // useEffect(() => {
+  //   window.history.scrollRestoration = 'manual'
+  // }, []);
   return (
     <div>
       {/* <AppHeader /> */}
@@ -57,7 +61,7 @@ function App() {
           // - /categories
           // - /en/categories
           // - /fr/categories
-          path="/works/:lang?/:slug"
+          path="/works/:slug/:lang?"
           // the matching param might be available to the loader
           loader={({ params }) => {
             console.log(params["lang"]); // "en"
@@ -87,7 +91,7 @@ function App() {
           // - /categories
           // - /en/categories
           // - /fr/categories
-          path="/think/:lang?/:slug"
+          path="/think/:slug/:lang?"
           // the matching param might be available to the loader
           loader={({ params }) => {
             console.log(params["lang"]); // "en"
@@ -130,7 +134,7 @@ function App() {
           // - /categories
           // - /en/categories
           // - /fr/categories
-          path="/position/:lang?/:slug"
+          path="/position/:slug/:lang?"
           // the matching param might be available to the loader
           loader={({ params }) => {
             console.log(params["lang"]); // "en"
@@ -182,10 +186,37 @@ function App() {
           action={({ params }) => { }}
           element={<PageSiteMaps />}
         />;
-        <Route path='/policy' element={<PagePolicy />}></Route>
-        <Route path='/term' element={<PageTerm />}></Route>
+        <Route
+          // this path will match URLs like
+          // - /categories
+          // - /en/categories
+          // - /fr/categories
+          path="policy/:lang?"
+          // the matching param might be available to the loader
+          loader={({ params }) => {
+            console.log(params["lang"]); // "en"
+          }}
+          // and the action
+          action={({ params }) => { }}
+          element={<PagePolicy />}
+        />;
+           <Route
+          // this path will match URLs like
+          // - /categories
+          // - /en/categories
+          // - /fr/categories
+          path="term/:lang?"
+          // the matching param might be available to the loader
+          loader={({ params }) => {
+            console.log(params["lang"]); // "en"
+          }}
+          // and the action
+          action={({ params }) => { }}
+          element={<PageTerm />}
+        />;
       </Routes>
-        {/* <FacebookShareButton
+      <ScrollToTop />
+      {/* <FacebookShareButton
           url={"http://www.camperstribe.com"}
           quote={"CampersTribe - World is yours to explore"}
          

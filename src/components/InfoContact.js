@@ -14,6 +14,7 @@ import { useFormControl } from '@mui/material/FormControl';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Modal from 'react-bootstrap/Modal';
+import FadeInSection from './animateFadeIn';
 
 function InfoContact() {
     let params = useParams();
@@ -130,119 +131,53 @@ function InfoContact() {
             <div className='wrapPage'>
                 <Container>
                     <Row>
-                        <Col lg={{ span: 5, offset: 0 }} sm={{ span: 10, offset: 1 }}>
-                            <h3>Get in touch</h3>
-                            <h1>{data.touch}</h1>
+                        <Col lg={{ span: 5, offset: 0 }} sm={{ span: 10, offset: 1 }} className='listItem'>
+                            <FadeInSection>
+                                <h3>Get in touch</h3>
+                                <h1>{data.touch}</h1>
+                            </FadeInSection>
                         </Col>
-                        <Col lg={{ span: 6, offset: 1 }} sm={{ span: 10, offset: 1 }}>
-                            <h3>Enquiry</h3>
-                            <h2>What services are you looking for</h2>
-                            <form onSubmit={handleSubmit}>
-                                <FormControlLabel control={<Checkbox />} label="Digital Strategy: Marketing & Communication" />
-                                <FormControlLabel control={<Checkbox />} label="Digital Executiion: Website & Application  " />
-                                <TextField
-                                    required
-                                    id="full_name"
-                                    label="Name"
-                                    variant="standard"
-                                    value={inputs.full_name}
-                                />
-                                <TextField
-                                    required
-                                    id="email"
-                                    label="Email"
-                                    variant="standard"
-                                    value={inputs.email}
-                                />
-                                <TextField
-                                    required
-                                    id="phone_number"
-                                    label="Phone"
-                                    variant="standard"
-                                    value={inputs.phone_number}
-                                />
-                                <p>Please tell us a little more about your inquiry.</p>
-                                <TextField
-                                    required
-                                    id="message"
-                                    label="Add a note here"
-                                    variant="standard"
-                                    value={inputs.message}
-                                />
-                                <input type="submit" className='btnSubmit' />
-                            </form>
-                            {/* <FormGroup onSubmit={handleSubmit}>
-                                <FormControlLabel required control={<Checkbox />} label="Digital Strategy: Marketing & Communication" />
-                                <FormControlLabel required control={<Checkbox />} label="Digital Executiion: Website & Application  " />
-                                <TextField
-                                    required
-                                    id="full_name"
-                                    label="name"
-                                    variant="standard"
-                                    value={inputs.full_name}
-                                />
-                                <TextField
-                                    required
-                                    id="email"
-                                    label="email"
-                                    variant="standard"
-                                    value={inputs.email}
-                                />
-                                <TextField
-                                    required
-                                    id="phone_number"
-                                    label="phone"
-                                    variant="standard"
-                                    value={inputs.phone_number}
-                                />
-                                <TextField
-                                    required
-                                    id="message"
-                                    label="Add a note here"
-                                    variant="standard"
-                                    value={inputs.message}
-                                />
-                                <Button variant="contained">Contained</Button>
-                            </FormGroup> */}
-                            {/* <form onSubmit={handleSubmit}>
-                                <FormControlLabel required control={<Checkbox defaultChecked />} label="Label" />
-
-                                <input
-                                    type="text"
-                                    name="full_name"
-                                    id="full_name"
-                                    placeholder="Name"
-                                    value={inputs.full_name || ""}
-                                    onChange={handleChange}
-                                />
-                                <input
-                                    type="text"
-                                    name="email"
-                                    id="email"
-                                    placeholder="Email"
-                                    value={inputs.email || ""}
-                                    onChange={handleChange}
-                                />
-                                <input
-                                    type="text"
-                                    name="phone_number"
-                                    placeholder="Phone"
-                                    id="phone_number"
-                                    value={inputs.phone_number || ""}
-                                    onChange={handleChange}
-                                />
-                                <label>Please tell us a little more about your enquiry</label>
-                                <textarea
-                                    type="text"
-                                    name="message"
-                                    id="message"
-                                    placeholder="Add a note here"
-                                    value={inputs.message || ""}
-                                    onChange={handleChange}
-                                    rows={4}
-                                />
-                                <input type="submit" className='btnSubmit' />
-                            </form> */}
+                        <Col lg={{ span: 6, offset: 1 }} sm={{ span: 10, offset: 1 }} className='listItem'>
+                            <FadeInSection>
+                                <h3>Enquiry</h3>
+                                <h2>What services are you looking for</h2>
+                                <form onSubmit={handleSubmit}>
+                                    <FormControlLabel control={<Checkbox />} label="Digital Strategy: Marketing & Communication" />
+                                    <FormControlLabel control={<Checkbox />} label="Digital Executiion: Website & Application  " />
+                                    <TextField
+                                        required
+                                        id="full_name"
+                                        label="Name"
+                                        variant="standard"
+                                        value={inputs.full_name}
+                                    />
+                                    <TextField
+                                        required
+                                        id="email"
+                                        label="Email"
+                                        variant="standard"
+                                        value={inputs.email}
+                                    />
+                                    <TextField
+                                        required
+                                        id="phone_number"
+                                        label="Phone"
+                                        variant="standard"
+                                        value={inputs.phone_number}
+                                    />
+                                    <p>Please tell us a little more about your inquiry.</p>
+                                    <TextField
+                                        required
+                                        id="message"
+                                        label="Add a note here"
+                                        variant="standard"
+                                        multiline
+                                        rows={8}
+                                        value={inputs.message}
+                                    />
+                                    <input type="submit" className='btnSubmit' />
+                                </form>
+                            </FadeInSection>
                         </Col>
                         <Modal show={showApply} onHide={handleCloseApply}>
                             <button className='btnClosePopup' onClick={handleCloseApply}>
@@ -263,36 +198,41 @@ function InfoContact() {
                         </Modal>
                     </Row>
                     <Row>
-                        <Col lg={{ span: 5, offset: 0 }} md={{ span: 10, offset: 1 }}>
+                        <Col lg={{ span: 5, offset: 0 }} md={{ span: 10, offset: 1 }} className='listItem'>
                             <div className='desktopOnly'>
-                                <h3>Location</h3>
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.8313608242784!2d100.57783755076106!3d13.72865770148003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29e5343dcafdd%3A0xd71ac4aa2c33bd01!2sSUFFIX!5e0!3m2!1sen!2sth!4v1601447432576!5m2!1sen!2sth"
-                                ></iframe>
+                                <FadeInSection>
+                                    <h3>Location</h3>
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.8313608242784!2d100.57783755076106!3d13.72865770148003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29e5343dcafdd%3A0xd71ac4aa2c33bd01!2sSUFFIX!5e0!3m2!1sen!2sth!4v1601447432576!5m2!1sen!2sth"
+                                    ></iframe>
+                                </FadeInSection>
                             </div>
+
                         </Col>
-                        <Col lg={{ span: 6, offset: 1 }} sm={{ span: 10, offset: 1 }}>
-                            <h3>Address</h3>
-                            <h2 dangerouslySetInnerHTML={{ __html: data.address }}></h2>
-                            {/* <h2>{data.address}</h2> */}
-                            <Row className='wrapContactLink'>
-                                <Col>
-                                    <h3>Telephone</h3>
-                                    <button onClick={() => window.location = `tel:${data.id}`}>{data.telephone}</button>
+                        <Col lg={{ span: 6, offset: 1 }} sm={{ span: 10, offset: 1 }} className='listItem'>
+                            <FadeInSection>
+                                <h3>Address</h3>
+                                <h2 dangerouslySetInnerHTML={{ __html: data.address }}></h2>
+                                {/* <h2>{data.address}</h2> */}
+                                <Row className='wrapContactLink'>
+                                    <Col>
+                                        <h3>Telephone</h3>
+                                        <button onClick={() => window.location = `tel:${data.id}`}>{data.telephone}</button>
 
-                                </Col>
-                                <Col>
-                                    <h3>Email</h3>
-                                    <button onClick={() => window.location = `mailto:${data.email}`}>{data.email}</button>
+                                    </Col>
+                                    <Col>
+                                        <h3>Email</h3>
+                                        <button onClick={() => window.location = `mailto:${data.email}`}>{data.email}</button>
 
-                                </Col>
-                            </Row>
+                                    </Col>
+                                </Row>
 
-                            <div className='tabletMobile'>
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.8313608242784!2d100.57783755076106!3d13.72865770148003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29e5343dcafdd%3A0xd71ac4aa2c33bd01!2sSUFFIX!5e0!3m2!1sen!2sth!4v1601447432576!5m2!1sen!2sth"
-                                ></iframe>
-                            </div>
+                                <div className='tabletMobile'>
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.8313608242784!2d100.57783755076106!3d13.72865770148003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29e5343dcafdd%3A0xd71ac4aa2c33bd01!2sSUFFIX!5e0!3m2!1sen!2sth!4v1601447432576!5m2!1sen!2sth"
+                                    ></iframe>
+                                </div>
+                            </FadeInSection>
                         </Col>
                     </Row>
                 </Container>

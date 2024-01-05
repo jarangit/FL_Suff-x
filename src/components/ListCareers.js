@@ -6,6 +6,8 @@ import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { useParams } from "react-router-dom";
+import FadeInSection from './animateFadeIn';
+import { useTranslation } from 'react-i18next';
 
 // const listItemCareers = [
 //     {
@@ -23,10 +25,11 @@ import { useParams } from "react-router-dom";
 
 function ListCareers() {
     let params = useParams();
-    const url = "https://www.suffix.works/api-v2/career/"+params.lang+"";
+    const { t, i18n } = useTranslation();
+    const url = "https://www.suffix.works/api-v2/career/" + params.lang + "";
     const [data, setData] = useState([]);
     const [lang, setLang] = useState("en");
-    
+
     const getWork = () => {
         const config = {
             headers: {
@@ -51,25 +54,31 @@ function ListCareers() {
         <section className='sectionListCareers'>
             <div className='wrapPage'>
                 <Container>
-                    <h3>Careers</h3>
+                    <FadeInSection>
+                        <h3>{t('careers')}</h3>
+                    </FadeInSection>
                     {
                         data.map(user => {
                             return <div key={user.id}>
-                                <Link to={`/position/${params.lang}/${user.id}`}>
-                                <Row  className='wrapItemListCareers'>
-                                    <Col lg={6}>
-                                        <div className='ItemListCareers'>
-                                            <h3>Position</h3>
-                                            <h2>{user.position}</h2>
-                                        </div>
-                                    </Col>
-                                    <Col lg={6}>
-                                        <div className='ItemListCareers'>
-                                            <h3>Why this role important for SUFFIX</h3>
-                                            <div dangerouslySetInnerHTML = {{__html: user.description}}></div>
-                                        </div>
-                                    </Col>
-                                </Row>
+                                <Link to={`/position/${user.id}/${params.lang}`}>
+                                    <Row className='wrapItemListCareers'>
+                                        <Col lg={6} className='listItem'>
+                                            <FadeInSection>
+                                                <div className='ItemListCareers'>
+                                                    <h3>{t('Position')}</h3>
+                                                    <h2>{user.position}</h2>
+                                                </div>
+                                            </FadeInSection>
+                                        </Col>
+                                        <Col lg={6} className='listItem'>
+                                            <FadeInSection>
+                                                <div className='ItemListCareers'>
+                                                    <h3>{t('Why this role important for SUFFIX')}</h3>
+                                                    <div dangerouslySetInnerHTML={{ __html: user.description }}></div>
+                                                </div>
+                                            </FadeInSection>
+                                        </Col>
+                                    </Row>
                                 </Link>
                             </div>
                         })

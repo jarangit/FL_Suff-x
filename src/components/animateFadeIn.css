@@ -6,10 +6,43 @@
     transition: opacity 1200ms ease-out, transform 600ms ease-out,
       visibility 1200ms ease-out;
     will-change: opacity, transform, visibility;
+    /* animation-delay: 250ms; */
   }
+  .listItem:nth-child(odd) .fade-in-section {
+    /* transition-delay: 3s; */
+    /* background-color: brown; */
+    /* transition: opacity 1200ms ease-out, transform 600ms ease-out,
+    visibility 1200ms ease-out; */
+  }
+  
+  .listItem:nth-child(even) .fade-in-section {
+    transition-delay: 200ms;
+    /* transition: opacity 1200ms ease-out, transform 800ms ease-out,
+    visibility 1200ms ease-out; */
+    animation-delay: 1000s;
+  }
+
+  .listItemHome:nth-child(2) .fade-in-section{
+    transition-delay: 200ms;
+  } 
+  .listItemHome:nth-child(3) .fade-in-section{
+    transition-delay: 400ms;
+  } 
   .fade-in-section.is-visible {
     opacity: 1;
     transform: none;
     visibility: visible;
-    animation-delay: .2s;
+    /* animation-delay: .2s; */
   }
+
+
+
+  .listItem:nth-child(even) .fade-in-section {
+    transition-delay: 200ms;
+    /* transition: opacity 1200ms ease-out, transform 800ms ease-out,
+    visibility 1200ms ease-out; */
+    animation-delay: 1000s;
+  }
+
+
+  

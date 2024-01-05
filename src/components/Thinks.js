@@ -10,7 +10,7 @@ import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import ListThink from './ListThink';
-
+import FadeInSection from './animateFadeIn';
 
 function Think() {
     let params = useParams();
@@ -48,15 +48,16 @@ function Think() {
                     <Row>
                         {
                             data.think_info?.map((user, index) => {
-                                return <Col lg={6} sm={6} xs={12} key={index} >
-                                    <Link to={`/think/${params.lang}/${user.slug}`}>
+                                return <Col lg={6} sm={6} xs={12} key={index} className='listItem' >
+                                     <FadeInSection>
+                                    <Link to={`/think/${user.slug}/${params.lang}`}>
                                         <div className='ItemListWorks'>
                                             <img src={user.image_webp}></img>
                                             <p>{user.category}</p>
                                             <h2 dangerouslySetInnerHTML={{ __html: user.title.toString().replace(/\r?\n|\r/g, '') }}></h2>
                                         </div>
                                     </Link>
-                                    
+                                    </FadeInSection>
                                 </Col>
                             })
                         }

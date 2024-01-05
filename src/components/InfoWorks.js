@@ -6,6 +6,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import FadeInSection from './animateFadeIn';
 
 function InfoWorks() {
     const [data, setData] = useState([]);
@@ -13,7 +14,7 @@ function InfoWorks() {
 
     const { slug } = useParams();
     // const { lang } = useParams();
-   
+    const { t } = useTranslation();
     let params = useParams();
     const getWork = (slugUrl) => {
         const selectLang = params.lang;
@@ -45,7 +46,7 @@ function InfoWorks() {
     useEffect(() => {
         getWork(slug);
     }, [slug]);
-    
+
 
     return (
         <section className='sectionInfoWorks'>
@@ -53,21 +54,25 @@ function InfoWorks() {
                 <Container key={data.id}>
                     <Row>
                         <Col lg={12}>
-                            <img className='imageThumbnail' src={data.thumbnails}></img>
+                            <FadeInSection>
+                                <img className='imageThumbnail' src={data.thumbnails}></img>
+                            </FadeInSection>
                         </Col>
                         <Col md={{ span: 12, offset: 0 }} lg={{ span: 10, offset: 1 }} sm={{ span: 12, offset: 0 }}>
+                        <FadeInSection>
                             <div className='wrapDescProcess'>
-                                <h4>Process</h4>
+                                <h4>{t('Process')}</h4>
                                 <p dangerouslySetInnerHTML={{ __html: data.process?.toString().replace(/\r?\n|\r/g, '<br>') }}></p>
                             </div>
+                            </FadeInSection>
                             {/* <div dangerouslySetInnerHTML={{ __html: data.process }}></div> */}
-                           
+
                         </Col>
                         <Col lg={12}>
 
                             {
                                 data.image_result?.map((index) => {
-                                    return <img key={index} className='imageBannerCenter' src={index.image}></img>
+                                    return <FadeInSection><img key={index} className='imageBannerCenter' src={index.image}></img></FadeInSection>
                                 })
 
                             }

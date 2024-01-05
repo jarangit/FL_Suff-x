@@ -29,11 +29,11 @@ import FadeInSection from './animateFadeIn';
 
 
 function ThinkHome() {
-    const url = "https://www.suffix.works/api-v2/home/en";
-    const [data, setData] = useState([]);
-    const [lang, setLang] = useState("en");
     let params = useParams();
-
+    const [data, setData] = useState([]);
+    const { t } = useTranslation();
+    const [lang, setLang] = useState("en");
+    const url = "https://www.suffix.works/api-v2/home/" + params.lang + "";
 
     const getWork = () => {
         const config = {
@@ -60,14 +60,14 @@ function ThinkHome() {
         <div className='wrapPage'>
             <section className='sectionThinkHome'>
                 <FadeInSection>
-                    <h3>Think</h3>
+                    <h3>{t('Think')}</h3>
                 </FadeInSection>
                 <Container>
                     <Row>
                         {
                             data.map(user => {
-                                return <Col lg={4} key={user.id}>
-                                    <Link to={`/think/${params.lang}/${user.slug}`}>
+                                return <Col lg={4} key={user.id} className='listItemHome'>
+                                    <Link to={`/think/${user.slug}/${params.lang}`}>
                                         <FadeInSection>
                                             <div className='ItemThinkHome'>
                                                 <img src={user.image}></img>
@@ -85,7 +85,7 @@ function ThinkHome() {
                     </Row>
                 </Container>
                 <Link to={`/think/${lang}`}>
-                    <button>View Our Thoughts</button>
+                    <button> <h3>{t('View Our Thoughts')}</h3></button>
                 </Link>
             </section>
         </div>

@@ -7,6 +7,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
 import { useParams } from "react-router-dom";
+import FadeInSection from './animateFadeIn';
 
 
 // const listInfoCulture = [
@@ -55,48 +56,58 @@ function InfoCulture() {
                 <Container>
                     <Row>
                         <Col sm={12} lg={{ span: 5, offset: 0 }} md={{ span: 10, offset: 1 }}>
-                            <h3>Culture</h3>
+                            <h3>{t('title_Culture')}</h3>
                         </Col>
                     </Row>
                     <Row>
-                        <Col sm={12} lg={{ span: 5, offset: 0 }} md={{ span: 10, offset: 1 }}>
-                            <div className='wrapInfoCulture'>
-                                <h3>Thinking</h3>
-                                {/* {data.thinking} */}
-                                {/* <div dangerouslySetInnerHTML={{ __html: data.thinking }}></div> */}
-                                <h2 dangerouslySetInnerHTML={{ __html: data.thinking?.toString().replace(/(<([^>]+)>)/ig, '') }}></h2>
+                        <Col sm={12} lg={{ span: 5, offset: 0 }} md={{ span: 10, offset: 1 }} className='listItem'>
+                            <FadeInSection>
+                                <div className='wrapInfoCulture'>
+                                    <h3>{t('Thinking')}</h3>
+                                    {/* {data.thinking} */}
+                                    {/* <div dangerouslySetInnerHTML={{ __html: data.thinking }}></div> */}
+                                    <h2 dangerouslySetInnerHTML={{ __html: data.thinking?.toString().replace(/(<([^>]+)>)/ig, '') }}></h2>
 
-                            </div>
+                                </div>
+                            </FadeInSection>
                         </Col>
-                        <Col sm={12} md={{ span: 10, offset: 1 }} lg={{ span: 5, offset: 1 }}>
-                            <div className='wrapInfoCulture'>
-                                <h3>How we work</h3>
-                                {/* {data.work} */}
-                                <h4 dangerouslySetInnerHTML={{ __html: data.work?.toString().replace(/(<([^>]+)>)/ig, '') }}></h4>
+                        <Col sm={12} md={{ span: 10, offset: 1 }} lg={{ span: 5, offset: 1 }} className='listItem'>
+                            <FadeInSection>
+                                <div className='wrapInfoCulture'>
+                                    <h3>{t('How we work')}</h3>
+                                    {/* {data.work} */}
+                                    <h4 dangerouslySetInnerHTML={{ __html: data.work?.toString().replace(/(<([^>]+)>)/ig, '') }}></h4>
 
-                            </div>
+                                </div>
+                            </FadeInSection>
                         </Col>
                         <Col sm={12}>
-                            <div className='wrapInfoCulture'>
-                                <img src={data.imageCultureTop}></img>
-                            </div>
+                            <FadeInSection>
+                                <div className='wrapInfoCulture'>
+                                    <img src={data.imageCultureTop}></img>
+                                </div>
+                            </FadeInSection>
                         </Col>
                     </Row>
                     <Row>
-                        <Col sm={12} lg={{ span: 5, offset: 0 }}>
-                            <div className='wrapInfoCulture wrapInfoCultureBottom'>
-                                <h3>About</h3>
-                                {/* {data.founder} */}
-                                <h2 dangerouslySetInnerHTML={{ __html: data.founder?.toString().replace(/(<([^>]+)>)/ig, '') }}></h2>
+                        <Col sm={12} lg={{ span: 5, offset: 0 }} className='listItem'>
+                            <FadeInSection>
+                                <div className='wrapInfoCulture wrapInfoCultureBottom'>
+                                    <h3>{t('About')}</h3>
+                                    {/* {data.founder} */}
+                                    <h2 dangerouslySetInnerHTML={{ __html: data.founder?.toString().replace(/(<([^>]+)>)/ig, '') }}></h2>
 
-                            </div>
+                                </div>
+                            </FadeInSection>
                         </Col>
-                        <Col sm={12} lg={{ span: 5, offset: 1 }}>
-                            <div className='wrapInfoCulture wrapInfoCultureBottom'>
-                                <h3>Expertise</h3>
-                                <h4 dangerouslySetInnerHTML={{ __html: data.description }}></h4>
-                                {/* {data.description} */}
-                            </div>
+                        <Col sm={12} lg={{ span: 5, offset: 1 }} className='listItem'>
+                            <FadeInSection>
+                                <div className='wrapInfoCulture wrapInfoCultureBottom'>
+                                    <h3>{t('culture_Expertise')}</h3>
+                                    <h4 dangerouslySetInnerHTML={{ __html: data.description }}></h4>
+                                    {/* {data.description} */}
+                                </div>
+                            </FadeInSection>
                         </Col>
                     </Row>
                 </Container>

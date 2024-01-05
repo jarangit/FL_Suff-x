@@ -14,7 +14,7 @@ import PageWorks from '../PageWorks';
 import { useCookies } from 'react-cookie';
 
 function AppHeader() {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [toggle, setToggle] = useState(false);
     const [toggleLang, setToggleLang] = useState(false);
     const [isActive, setIsActive] = useState(false);
@@ -33,11 +33,11 @@ function AppHeader() {
 
         if (y > window.scrollY) {
             setScrollDirection("Scrolling Up");
-            console.log("scrolling up");
+            // console.log("scrolling up");
             setIsMenuActive(true);
         } else if (y < window.scrollY) {
             setScrollDirection("Scrolling Down");
-            console.log("scrolling down");
+            // console.log("scrolling down");
             setIsMenuActive(false);
         }
         setY(window.scrollY)
@@ -45,7 +45,7 @@ function AppHeader() {
 
     const handleClick = () => {
         setToggle(!toggle);
-        setIsActive(current => !current);
+        // setIsActive(current => !current);
     };
 
     const handleClickLangMobile = () => {
@@ -58,11 +58,10 @@ function AppHeader() {
     // const { i18n } = useTranslation();
     // i18n.changeLanguage(lang);
 
-    const changeLanguage = (lang) => {
-        window.location.href = '/' + lang;
-
+    const changeLanguage = lng => {
+        i18n.changeLanguage(lng);
     };
-    
+
 
 
     // const signUpButton = (lang) => {
@@ -74,12 +73,16 @@ function AppHeader() {
     //     window.location.href = '/' + lang;
     // };
     const signUpButton = () => {
+        
         setIsContainerActive(true);
-        window.location.href = '/en';
+        var url = window.location.href.substring(0, window.location.href.lastIndexOf('/')); 
+        window.location.href = url + '/en'
+
     };
     const signInButton = () => {
         setIsContainerActive(false);
-        window.location.href = '/th';
+        var url = window.location.href.substring(0, window.location.href.lastIndexOf('/'));     
+        window.location.href = url + '/th'
     };
 
     // if (lang == 'eng') {
@@ -110,17 +113,19 @@ function AppHeader() {
             console.log('lang-en');
             setIsContainerActive(true);
             // setLangIsActive(false);
+            i18n.changeLanguage('en');
         }
         if (lang === 'th') {
             console.log('lang-th');
             setIsContainerActive(false);
+          
+            i18n.changeLanguage('th');
             // setLangIsActive(true);
             //   store.setTimeFormat('12h');
         }
     }, []);
 
     useEffect(() => {
-        window.history.scrollRestoration = 'manual'
         window.addEventListener("scroll", handleNavigation);
 
         return () => {
@@ -142,18 +147,33 @@ function AppHeader() {
     // };
 
 
+    const [isSubscribed, setIsSubscribed] = useState(false);
+    const [checked, setchecked] = useState(false);
+
+    const handleChange = event => {
+        if (event.target.checked) {
+            console.log('✅ Checkbox is checked');
+            setIsSubscribed(true);
+            setchecked(true);
+        } else {
+            console.log('⛔️ Checkbox is NOT checked');
+            setIsSubscribed(false);
+            setchecked(false);
+        }
+        // setIsSubscribed(current => !current);
+    };
+
 
     return (
         <header>
             <section className={`sectionHeader ${isMenuActive ? 'sectionHeaderActive' : ''}`}>
-            {/* <div>{scrollDirection}</div> */}
+                {/* <div>{scrollDirection}</div> */}
                 <div className='wrapPage'>
                     <Container>
                         <Row>
                             <Col sm={12}>
                                 <div className='appHeader'>
                                     <div className='wrapLange'>
-
                                         <div className="header">
                                             <div className="desktopOnly">
                                                 <div id="container" className={`containers ${isContainerActive ? " containerEnActive" : ""}`}>
@@ -186,11 +206,12 @@ function AppHeader() {
                                             <img src='/images/logo.svg'></img>
                                         </Link>
                                     </div>
-                                    <input id="page-nav-toggle" class="main-navigation-toggle" type="checkbox" />
+                                    <input id="page-nav-toggle" 
+                                        onChange={handleChange} className ={`main-navigation-toggle ${checked ? 'main-navigation-toggle-open' : ''}`} type="checkbox" />
                                     <label for="page-nav-toggle">
-                                        <svg class="icon--menu-toggle" viewBox="0 0 60 30">
-                                            <g class="icon-group">
-                                                <g class="icon--menu">
+                                        <svg className="icon--menu-toggle" viewBox="0 0 60 30">
+                                            <g className="icon-group">
+                                                <g className={`icon--menu ${isLangActive ? " langMobileActive" : ""}`} >
                                                     <path d="M 6 0 L 54 0" />
                                                     <path d="M 6 15 L 54 15" />
                                                     <path d="M 6 30 L 54 30" />
@@ -203,16 +224,16 @@ function AppHeader() {
                                         </svg>
                                     </label>
 
-                                    <nav class="main-navigation">
+                                    {isSubscribed && <nav class="main-navigation">
                                         <ul>
-                                            <li onClick={handleClick}>
+                                            <li onClick={handleChange}>
                                                 <Link to={`/works/${lang}`}>
                                                     <div className='wrapPage'>
                                                         <Container>
                                                             <Row>
                                                                 <Col></Col>
                                                                 <Col sm={12} lg={6}>
-                                                                    <h1>works</h1>
+                                                                    <h1>{t('Works')}</h1>
                                                                 </Col>
                                                             </Row>
                                                         </Container>
@@ -220,14 +241,14 @@ function AppHeader() {
                                                 </Link>
                                             </li>
 
-                                            <li onClick={handleClick}>
+                                            <li onClick={handleChange}>
                                                 <Link to={`/client/${lang}`}>
                                                     <div className='wrapPage'>
                                                         <Container>
                                                             <Row>
                                                                 <Col></Col>
                                                                 <Col sm={12} lg={6}>
-                                                                    <h1>client</h1>
+                                                                    <h1>{t('client_menu')}</h1>
                                                                 </Col>
                                                             </Row>
                                                         </Container>
@@ -235,14 +256,14 @@ function AppHeader() {
                                                 </Link>
                                             </li>
 
-                                            <li onClick={handleClick}>
+                                            <li onClick={handleChange}>
                                                 <Link to={`/culture/${lang}`}>
                                                     <div className='wrapPage'>
                                                         <Container>
                                                             <Row>
                                                                 <Col></Col>
                                                                 <Col sm={12} lg={6}>
-                                                                    <h1>culture</h1>
+                                                                    <h1>{t('culture')}</h1>
                                                                 </Col>
                                                             </Row>
                                                         </Container>
@@ -250,14 +271,14 @@ function AppHeader() {
                                                 </Link>
                                             </li>
 
-                                            <li onClick={handleClick}>
+                                            <li onClick={handleChange}>
                                                 <Link to={`/think/${lang}`}>
                                                     <div className='wrapPage'>
                                                         <Container>
                                                             <Row>
                                                                 <Col></Col>
                                                                 <Col sm={12} lg={6}>
-                                                                   <h1>think</h1>
+                                                                    <h1>{t('Think')}</h1>
                                                                 </Col>
                                                             </Row>
                                                         </Container>
@@ -265,14 +286,14 @@ function AppHeader() {
                                                 </Link>
                                             </li>
 
-                                            <li onClick={handleClick}>
+                                            <li onClick={handleChange}>
                                                 <Link to={`/services/${lang}`}>
                                                     <div className='wrapPage'>
                                                         <Container>
                                                             <Row>
                                                                 <Col></Col>
                                                                 <Col sm={12} lg={6}>
-                                                                    <h1>services</h1>
+                                                                    <h1>{t('services')}</h1>
                                                                 </Col>
                                                             </Row>
                                                         </Container>
@@ -280,14 +301,14 @@ function AppHeader() {
                                                 </Link>
                                             </li>
 
-                                            <li onClick={handleClick}>
+                                            <li onClick={handleChange}>
                                                 <Link to={`/careers/${lang}`}>
                                                     <div className='wrapPage'>
                                                         <Container>
                                                             <Row>
                                                                 <Col></Col>
                                                                 <Col sm={12} lg={6}>
-                                                                    <h1>careers</h1>
+                                                                    <h1>{t('careers')}</h1>
                                                                 </Col>
                                                             </Row>
                                                         </Container>
@@ -296,14 +317,14 @@ function AppHeader() {
                                             </li>
 
 
-                                            <li onClick={handleClick}>
+                                            <li onClick={handleChange}>
                                                 <Link to={`/contact/${lang}`}>
                                                     <div className='wrapPage'>
                                                         <Container>
                                                             <Row>
                                                                 <Col></Col>
                                                                 <Col sm={12} lg={6}>
-                                                                    <h1>contact</h1>
+                                                                    <h1>{t('contact')}</h1>
                                                                 </Col>
                                                             </Row>
                                                         </Container>
@@ -313,13 +334,16 @@ function AppHeader() {
 
                                         </ul>
                                     </nav>
+                                    }
+
+
                                 </div>
                             </Col>
                         </Row>
                     </Container>
                 </div>
             </section>
-            <div  className={`spaceMenu ${isMenuActive ? 'spaceMenuActive' : ''}`}></div>
+            <div className={`spaceMenu ${isMenuActive ? 'spaceMenuActive' : ''}`}></div>
         </header>
 
     );

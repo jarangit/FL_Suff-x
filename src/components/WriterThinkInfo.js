@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
+import FadeInSection from './animateFadeIn';
 
 const listTeamWorks = [
     {
@@ -44,22 +45,24 @@ function WriterThinkInfo() {
     return (
         <section className='sectionTeamWorksInfo'>
             <div className='wrapPage'>
-                <Container>
-                    <Row>
-                        <Col>
-                            <h3>Writer</h3>
-                            <div className='wrapItemTeamWorks'>
-                                <Col>
-                                    <div className='ItemTeamWorks'>
-                                        <h3>{data.position}</h3>
-                                        <h2>{data.author}</h2>
-                                    </div>
-                                </Col>
-                          
-                            </div>
-                        </Col>
-                    </Row>
-                </Container>
+                <FadeInSection>
+                    <Container>
+                        <Row>
+                            <Col>
+                                <h3>Writer</h3>
+                                <div className='wrapItemTeamWorks'>
+                                    <Col>
+                                        <div className='ItemTeamWorks'>
+                                            <h3>{data.position}</h3>
+                                            <h2>{data.author}</h2>
+                                        </div>
+                                    </Col>
+
+                                </div>
+                            </Col>
+                        </Row>
+                    </Container>
+                </FadeInSection>
             </div>
         </section>
     );

@@ -44,7 +44,7 @@ function TitlePageThink() {
                     <Col>
                         <FadeInSection>
                             <section className='sectionTitlePage'>
-                                <h3>Think</h3>
+                                <h3>{t('Think')}</h3>
                                 <h2 dangerouslySetInnerHTML={{ __html: data.title }}></h2>
                             </section>
                         </FadeInSection>

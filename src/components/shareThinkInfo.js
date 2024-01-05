@@ -7,6 +7,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import MetaTags from 'react-meta-tags';
 import { Helmet } from "react-helmet";
+import FadeInSection from './animateFadeIn';
 
 import {
     FacebookShareButton,
@@ -41,43 +42,40 @@ function ShareThinkInfo() {
         getWork(slug);
     }, [slug]);
 
-    const shareUrl = "https://delicate-beignet-5f898e.netlify.app/think/" + params.lang + "/" + slug + "";
+    const shareUrl = "https://delicate-beignet-5f898e.netlify.app/think/" + slug + "/" + params.lang + "";
 
     return (
         <section className='sectionTeamWorksInfo sectionShareThinkInfo'>
-            <Helmet>
-                <meta property="og:title" content={data.title} />
-                <meta property="og:title" content="Updated!!" />
-                <meta property="og:image" content={data.image_webp} />
-            </Helmet>
             <div className='wrapPage'>
-                <Container>
-                    <Row>
-                        <Col>
-                            <h3>Share</h3>
+                <FadeInSection>
+                    <Container>
+                        <Row>
+                            <Col>
+                                <h3>Share</h3>
 
-                            <div className='wrapBtnShareInfoThink'>
-                                <LinkedinShareButton url={shareUrl} className="share-btn">
-                                    <img src='../.././images/icon/linkedin.svg' />
-                                </LinkedinShareButton>
+                                <div className='wrapBtnShareInfoThink'>
+                                    <LinkedinShareButton url={shareUrl} className="share-btn">
+                                        <img src='../.././images/icon/linkedin.svg' />
+                                    </LinkedinShareButton>
 
-                                <TwitterShareButton url={shareUrl} className="share-btn">
-                                    <img src='../.././images/icon/twitter.svg' />
-                                </TwitterShareButton>
+                                    <TwitterShareButton url={shareUrl} className="share-btn">
+                                        <img src='../.././images/icon/twitter.svg' />
+                                    </TwitterShareButton>
 
-                                <FacebookShareButton
-                                    url={shareUrl}
-                                    imageURL={data.think_info?.image}
-                                    quote={data.title}
-                                >
-                                    <img src='../.././images/icon/facebook.svg' />
+                                    <FacebookShareButton
+                                        url={shareUrl}
+                                        imageURL={data.think_info?.image}
+                                        quote={data.title}
+                                    >
+                                        <img src='../.././images/icon/facebook.svg' />
 
-                                    {/* <FacebookIcon size={40} round={true} /> */}
-                                </FacebookShareButton>
-                            </div>
-                        </Col>
-                    </Row>
-                </Container>
+                                        {/* <FacebookIcon size={40} round={true} /> */}
+                                    </FacebookShareButton>
+                                </div>
+                            </Col>
+                        </Row>
+                    </Container>
+                </FadeInSection>
             </div>
         </section>
     );

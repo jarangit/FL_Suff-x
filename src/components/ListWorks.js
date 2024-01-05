@@ -37,7 +37,7 @@ function ListWorks() {
     }, []);
 
     const [expanded, setExpanded] = useState(false)
-    const dataForDisplay = expanded ? data : data.slice(10, 20)
+    // const dataForDisplay = expanded ? data : data.slice(10, 20)
 
     const imagePerRow = 10;
     const [next, setNext] = useState(imagePerRow);
@@ -50,11 +50,11 @@ function ListWorks() {
             <div className='wrapPage'>
                 <Container>
                     <Row>
-                        {data?.slice(0, next)?.map((user, index) => {
+                        {data.items?.slice(0, next)?.map((user, index) => {
                             return (
-                                <Col lg={6} sm={6} xs={12} key={index}>
+                                <Col lg={6} sm={6} xs={12} key={index} className='listItem'>
                                     <FadeInSection>
-                                    <Link to={`/works/${params.lang}/${user.slug}`}>
+                                    <Link to={`/works/${user.slug}/${params.lang}`}>
                                         <div className='ItemListWorks'>
                                             <img src={user.thumbnails}></img>
                                             <h2>{user.title}</h2>
