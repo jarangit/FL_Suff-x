@@ -69,7 +69,7 @@ function ListSiteMaps() {
                                 {
                                     data.works?.map((index) => {
                                         return      <FadeInSection> <li key={index} className='list'>
-                                            <Link to={`/works/${params.lang}/${index.slug}`}>
+                                            <Link to={`/works/${index.slug}/${params.lang}`}>
                                                 <p dangerouslySetInnerHTML={{ __html: index.name.replace(/(<([^>]+)>)/ig, '') }}></p>
                                             </Link>
                                             {/* <p dangerouslySetInnerHTML={{ __html: index.replace(/(<([^>]+)>)/ig, '') }}></p> */}
@@ -117,7 +117,7 @@ function ListSiteMaps() {
                                 {
                                     data.thinks?.map((index) => {
                                         return <FadeInSection><li key={index} className='list'>
-                                             <Link to={`/think/${params.lang}/${index.slug}`}>
+                                             <Link to={`/think/${index.slug}/${params.lang}`}>
                                                 <p dangerouslySetInnerHTML={{ __html: index.name.replace(/(<([^>]+)>)/ig, '') }}></p>
                                             </Link>
                                         </li>

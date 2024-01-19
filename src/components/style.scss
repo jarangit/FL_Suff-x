@@ -947,7 +947,7 @@ body {
         font-family: $fontFrank, $fontHelvetica;
       }
       h1 {
-        @extend %H2Desktop;
+        @extend %H3Desktop;
         margin-bottom: 19px;
         @media (max-width: $tabletScreen) {
           font-size: 40px;
@@ -1102,8 +1102,9 @@ body {
     @extend %H1Desktop;
     color: $colorGray;
     text-align: left;
-    line-height: 60px;
-    margin-bottom: 20px;
+    line-height: 58px;
+    font-family: $fontFrank;
+    // margin-bottom: 20px;
     list-style: none;
     vertical-align: text-bottom;
     // max-height: 70px;
@@ -1470,6 +1471,9 @@ body {
     }
     p {
       margin-bottom: 0;
+    }
+    .textOverAll {
+      margin-top: 40px;
     }
   }
 }

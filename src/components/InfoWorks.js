@@ -63,6 +63,7 @@ function InfoWorks() {
                             <div className='wrapDescProcess'>
                                 <h4>{t('Process')}</h4>
                                 <p dangerouslySetInnerHTML={{ __html: data.process?.toString().replace(/\r?\n|\r/g, '<br>') }}></p>
+                                <p className='textOverAll' dangerouslySetInnerHTML={{ __html: data.overall?.toString().replace(/\r?\n|\r/g, '<br>') }}></p>
                             </div>
                             </FadeInSection>
                             {/* <div dangerouslySetInnerHTML={{ __html: data.process }}></div> */}

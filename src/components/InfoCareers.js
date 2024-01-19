@@ -135,21 +135,21 @@ function InfoCareers() {
                             </div>
                             <div className='wrapItemInfoCareer'>
                                 <h3>{t('offer')}</h3>
-                                <p dangerouslySetInnerHTML={{ __html: data.offer?.toString().replace(/\r?\n|\r/g, '<br>') }}></p>
+                                <p dangerouslySetInnerHTML={{ __html: data.offer?.toString().replace(/\r?\n|\r/g, '') }}></p>
                                 {/* <p>{data.offer}</p> */}
                             </div>
                             <div className='wrapItemInfoCareer'>
                                 <h3>{t('Responsibilities')}</h3>
-                                <p dangerouslySetInnerHTML={{ __html: data.responsibilities?.toString().replace(/\r?\n|\r/g, '<br>') }}></p>
+                                <p dangerouslySetInnerHTML={{ __html: data.responsibilities?.toString().replace(/\r?\n|\r/g, '') }}></p>
                             </div>
                             <div className='wrapItemInfoCareer'>
                                 <h3>{t('mindset')}</h3>
-                                <p dangerouslySetInnerHTML={{ __html: data.mindset?.toString().replace(/\r?\n|\r/g, '<br>') }}></p>
+                                <p dangerouslySetInnerHTML={{ __html: data.mindset?.toString().replace(/\r?\n|\r/g, '') }}></p>
                                 {/* <p>{data.mindset}</p> */}
                             </div>
                             <div className='wrapItemInfoCareer'>
                                 <h3>{t('Application')}</h3>
-                                <p dangerouslySetInnerHTML={{ __html: data.stack?.toString().replace(/\r?\n|\r/g, '<br>') }}></p>
+                                <p dangerouslySetInnerHTML={{ __html: data.stack?.toString().replace(/\r?\n|\r/g, '') }}></p>
                                 {/* <p>{data.stack}</p> */}
                                 {/* <ul>
                                     {

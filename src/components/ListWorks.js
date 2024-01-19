@@ -24,7 +24,7 @@ function ListWorks() {
         return axios.get(url, config)
             .then(res => {
                 console.log(res)
-                setData(res.data);
+                setData(res.data.items);
             })
             .catch(err => console.log(err))
         // return fetch(url)
@@ -50,7 +50,7 @@ function ListWorks() {
             <div className='wrapPage'>
                 <Container>
                     <Row>
-                        {data.items?.slice(0, next)?.map((user, index) => {
+                        {data.slice(0, next)?.map((user, index) => {
                             return (
                                 <Col lg={6} sm={6} xs={12} key={index} className='listItem'>
                                     <FadeInSection>
