@@ -58,7 +58,7 @@ function ClientsHome() {
         return axios.get(url, config)
             .then(res => {
                 console.log(res)
-                setData(res.data);
+                setData(res.data.client);
             })
             .catch(err => console.log(err))
         // return fetch(url)
@@ -80,8 +80,8 @@ function ClientsHome() {
                             <div className='wrapListClientHome'>
                                 <ul>
                                     {
-                                        data.client?.map(user => {
-                                            return <li key={user.name} ><img src={user.image}></img></li>
+                                        data.map((user, key) => {
+                                            return <li key={user.key} ><img src={user.image}></img></li>
                                         })
                                     }
                                 </ul>

@@ -124,12 +124,12 @@ function WorksHome() {
                                         {/* <h2>{data.work_description}</h2> */}
                                         <WorkDescription observerRefs={observerRefs} />
                                     </div>
-
-                                    <nav className="triggers">
+                                    
+                                    <div className="triggers">
                                         <h3>{t('Case Study')}</h3>
                                         <ul>
                                             <li onClick={() => { scrolltoA().scrollIntoView({ block: "start", behavior: "smooth" }) }}>
-                                                <button type="button" className={`list ${sectionRefAIsVisible ? 'listActive' : ''}`}>
+                                                <button type="button" className={`list ${sectionRefAIsVisible ? 'listActive' : ''} `}>
                                                     {data.map((data, index) => {
                                                         if (index === 0) {
                                                             return <li key={index}>{data.name}</li>;
@@ -179,131 +179,147 @@ function WorksHome() {
                                                 </button>
                                             </li>
                                         </ul>
-                                    </nav>
+                                    </div>
                                 </div>
 
                             </Col>
                             <Col sm={12} lg={6}>
                                 <div className="sections" ref={registerContainer} >
                                     <section>
-                                    <FadeInSection>
-                                        <Col lg={{ span: 12, offset: 0 }} md={{ span: 8, offset: 2 }} xs={{ span: 10, offset: 0 }}>
-                                            <div ref={sectionRefA} id="sectionA" className={`sectionA list ${sectionRefBIsVisible ? 'sectionNotActive' : ''}`}></div>
-                                            {data.map((data, index) => {
-                                                if (index === 0) {
-                                                    return (
-                                                        <div key={index}
-                                                            id={data.slug.toLowerCase()}>
-                                                            {/* <img src={div[0].data.image}></img> */}
+                                        <FadeInSection>
+                                            <Col lg={{ span: 10, offset: 0 }} md={{ span: 8, offset: 2 }} xs={{ span: 10, offset: 0 }}>
+                                                <div ref={sectionRefA} id="sectionA" className={`sectionA list`}></div>
+                                                {data.map((data, index) => {
+                                                    if (index === 0) {
+                                                        return (
+                                                            <div key={index}
+                                                                id={data.slug.toLowerCase()}>
+                                                                {/* <img src={div[0].data.image}></img> */}
 
-                                                            <div className='listWorksHomes'>
-                                                                <img src={data.image}></img>
-                                                                <h1 dangerouslySetInnerHTML={{ __html: data.highlight.replace(/(<([^>]+)>)/ig, '') }}></h1>
-                                                                <Link to={`/works/${data.slug}/${lang}`}>View Project</Link>                                                        </div>
-                                                        </div>
-                                                    );
-                                                }
-                                                return null;
+                                                                <div className='listWorksHomes'>
+                                                                    <img src={data.image}></img>
+                                                                    <Link to={`/works/${data.slug}/${lang}`}><h1 dangerouslySetInnerHTML={{ __html: data.name.replace(/(<([^>]+)>)/ig, '') }}></h1></Link>
+                                                                    <Link to={`/works/${data.slug}/${lang}`}><h1 dangerouslySetInnerHTML={{ __html: data.highlight.replace(/(<([^>]+)>)/ig, '') }}></h1></Link>
 
-                                            })}
-                                        </Col>
-                                    </FadeInSection>
-                                    </section>
-                                    <section>
-                                    <FadeInSection>
-                                        <Col lg={{ span: 12, offset: 0 }} md={{ span: 8, offset: 4 }} xs={{ span: 10, offset: 2 }}>
-                                            <div ref={sectionRefB} id="sectionB" className={`list ${sectionRefCIsVisible ? 'sectionNotActive' : ''}`}></div>
-                                            {data.map((data, index) => {
-                                                if (index === 1) {
-                                                    return (
-                                                        <div key={index}
-                                                            id={data.slug.toLowerCase()}>
-                                                            {/* <img src={div[0].data.image}></img> */}
 
-                                                            <div className='listWorksHomes'>
-                                                                <img src={data.image}></img>
-                                                                <h1 dangerouslySetInnerHTML={{ __html: data.highlight.toString().replace(/\r?\n|\r/g, '') }}></h1>
-                                                                <Link to={`/works/${data.slug}/${lang}`}>View Project</Link>                                                        </div>
-                                                        </div>
-                                                    );
-                                                }
-                                                return null;
-
-                                            })}
-                                        </Col>
-                                        </FadeInSection>
-                                    </section>
-                                    <section>
-                                    <FadeInSection>
-                                        <Col lg={{ span: 12, offset: 0 }} md={{ span: 8, offset: 2 }} xs={{ span: 10, offset: 0 }}>
-                                            <div ref={sectionRefC} id="sectionC" className={`list ${sectionRefDIsVisible ? 'sectionNotActive' : ''}`}></div>
-                                            {data.map((data, index) => {
-                                                if (index === 2) {
-                                                    return (
-                                                        <div key={index}
-                                                            id={data.slug.toLowerCase()}>
-                                                            {/* <img src={div[0].data.image}></img> */}
-
-                                                            <div className='listWorksHomes'>
-                                                                <img src={data.image}></img>
-                                                                <h1 dangerouslySetInnerHTML={{ __html: data.highlight.replace(/(<([^>]+)>)/ig, '') }}></h1>
-                                                                <Link to={`/works/${data.slug}/${lang}`}>View Project</Link>
+                                                                    <Link to={`/works/${data.slug}/${lang}`}>View Project</Link>                                                    </div>
                                                             </div>
-                                                        </div>
-                                                    );
-                                                }
-                                                return null;
+                                                        );
+                                                    }
+                                                    return null;
 
-                                            })}
-                                        </Col>
+                                                })}
+                                            </Col>
                                         </FadeInSection>
                                     </section>
                                     <section>
-                                    <FadeInSection>
-                                        <Col lg={{ span: 12, offset: 0 }} md={{ span: 8, offset: 4 }} xs={{ span: 10, offset: 2 }}>
-                                            <div ref={sectionRefD} id="sectionD" className={`list ${sectionRefEIsVisible ? 'sectionNotActive' : ''}`}></div>
-                                            {data.map((data, index) => {
-                                                if (index === 3) {
-                                                    return (
-                                                        <div key={index}
-                                                            id={data.slug.toLowerCase()}>
-                                                            {/* <img src={div[0].data.image}></img> */}
+                                        <FadeInSection>
+                                            <Col lg={{ span: 10, offset: 2 }} md={{ span: 8, offset: 4 }} xs={{ span: 10, offset: 2 }}>
+                                                <div ref={sectionRefB} id="sectionB" className={`list `}></div>
+                                                {data.map((data, index) => {
+                                                    if (index === 1) {
+                                                        return (
+                                                            <div key={index}
+                                                                id={data.slug.toLowerCase()}>
+                                                                {/* <img src={div[0].data.image}></img> */}
 
-                                                            <div className='listWorksHomes'>
-                                                                <img src={data.image}></img>
-                                                                <h1 dangerouslySetInnerHTML={{ __html: data.highlight.replace(/(<([^>]+)>)/ig, '') }}></h1>
-                                                                <Link to={`/works/${data.slug}/${lang}`}>View Project</Link>                                                        </div>
-                                                        </div>
-                                                    );
-                                                }
-                                                return null;
+                                                                <div className='listWorksHomes'>
+                                                                    <img src={data.image}></img>
+                                                                    <Link to={`/works/${data.slug}/${lang}`}><h1 dangerouslySetInnerHTML={{ __html: data.name.replace(/(<([^>]+)>)/ig, '') }}></h1></Link>
+                                                                    <Link to={`/works/${data.slug}/${lang}`}><h1 dangerouslySetInnerHTML={{ __html: data.highlight.replace(/(<([^>]+)>)/ig, '') }}></h1></Link>
 
-                                            })}
-                                        </Col>
+
+                                                                    <Link to={`/works/${data.slug}/${lang}`}>View Project</Link>                                                      </div>
+                                                            </div>
+                                                        );
+                                                    }
+                                                    return null;
+
+                                                })}
+                                            </Col>
                                         </FadeInSection>
                                     </section>
-                                    <Col lg={{ span: 12, offset: 0 }} md={{ span: 8, offset: 2 }} xs={{ span: 10, offset: 0 }}>
-                                    <FadeInSection>
-                                        <section className='sectionE' id="sectionE" ref={sectionRefE}>
-                                            {/* <div className='sectionE' ref={sectionRefE}></div> */}
-                                            {data.map((data, index) => {
-                                                if (index === 4) {
-                                                    return (
-                                                        <div key={index}
-                                                            id={data.slug.toLowerCase()}>
-                                                            {/* <img src={div[0].data.image}></img> */}
+                                    <section>
+                                        <FadeInSection>
+                                            <Col lg={{ span: 10, offset: 0 }} md={{ span: 8, offset: 2 }} xs={{ span: 10, offset: 0 }}>
+                                                <div ref={sectionRefC} id="sectionC" className={`list`}></div>
+                                                {data.map((data, index) => {
+                                                    if (index === 2) {
+                                                        return (
+                                                            <div key={index}
+                                                                id={data.slug.toLowerCase()}>
+                                                                {/* <img src={div[0].data.image}></img> */}
 
-                                                            <div className='listWorksHomes'>
-                                                                <img src={data.image}></img>
-                                                                <h1 dangerouslySetInnerHTML={{ __html: data.highlight.replace(/(<([^>]+)>)/ig, '') }}></h1>
-                                                                <Link to={`/works/${data.slug}/${lang}`}>View Project</Link>                                                        </div>
-                                                        </div>
-                                                    );
-                                                }
-                                                return null;
+                                                                <div className='listWorksHomes'>
+                                                                    <img src={data.image}></img>
+                                                                    <Link to={`/works/${data.slug}/${lang}`}><h1 dangerouslySetInnerHTML={{ __html: data.name.replace(/(<([^>]+)>)/ig, '') }}></h1></Link>
+                                                                    <Link to={`/works/${data.slug}/${lang}`}><h1 dangerouslySetInnerHTML={{ __html: data.highlight.replace(/(<([^>]+)>)/ig, '') }}></h1></Link>
 
-                                            })}
-                                        </section>
+
+                                                                    <Link to={`/works/${data.slug}/${lang}`}>View Project</Link>
+                                                                </div>
+                                                            </div>
+                                                        );
+                                                    }
+                                                    return null;
+
+                                                })}
+                                            </Col>
+                                        </FadeInSection>
+                                    </section>
+                                    <section>
+                                        <FadeInSection>
+                                            <Col lg={{ span: 10, offset: 2 }} md={{ span: 8, offset: 4 }} xs={{ span: 10, offset: 2 }}>
+                                                <div ref={sectionRefD} id="sectionD" className={`list`}></div>
+                                                {data.map((data, index) => {
+                                                    if (index === 3) {
+                                                        return (
+                                                            <div key={index}
+                                                                id={data.slug.toLowerCase()}>
+                                                                {/* <img src={div[0].data.image}></img> */}
+
+                                                                <div className='listWorksHomes'>
+                                                                    <img src={data.image}></img>
+                                                                    <Link to={`/works/${data.slug}/${lang}`}><h1 dangerouslySetInnerHTML={{ __html: data.name.replace(/(<([^>]+)>)/ig, '') }}></h1></Link>
+                                                                    <Link to={`/works/${data.slug}/${lang}`}><h1 dangerouslySetInnerHTML={{ __html: data.highlight.replace(/(<([^>]+)>)/ig, '') }}></h1></Link>
+
+
+                                                                    <Link to={`/works/${data.slug}/${lang}`}>View Project</Link>                                                 </div>
+                                                            </div>
+                                                        );
+                                                    }
+                                                    return null;
+
+                                                })}
+                                            </Col>
+                                        </FadeInSection>
+                                    </section>
+                                    <Col lg={{ span: 10, offset: 0 }} md={{ span: 8, offset: 2 }} xs={{ span: 10, offset: 0 }}>
+                                        <FadeInSection>
+                                            <section className='sectionE' id="sectionE" ref={sectionRefE}>
+                                                {/* <div className='sectionE' ref={sectionRefE}></div> */}
+                                                {data.map((data, index) => {
+                                                    if (index === 4) {
+                                                        return (
+                                                            <div key={index}
+                                                                id={data.slug.toLowerCase()}>
+                                                                {/* <img src={div[0].data.image}></img> */}
+
+                                                                <div className='listWorksHomes'>
+                                                                    <img src={data.image}></img>
+                                                                    <Link to={`/works/${data.slug}/${lang}`}><h1 dangerouslySetInnerHTML={{ __html: data.name.replace(/(<([^>]+)>)/ig, '') }}></h1></Link>
+                                                                    <Link to={`/works/${data.slug}/${lang}`}><h1 dangerouslySetInnerHTML={{ __html: data.highlight.replace(/(<([^>]+)>)/ig, '') }}></h1></Link>
+
+
+                                                                    <Link to={`/works/${data.slug}/${lang}`}>View Project</Link>
+                                                                </div>
+                                                            </div>
+                                                        );
+                                                    }
+                                                    return null;
+
+                                                })}
+                                            </section>
                                         </FadeInSection>
                                     </Col>
                                 </div>

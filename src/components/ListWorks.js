@@ -8,9 +8,12 @@ import React, { useState, useEffect } from "react";
 
 import { useParams } from "react-router-dom";
 import FadeInSection from './animateFadeIn';
+import { useTranslation } from 'react-i18next';
 
 function ListWorks() {
     let params = useParams();
+    const { t, i18n } = useTranslation();
+    
     const url = "https://www.suffix.works/api-v2/works/" + params.lang + "";
     const [data, setData] = useState([]);
 
@@ -69,9 +72,7 @@ function ListWorks() {
                             <button
                                 className="mt-4"
                                 onClick={handleMoreImage}
-                            >
-                                Show More
-                            </button>
+                            >{t('View More')}</button>
                         )}
                     </Row>
                 </Container>

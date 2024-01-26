@@ -77,7 +77,7 @@ function App() {
           // - /categories
           // - /en/categories
           // - /fr/categories
-          path="think/:lang?"
+          path="Thoughts/:lang?"
           // the matching param might be available to the loader
           loader={({ params }) => {
             console.log(params["lang"]); // "en"
@@ -91,7 +91,7 @@ function App() {
           // - /categories
           // - /en/categories
           // - /fr/categories
-          path="/think/:slug/:lang?"
+          path="/Thoughts/:slug/:lang?"
           // the matching param might be available to the loader
           loader={({ params }) => {
             console.log(params["lang"]); // "en"

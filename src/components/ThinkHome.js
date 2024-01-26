@@ -67,7 +67,7 @@ function ThinkHome() {
                         {
                             data.map(user => {
                                 return <Col lg={4} key={user.id} className='listItemHome'>
-                                    <Link to={`/think/${user.slug}/${params.lang}`}>
+                                    <Link to={`/Thoughts/${user.slug}/${params.lang}`}>
                                         <FadeInSection>
                                             <div className='ItemThinkHome'>
                                                 <img src={user.image}></img>
@@ -84,7 +84,7 @@ function ThinkHome() {
 
                     </Row>
                 </Container>
-                <Link to={`/think/${lang}`}>
+                <Link to={`/Thoughts/${lang}`}>
                     <button> <h3>{t('View Our Thoughts')}</h3></button>
                 </Link>
             </section>

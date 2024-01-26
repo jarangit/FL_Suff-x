@@ -50,9 +50,9 @@ function Think() {
                             data.think_info?.map((user, index) => {
                                 return <Col lg={6} sm={6} xs={12} key={index} className='listItem' >
                                      <FadeInSection>
-                                    <Link to={`/think/${user.slug}/${params.lang}`}>
+                                    <Link to={`/Thoughts/${user.slug}/${params.lang}`}>
                                         <div className='ItemListWorks'>
-                                            <img src={user.image_webp}></img>
+                                            <img src={user.image}></img>
                                             <p>{user.category}</p>
                                             <h2 dangerouslySetInnerHTML={{ __html: user.title.toString().replace(/\r?\n|\r/g, '') }}></h2>
                                         </div>

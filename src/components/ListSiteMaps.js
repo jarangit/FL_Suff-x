@@ -117,7 +117,7 @@ function ListSiteMaps() {
                                 {
                                     data.thinks?.map((index) => {
                                         return <FadeInSection><li key={index} className='list'>
-                                             <Link to={`/think/${index.slug}/${params.lang}`}>
+                                             <Link to={`/Thoughts/${index.slug}/${params.lang}`}>
                                                 <p dangerouslySetInnerHTML={{ __html: index.name.replace(/(<([^>]+)>)/ig, '') }}></p>
                                             </Link>
                                         </li>

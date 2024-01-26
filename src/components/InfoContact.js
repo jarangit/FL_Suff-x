@@ -15,9 +15,11 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Modal from 'react-bootstrap/Modal';
 import FadeInSection from './animateFadeIn';
+import { useTranslation } from 'react-i18next';
 
 function InfoContact() {
     let params = useParams();
+    const { t } = useTranslation();
     const url = "https://www.suffix.works/api-v2/contact/" + params.lang + "";
     const [data, setData] = useState([]);
     const [lang, setLang] = useState("en");
@@ -133,49 +135,49 @@ function InfoContact() {
                     <Row>
                         <Col lg={{ span: 5, offset: 0 }} sm={{ span: 10, offset: 1 }} className='listItem'>
                             <FadeInSection>
-                                <h3>Get in touch</h3>
+                                <h3>{t('Get in touch')}</h3>
                                 <h1>{data.touch}</h1>
                             </FadeInSection>
                         </Col>
                         <Col lg={{ span: 6, offset: 1 }} sm={{ span: 10, offset: 1 }} className='listItem'>
                             <FadeInSection>
-                                <h3>Enquiry</h3>
-                                <h2>What services are you looking for</h2>
+                                <h3>{t('Enquiry')}</h3>
+                                <h2>{t('sub_enquiry')}</h2>
                                 <form onSubmit={handleSubmit}>
-                                    <FormControlLabel control={<Checkbox />} label="Digital Strategy: Marketing & Communication" />
-                                    <FormControlLabel control={<Checkbox />} label="Digital Executiion: Website & Application  " />
+                                    <FormControlLabel control={<Checkbox />} label={t('Digital Strategy: Marketing & Communication')} />
+                                    <FormControlLabel control={<Checkbox />} label={t('Digital Executiion: Website & Application')} />
                                     <TextField
                                         required
                                         id="full_name"
-                                        label="Name"
+                                        label={t('Name')}
                                         variant="standard"
                                         value={inputs.full_name}
                                     />
                                     <TextField
                                         required
                                         id="email"
-                                        label="Email"
+                                        label={t('Email')}
                                         variant="standard"
                                         value={inputs.email}
                                     />
                                     <TextField
                                         required
                                         id="phone_number"
-                                        label="Phone"
+                                        label={t('Phone')}
                                         variant="standard"
                                         value={inputs.phone_number}
                                     />
-                                    <p>Please tell us a little more about your inquiry.</p>
+                                    <p>{t('Please tell us a little more about your inquiry.')}</p>
                                     <TextField
                                         required
                                         id="message"
-                                        label="Add a note here"
+                                        label={t('note')}
                                         variant="standard"
                                         multiline
                                         rows={8}
                                         value={inputs.message}
                                     />
-                                    <input type="submit" className='btnSubmit' />
+                                    <input type="submit" className='btnSubmit' value={t('submit')} />
                                 </form>
                             </FadeInSection>
                         </Col>
@@ -201,7 +203,7 @@ function InfoContact() {
                         <Col lg={{ span: 5, offset: 0 }} md={{ span: 10, offset: 1 }} className='listItem'>
                             <div className='desktopOnly'>
                                 <FadeInSection>
-                                    <h3>Location</h3>
+                                    <h3>{t('Location')}</h3>
                                     <iframe
                                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.8313608242784!2d100.57783755076106!3d13.72865770148003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29e5343dcafdd%3A0xd71ac4aa2c33bd01!2sSUFFIX!5e0!3m2!1sen!2sth!4v1601447432576!5m2!1sen!2sth"
                                     ></iframe>
@@ -211,17 +213,17 @@ function InfoContact() {
                         </Col>
                         <Col lg={{ span: 6, offset: 1 }} sm={{ span: 10, offset: 1 }} className='listItem'>
                             <FadeInSection>
-                                <h3>Address</h3>
+                                <h3>{t('Address')}</h3>
                                 <h2 dangerouslySetInnerHTML={{ __html: data.address }}></h2>
                                 {/* <h2>{data.address}</h2> */}
                                 <Row className='wrapContactLink'>
                                     <Col>
-                                        <h3>Telephone</h3>
+                                        <h3>{t('Telephone')}</h3>
                                         <button onClick={() => window.location = `tel:${data.id}`}>{data.telephone}</button>
 
                                     </Col>
                                     <Col>
-                                        <h3>Email</h3>
+                                        <h3>{t('Email')}</h3>
                                         <button onClick={() => window.location = `mailto:${data.email}`}>{data.email}</button>
 
                                     </Col>

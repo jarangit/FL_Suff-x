@@ -113,7 +113,7 @@ function ListThink(props) {
                         {
                             data.think_info?.map((user, index) => {
                                 return <Col lg={6} sm={6} xs={12} key={index} >
-                                    <Link to={`/think/${params.lang}/${user.slug}`}>
+                                    <Link to={`/Thoughts/${params.lang}/${user.slug}`}>
                                         <div className='ItemListWorks'>
                                             <img src={user.image}></img>
                                             <p>{user.category}</p>

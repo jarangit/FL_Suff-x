@@ -73,15 +73,15 @@ function AppHeader() {
     //     window.location.href = '/' + lang;
     // };
     const signUpButton = () => {
-        
+
         setIsContainerActive(true);
-        var url = window.location.href.substring(0, window.location.href.lastIndexOf('/')); 
+        var url = window.location.href.substring(0, window.location.href.lastIndexOf('/'));
         window.location.href = url + '/en'
 
     };
     const signInButton = () => {
         setIsContainerActive(false);
-        var url = window.location.href.substring(0, window.location.href.lastIndexOf('/'));     
+        var url = window.location.href.substring(0, window.location.href.lastIndexOf('/'));
         window.location.href = url + '/th'
     };
 
@@ -118,7 +118,7 @@ function AppHeader() {
         if (lang === 'th') {
             console.log('lang-th');
             setIsContainerActive(false);
-          
+
             i18n.changeLanguage('th');
             // setLangIsActive(true);
             //   store.setTimeFormat('12h');
@@ -151,14 +151,20 @@ function AppHeader() {
     const [checked, setchecked] = useState(false);
 
     const handleChange = event => {
+        var element = document.getElementsByClassName("toggleMenu")[0];
         if (event.target.checked) {
             console.log('✅ Checkbox is checked');
             setIsSubscribed(true);
             setchecked(true);
+            document.body.classList.add('hide-scroll');
+            element.classList.add("toggleMenuOpen");
+
         } else {
             console.log('⛔️ Checkbox is NOT checked');
             setIsSubscribed(false);
             setchecked(false);
+            document.body.classList.remove('hide-scroll');
+            element.classList.remove("toggleMenuOpen");
         }
         // setIsSubscribed(current => !current);
     };
@@ -206,8 +212,147 @@ function AppHeader() {
                                             <img src='/images/logo.svg'></img>
                                         </Link>
                                     </div>
-                                    <input id="page-nav-toggle" 
-                                        onChange={handleChange} className ={`main-navigation-toggle ${checked ? 'main-navigation-toggle-open' : ''}`} type="checkbox" />
+                                    <div className='toggleMenu'>
+                                        <label for="page-nav-toggle" className="toggle">
+                                            <input type="checkbox" id="page-nav-toggle" onChange={handleChange} className={`main-navigation-toggle ${checked ? 'main-navigation-toggle-open' : ''}`} />
+                                            <div>
+                                                <div>
+                                                    <span></span>
+                                                    <span></span>
+                                                </div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44">
+                                                    <path d="M22,22 L2,22 C2,11 11,2 22,2 C33,2 42,11 42,22"></path>
+                                                </svg>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44">
+                                                    <path d="M22,22 L2,22 C2,11 11,2 22,2 C33,2 42,11 42,22"></path>
+                                                </svg>
+                                            </div>
+
+                                            {isSubscribed && <nav class="main-navigation">
+                                                <ul>
+                                                    <li onClick={handleChange}>
+                                                        <Link to={`/works/${lang}`}>
+                                                            <div className='wrapPage'>
+                                                                <Container>
+                                                                    <Row>
+                                                                        <Col></Col>
+                                                                        <Col sm={12} lg={12}>
+                                                                            <h1>{t('Works')}</h1>
+                                                                        </Col>
+                                                                    </Row>
+                                                                </Container>
+                                                            </div>
+                                                        </Link>
+                                                    </li>
+
+                                                    <li onClick={handleChange}>
+                                                        <Link to={`/services/${lang}`}>
+                                                            <div className='wrapPage'>
+                                                                <Container>
+                                                                    <Row>
+                                                                        <Col></Col>
+                                                                        <Col sm={12} lg={12}>
+                                                                            <h1>{t('services')}</h1>
+                                                                        </Col>
+                                                                    </Row>
+                                                                </Container>
+                                                            </div>
+                                                        </Link>
+                                                    </li>
+
+                                                    <li onClick={handleChange}>
+                                                        <Link to={`/Thoughts/${lang}`}>
+                                                            <div className='wrapPage'>
+                                                                <Container>
+                                                                    <Row>
+                                                                        <Col></Col>
+                                                                        <Col sm={12} lg={12}>
+                                                                            <h1>{t('THOUGHTS')}</h1>
+                                                                        </Col>
+                                                                    </Row>
+                                                                </Container>
+                                                            </div>
+                                                        </Link>
+                                                    </li>
+
+                                                    <li onClick={handleChange}>
+                                                        <Link to={`/client/${lang}`}>
+                                                            <div className='wrapPage'>
+                                                                <Container>
+                                                                    <Row>
+                                                                        <Col></Col>
+                                                                        <Col sm={12} lg={12}>
+                                                                            <h1>{t('client_menu')}</h1>
+                                                                        </Col>
+                                                                    </Row>
+                                                                </Container>
+                                                            </div>
+                                                        </Link>
+                                                    </li>
+
+                                                </ul>
+                                                <ul className='subMainMenu'>
+                                                    <li onClick={handleChange}>
+                                                        <Link to={`/contact/${lang}`}>
+                                                            <div className='wrapPage'>
+                                                                <Container>
+                                                                    <Row>
+                                                                        <Col></Col>
+                                                                        <Col sm={12} lg={12}>
+                                                                            <h1>{t('contact')}</h1>
+                                                                        </Col>
+                                                                    </Row>
+                                                                </Container>
+                                                            </div>
+                                                        </Link>
+                                                    </li>
+
+                                                    <li onClick={handleChange}>
+                                                        <Link to={`/culture/${lang}`}>
+                                                            <div className='wrapPage'>
+                                                                <Container>
+                                                                    <Row>
+                                                                        <Col></Col>
+                                                                        <Col sm={12} lg={12}>
+                                                                            <h1>{t('culture')}</h1>
+                                                                        </Col>
+                                                                    </Row>
+                                                                </Container>
+                                                            </div>
+                                                        </Link>
+                                                    </li>
+
+
+
+
+
+                                                    <li onClick={handleChange}>
+                                                        <Link to={`/careers/${lang}`}>
+                                                            <div className='wrapPage'>
+                                                                <Container>
+                                                                    <Row>
+                                                                        <Col></Col>
+                                                                        <Col sm={12} lg={12}>
+                                                                            <h1>{t('careers')}</h1>
+                                                                        </Col>
+                                                                    </Row>
+                                                                </Container>
+                                                            </div>
+                                                        </Link>
+                                                    </li>
+
+
+
+
+                                                </ul>
+                                            </nav>
+                                            }
+
+                                        </label>
+                                    </div>
+
+                                    {/* <input id="page-nav-toggle"
+                                        onChange={handleChange} className={`main-navigation-toggle ${checked ? 'main-navigation-toggle-open' : ''}`} type="checkbox" />
                                     <label for="page-nav-toggle">
                                         <svg className="icon--menu-toggle" viewBox="0 0 60 30">
                                             <g className="icon-group">
@@ -222,9 +367,9 @@ function AppHeader() {
                                                 </g>
                                             </g>
                                         </svg>
-                                    </label>
+                                    </label> */}
 
-                                    {isSubscribed && <nav class="main-navigation">
+                                    {/* {isSubscribed && <nav class="main-navigation">
                                         <ul>
                                             <li onClick={handleChange}>
                                                 <Link to={`/works/${lang}`}>
@@ -232,53 +377,8 @@ function AppHeader() {
                                                         <Container>
                                                             <Row>
                                                                 <Col></Col>
-                                                                <Col sm={12} lg={6}>
+                                                                <Col sm={12} lg={12}>
                                                                     <h1>{t('Works')}</h1>
-                                                                </Col>
-                                                            </Row>
-                                                        </Container>
-                                                    </div>
-                                                </Link>
-                                            </li>
-
-                                            <li onClick={handleChange}>
-                                                <Link to={`/client/${lang}`}>
-                                                    <div className='wrapPage'>
-                                                        <Container>
-                                                            <Row>
-                                                                <Col></Col>
-                                                                <Col sm={12} lg={6}>
-                                                                    <h1>{t('client_menu')}</h1>
-                                                                </Col>
-                                                            </Row>
-                                                        </Container>
-                                                    </div>
-                                                </Link>
-                                            </li>
-
-                                            <li onClick={handleChange}>
-                                                <Link to={`/culture/${lang}`}>
-                                                    <div className='wrapPage'>
-                                                        <Container>
-                                                            <Row>
-                                                                <Col></Col>
-                                                                <Col sm={12} lg={6}>
-                                                                    <h1>{t('culture')}</h1>
-                                                                </Col>
-                                                            </Row>
-                                                        </Container>
-                                                    </div>
-                                                </Link>
-                                            </li>
-
-                                            <li onClick={handleChange}>
-                                                <Link to={`/think/${lang}`}>
-                                                    <div className='wrapPage'>
-                                                        <Container>
-                                                            <Row>
-                                                                <Col></Col>
-                                                                <Col sm={12} lg={6}>
-                                                                    <h1>{t('Think')}</h1>
                                                                 </Col>
                                                             </Row>
                                                         </Container>
@@ -292,7 +392,7 @@ function AppHeader() {
                                                         <Container>
                                                             <Row>
                                                                 <Col></Col>
-                                                                <Col sm={12} lg={6}>
+                                                                <Col sm={12} lg={12}>
                                                                     <h1>{t('services')}</h1>
                                                                 </Col>
                                                             </Row>
@@ -302,12 +402,78 @@ function AppHeader() {
                                             </li>
 
                                             <li onClick={handleChange}>
+                                                <Link to={`/Thoughts/${lang}`}>
+                                                    <div className='wrapPage'>
+                                                        <Container>
+                                                            <Row>
+                                                                <Col></Col>
+                                                                <Col sm={12} lg={12}>
+                                                                    <h1>{t('THOUGHTS')}</h1>
+                                                                </Col>
+                                                            </Row>
+                                                        </Container>
+                                                    </div>
+                                                </Link>
+                                            </li>
+
+                                            <li onClick={handleChange}>
+                                                <Link to={`/client/${lang}`}>
+                                                    <div className='wrapPage'>
+                                                        <Container>
+                                                            <Row>
+                                                                <Col></Col>
+                                                                <Col sm={12} lg={12}>
+                                                                    <h1>{t('client_menu')}</h1>
+                                                                </Col>
+                                                            </Row>
+                                                        </Container>
+                                                    </div>
+                                                </Link>
+                                            </li>
+
+                                        </ul>
+                                        <ul className='subMainMenu'>
+                                            <li onClick={handleChange}>
+                                                <Link to={`/contact/${lang}`}>
+                                                    <div className='wrapPage'>
+                                                        <Container>
+                                                            <Row>
+                                                                <Col></Col>
+                                                                <Col sm={12} lg={12}>
+                                                                    <h1>{t('contact')}</h1>
+                                                                </Col>
+                                                            </Row>
+                                                        </Container>
+                                                    </div>
+                                                </Link>
+                                            </li>
+
+                                            <li onClick={handleChange}>
+                                                <Link to={`/culture/${lang}`}>
+                                                    <div className='wrapPage'>
+                                                        <Container>
+                                                            <Row>
+                                                                <Col></Col>
+                                                                <Col sm={12} lg={12}>
+                                                                    <h1>{t('culture')}</h1>
+                                                                </Col>
+                                                            </Row>
+                                                        </Container>
+                                                    </div>
+                                                </Link>
+                                            </li>
+
+
+
+
+
+                                            <li onClick={handleChange}>
                                                 <Link to={`/careers/${lang}`}>
                                                     <div className='wrapPage'>
                                                         <Container>
                                                             <Row>
                                                                 <Col></Col>
-                                                                <Col sm={12} lg={6}>
+                                                                <Col sm={12} lg={12}>
                                                                     <h1>{t('careers')}</h1>
                                                                 </Col>
                                                             </Row>
@@ -317,24 +483,11 @@ function AppHeader() {
                                             </li>
 
 
-                                            <li onClick={handleChange}>
-                                                <Link to={`/contact/${lang}`}>
-                                                    <div className='wrapPage'>
-                                                        <Container>
-                                                            <Row>
-                                                                <Col></Col>
-                                                                <Col sm={12} lg={6}>
-                                                                    <h1>{t('contact')}</h1>
-                                                                </Col>
-                                                            </Row>
-                                                        </Container>
-                                                    </div>
-                                                </Link>
-                                            </li>
+
 
                                         </ul>
                                     </nav>
-                                    }
+                                    } */}
 
 
                                 </div>
