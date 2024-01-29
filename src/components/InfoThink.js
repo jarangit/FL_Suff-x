@@ -60,9 +60,9 @@ function InfoThink() {
     },);
     return (
         <section className='sectionInfoThink'>
-            {/* <Helmet>
+            <Helmet>
 
-                <title>{titlePage}</title>
+                {/* <title>{titlePage}</title> */}
                 <meta property="og:url" content={data.slugUrl} />
                 <meta property="og:type" content={data.type} />
                 <meta property="og:title" content={data.title} />
@@ -70,7 +70,7 @@ function InfoThink() {
                 <meta property="og:image" content={data.image} />
                 <meta name="twitter:image" content={data.image} />
 
-            </Helmet> */}
+            </Helmet>
             <div className='wrapPage'>
                 {
 
