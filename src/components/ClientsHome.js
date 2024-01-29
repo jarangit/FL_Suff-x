@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 // const listClientsHome = [
 //     {
@@ -89,9 +90,9 @@ function ClientsHome() {
                         </Col>
                     </Row>
                 </Container>
-                <a>
+                <Link to={`/client/${lang}`}>
                     <button>{t('All Client')}</button>
-                </a>
+                </Link>
             </section>
         </div>
     );
