@@ -158,6 +158,7 @@ function AppHeader() {
             setchecked(true);
             document.body.classList.add('hide-scroll');
             element.classList.add("toggleMenuOpen");
+            
 
         } else {
             console.log('⛔️ Checkbox is NOT checked');
@@ -230,7 +231,7 @@ function AppHeader() {
 
                                             {isSubscribed && <nav class="main-navigation">
                                                 <ul>
-                                                    <li onClick={handleChange}>
+                                                    <li>
                                                         <Link to={`/works/${lang}`}>
                                                             <div className='wrapPage'>
                                                                 <Container>
@@ -245,7 +246,7 @@ function AppHeader() {
                                                         </Link>
                                                     </li>
 
-                                                    <li onClick={handleChange}>
+                                                    <li>
                                                         <Link to={`/services/${lang}`}>
                                                             <div className='wrapPage'>
                                                                 <Container>

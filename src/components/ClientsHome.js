@@ -6,6 +6,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
 // const listClientsHome = [
 //     {
@@ -46,7 +47,7 @@ import { Link } from 'react-router-dom';
 function ClientsHome() {
     const url = "https://www.suffix.works/api-v2/home/en";
     const [data, setData] = useState([]);
-    const [lang, setLang] = useState("en");
+    let { lang } = useParams();
 
     const { t, i18n } = useTranslation();
 

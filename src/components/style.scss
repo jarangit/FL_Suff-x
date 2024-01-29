@@ -298,6 +298,7 @@ body {
         }
         .thActiveLeft {
           display: block;
+          pointer-events: none;
         }
       }
       a {
@@ -1708,6 +1709,7 @@ body {
     }
     .enActive {
       color: $colorBlack !important;
+      pointer-events: none;
     }
     .thActive {
       color: $colorGray !important;

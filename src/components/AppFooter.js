@@ -79,13 +79,13 @@ function AppFooter() {
                         <div className='wrapSocialFooter'>
                             <ul>
                                 <li>
-                                    <Link to={data.linkedin_url}><img src="/images/icon/iconLinkedIn.svg"></img></Link>
+                                    <Link to={data.linkedin_url} target="_blank" rel="noopener noreferrer"><img src="/images/icon/iconLinkedIn.svg"></img></Link>
                                 </li>
                                 <li>
-                                    <Link to={data.instagram_url}><img src="/images/icon/iconIg.svg"></img></Link>
+                                    <Link to={data.instagram_url} target="_blank" rel="noopener noreferrer"><img src="/images/icon/iconIg.svg"></img></Link>
                                 </li>
                                 <li>
-                                    <Link to={data.facebook_url}><img src="/images/icon/iconFB.svg"></img></Link>
+                                    <Link to={data.facebook_url} target="_blank" rel="noopener noreferrer"><img src="/images/icon/iconFB.svg"></img></Link>
                                 </li>
                             </ul>
                         </div>
