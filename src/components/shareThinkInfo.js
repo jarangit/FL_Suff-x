@@ -42,7 +42,7 @@ function ShareThinkInfo() {
         getWork(slug);
     }, [slug]);
 
-    const shareUrl = "https://delicate-beignet-5f898e.netlify.app/think/" + slug + "/" + params.lang + "";
+    const shareUrl = "https://www.suffix.works/Thoughts/" + params.lang + "/" + slug + "";
 
     return (
         <section className='sectionTeamWorksInfo sectionShareThinkInfo'>
