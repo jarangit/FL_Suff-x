@@ -231,7 +231,7 @@ function AppHeader() {
 
                                             {isSubscribed && <nav class="main-navigation">
                                                 <ul>
-                                                    <li>
+                                                    <li onClick={handleChange}>
                                                         <Link to={`/works/${lang}`}>
                                                             <div className='wrapPage'>
                                                                 <Container>
@@ -246,7 +246,7 @@ function AppHeader() {
                                                         </Link>
                                                     </li>
 
-                                                    <li>
+                                                    <li onClick={handleChange}>
                                                         <Link to={`/services/${lang}`}>
                                                             <div className='wrapPage'>
                                                                 <Container>
