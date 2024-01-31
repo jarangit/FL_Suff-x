@@ -8,6 +8,9 @@ import { Link, useParams } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useTranslation } from 'react-i18next';
+import TextField from '@mui/material/TextField';
+import FormHelperText from '@mui/material/FormHelperText';
+
 // const listInClient = [
 //     {
 //         id: 1,
@@ -45,6 +48,27 @@ function InfoCareers() {
         getWork(slug);
     }, [slug]);
 
+    const [val, setVal] = useState("")
+    const [selectBool, setSelectBool] = useState(false);
+    const [helperText, setHelperText] =
+        useState("")
+
+
+    const onHandleChange = (e) => {
+        setVal(e.target.value);
+        const isValidEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,6}$/g;
+
+        if (e.target?.value && e.target.value.match(isValidEmail)) {
+
+            setSelectBool(false)
+            setHelperText("")
+        }
+        else {
+            setSelectBool(true)
+            setHelperText(
+                "")
+        }
+    };
 
     const [show, setShow] = useState(false);
 
@@ -180,7 +204,7 @@ function InfoCareers() {
                                     <h2>{t('Apply for')}</h2>
                                     <h1 >{data.name}</h1>
                                     {/* <Link to={data.url_linkedin}>Apply with Linkedin</Link> */}
-                                    <form onSubmit={handleSubmit}>
+                                    {/* <form onSubmit={handleSubmit}>
                                         <input id="idCareer" value={data.id}></input>
                                         <label className="textRequire" for="full_name">Required</label>
                                         <input
@@ -201,7 +225,7 @@ function InfoCareers() {
                                             value={inputs.email || ""}
                                             onChange={handleChange}
                                         />
-                                         <label className="textRequire" for="phone_number">Required</label>
+                                        <label className="textRequire" for="phone_number">Required</label>
 
                                         <input
                                             type="text"
@@ -222,6 +246,48 @@ function InfoCareers() {
                                             onChange={onChangeFile}
                                         />
                                         <input className='btnSubmit' type="submit" value="Apply" />
+                                    </form> */}
+                                    <form onSubmit={handleSubmit}>
+                                        <input id="idCareer" value={data.id}></input>
+                                        <TextField
+                                            required
+                                            id="full_name"
+                                            label={t('Name')}
+                                            variant="standard"
+                                            value={inputs.full_name}
+                                        />
+
+                                        <div className='wrapInputEmail'>
+                                            <TextField
+                                                required
+                                                id="email"
+                                                label={t('Email')}
+                                                variant="standard"
+                                                value={inputs.email}
+                                                onChange={onHandleChange}
+                                            />
+                                            <FormHelperText id="username-helper"
+                                                error={selectBool}>{helperText}
+                                            </FormHelperText>
+                                        </div>
+                                        <TextField
+                                            required
+                                            id="phone_number"
+                                            label={t('Phone')}
+                                            variant="standard"
+                                            value={inputs.phone_number}
+                                        />
+                                        <label className="textFile" for="cv">Upload Resume  (Maximum 2mb)</label>
+                                        <input
+                                            type="file"
+                                            name="cv"
+                                            id="cv"
+                                            value={inputs.cv || ""}
+                                            onChange={onChangeFile}
+                                        />
+
+
+                                        <input type="submit" className='btnSubmit' value={t('Apply')} />
                                     </form>
                                 </div>
                             </Modal>

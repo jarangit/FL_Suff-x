@@ -13,6 +13,7 @@ import { FormGroup, Checkbox, FormControlLabel } from '@mui/material';
 import { useFormControl } from '@mui/material/FormControl';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import FormHelperText from '@mui/material/FormHelperText';
 import Modal from 'react-bootstrap/Modal';
 import FadeInSection from './animateFadeIn';
 import { useTranslation } from 'react-i18next';
@@ -71,32 +72,30 @@ function InfoContact() {
         setInputs(values => ({ ...values, [name]: value }))
     }
 
+    const [val, setVal] = useState("")
+    const [selectBool, setSelectBool] = useState(false);
+    const [helperText, setHelperText] =
+        useState("")
+
+
+    const onHandleChange = (e) => {
+        setVal(e.target.value);
+        const isValidEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,6}$/g;
+
+        if (e.target?.value && e.target.value.match(isValidEmail)) {
+
+            setSelectBool(false)
+            setHelperText("")
+        }
+        else {
+            setSelectBool(true)
+            setHelperText(
+                "")
+        }
+    };
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        //     var myHeaders = new Headers();
-        //     myHeaders.append("Content-Type", "application/json");
-        //     myHeaders.append("Authorization", "Basic c3VmZml4OnN1ZmZpeDIwMjEq");
-
-        //     var raw = JSON.stringify({
-        //         "full_name":inputs.full_name,
-        //         "email":inputs.email,
-        //         "phone_number":inputs.phone_number,
-        //         "service":inputs.service,
-        //         "message":inputs.message,
-        //     });
-
-        //     var requestOptions = {
-        //         method: 'POST',
-        //         headers: myHeaders,
-        //         body: raw,
-        //         redirect: 'follow'
-        //     };
-
-        //     fetch("https://www.suffix.works/api-v2/contact-form", requestOptions)
-        //     .then(response => response.text())
-        //     .then(result => console.log(result))
-        //     .catch(error => console.log('error', error));
-        // }
 
         const email = document.getElementById("email")
         const full_name = document.getElementById("full_name")
@@ -108,11 +107,12 @@ function InfoContact() {
         myHeaders.append("Authorization", "Basic c3VmZml4OnN1ZmZpeDIwMjEq");
 
         var formdata = new FormData();
-        formdata.append("email", email.value);
+
         formdata.append("full_name", full_name.value);
         formdata.append("phone_number", phone_number.value);
         formdata.append("service", "Digital Strategy: Marketing & Communication");
         formdata.append("message", message.value);
+        formdata.append("email", email.value);
 
         var requestOptions = {
             method: 'POST',
@@ -153,13 +153,20 @@ function InfoContact() {
                                         variant="standard"
                                         value={inputs.full_name}
                                     />
-                                    <TextField
-                                        required
-                                        id="email"
-                                        label={t('Email')}
-                                        variant="standard"
-                                        value={inputs.email}
-                                    />
+
+                                    <div className='wrapInputEmail'>
+                                        <TextField
+                                            required
+                                            id="email"
+                                            label={t('Email')}
+                                            variant="standard"
+                                            value={inputs.email}
+                                            onChange={onHandleChange}
+                                        />
+                                        <FormHelperText id="username-helper"
+                                            error={selectBool}>{helperText}
+                                        </FormHelperText>
+                                    </div>
                                     <TextField
                                         required
                                         id="phone_number"

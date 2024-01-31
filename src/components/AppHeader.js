@@ -106,8 +106,8 @@ function AppHeader() {
     //   };
 
     // const [isContainerActive, setIsContainerActive] = React.useState(false);
-
     useEffect(() => {
+        
         if (lang === 'en') {
             //   store.setTimeFormat('24h');
             console.log('lang-en');
@@ -123,6 +123,19 @@ function AppHeader() {
             // setLangIsActive(true);
             //   store.setTimeFormat('12h');
         }
+        
+        if (setchecked === true) {
+            console.log('✅ Checkbox is checked');
+            setIsSubscribed(true);
+            setchecked(true);
+            document.body.classList.add('hide-scroll');
+    
+        } else {
+            console.log('⛔️ Checkbox is NOT checked');
+            setIsSubscribed(false);
+            setchecked(false);
+            document.body.classList.remove('hide-scroll');
+        }
     }, []);
 
     useEffect(() => {
@@ -134,7 +147,7 @@ function AppHeader() {
     }, [handleNavigation]);
 
 
-
+   
     // const changeLanguage = (lng) => {
     //     i18n.changeLanguage(lng);
     // }
@@ -152,13 +165,14 @@ function AppHeader() {
 
     const handleChange = event => {
         var element = document.getElementsByClassName("toggleMenu")[0];
+
         if (event.target.checked) {
             console.log('✅ Checkbox is checked');
             setIsSubscribed(true);
             setchecked(true);
             document.body.classList.add('hide-scroll');
             element.classList.add("toggleMenuOpen");
-            
+
 
         } else {
             console.log('⛔️ Checkbox is NOT checked');
@@ -230,122 +244,124 @@ function AppHeader() {
                                             </div>
 
                                             {isSubscribed && <nav class="main-navigation">
-                                                <ul>
-                                                    <li onClick={handleChange}>
-                                                        <Link to={`/works/${lang}`}>
-                                                            <div className='wrapPage'>
-                                                                <Container>
-                                                                    <Row>
-                                                                        <Col></Col>
-                                                                        <Col sm={12} lg={12}>
-                                                                            <h1>{t('Works')}</h1>
-                                                                        </Col>
-                                                                    </Row>
-                                                                </Container>
-                                                            </div>
-                                                        </Link>
-                                                    </li>
+                                                <div className='menu-navigation'>
+                                                    <ul>
+                                                        <li>
+                                                            <Link to={`/works/${lang}`}>
+                                                                <div className='wrapPage'>
+                                                                    <Container>
+                                                                        <Row>
+                                                                            <Col></Col>
+                                                                            <Col sm={12} lg={12}>
+                                                                                <h1>{t('Works')}</h1>
+                                                                            </Col>
+                                                                        </Row>
+                                                                    </Container>
+                                                                </div>
+                                                            </Link>
+                                                        </li>
 
-                                                    <li onClick={handleChange}>
-                                                        <Link to={`/services/${lang}`}>
-                                                            <div className='wrapPage'>
-                                                                <Container>
-                                                                    <Row>
-                                                                        <Col></Col>
-                                                                        <Col sm={12} lg={12}>
-                                                                            <h1>{t('services')}</h1>
-                                                                        </Col>
-                                                                    </Row>
-                                                                </Container>
-                                                            </div>
-                                                        </Link>
-                                                    </li>
+                                                        <li>
+                                                            <Link to={`/services/${lang}`}>
+                                                                <div className='wrapPage'>
+                                                                    <Container>
+                                                                        <Row>
+                                                                            <Col></Col>
+                                                                            <Col sm={12} lg={12}>
+                                                                                <h1>{t('services')}</h1>
+                                                                            </Col>
+                                                                        </Row>
+                                                                    </Container>
+                                                                </div>
+                                                            </Link>
+                                                        </li>
 
-                                                    <li onClick={handleChange}>
-                                                        <Link to={`/Thoughts/${lang}`}>
-                                                            <div className='wrapPage'>
-                                                                <Container>
-                                                                    <Row>
-                                                                        <Col></Col>
-                                                                        <Col sm={12} lg={12}>
-                                                                            <h1>{t('THOUGHTS')}</h1>
-                                                                        </Col>
-                                                                    </Row>
-                                                                </Container>
-                                                            </div>
-                                                        </Link>
-                                                    </li>
+                                                        <li>
+                                                            <Link to={`/Thoughts/${lang}`}>
+                                                                <div className='wrapPage'>
+                                                                    <Container>
+                                                                        <Row>
+                                                                            <Col></Col>
+                                                                            <Col sm={12} lg={12}>
+                                                                                <h1>{t('THOUGHTS')}</h1>
+                                                                            </Col>
+                                                                        </Row>
+                                                                    </Container>
+                                                                </div>
+                                                            </Link>
+                                                        </li>
 
-                                                    <li onClick={handleChange}>
-                                                        <Link to={`/client/${lang}`}>
-                                                            <div className='wrapPage'>
-                                                                <Container>
-                                                                    <Row>
-                                                                        <Col></Col>
-                                                                        <Col sm={12} lg={12}>
-                                                                            <h1>{t('client_menu')}</h1>
-                                                                        </Col>
-                                                                    </Row>
-                                                                </Container>
-                                                            </div>
-                                                        </Link>
-                                                    </li>
+                                                        <li>
+                                                            <Link to={`/client/${lang}`}>
+                                                                <div className='wrapPage'>
+                                                                    <Container>
+                                                                        <Row>
+                                                                            <Col></Col>
+                                                                            <Col sm={12} lg={12}>
+                                                                                <h1>{t('client_menu')}</h1>
+                                                                            </Col>
+                                                                        </Row>
+                                                                    </Container>
+                                                                </div>
+                                                            </Link>
+                                                        </li>
 
-                                                </ul>
-                                                <ul className='subMainMenu'>
-                                                    <li onClick={handleChange}>
-                                                        <Link to={`/contact/${lang}`}>
-                                                            <div className='wrapPage'>
-                                                                <Container>
-                                                                    <Row>
-                                                                        <Col></Col>
-                                                                        <Col sm={12} lg={12}>
-                                                                            <h1>{t('contact')}</h1>
-                                                                        </Col>
-                                                                    </Row>
-                                                                </Container>
-                                                            </div>
-                                                        </Link>
-                                                    </li>
+                                                    </ul>
+                                                    <ul className='subMainMenu'>
+                                                        <li>
+                                                            <Link to={`/contact/${lang}`}>
+                                                                <div className='wrapPage'>
+                                                                    <Container>
+                                                                        <Row>
+                                                                            <Col></Col>
+                                                                            <Col sm={12} lg={12}>
+                                                                                <h1>{t('contact')}</h1>
+                                                                            </Col>
+                                                                        </Row>
+                                                                    </Container>
+                                                                </div>
+                                                            </Link>
+                                                        </li>
 
-                                                    <li onClick={handleChange}>
-                                                        <Link to={`/culture/${lang}`}>
-                                                            <div className='wrapPage'>
-                                                                <Container>
-                                                                    <Row>
-                                                                        <Col></Col>
-                                                                        <Col sm={12} lg={12}>
-                                                                            <h1>{t('culture')}</h1>
-                                                                        </Col>
-                                                                    </Row>
-                                                                </Container>
-                                                            </div>
-                                                        </Link>
-                                                    </li>
-
-
-
-
-
-                                                    <li onClick={handleChange}>
-                                                        <Link to={`/careers/${lang}`}>
-                                                            <div className='wrapPage'>
-                                                                <Container>
-                                                                    <Row>
-                                                                        <Col></Col>
-                                                                        <Col sm={12} lg={12}>
-                                                                            <h1>{t('careers')}</h1>
-                                                                        </Col>
-                                                                    </Row>
-                                                                </Container>
-                                                            </div>
-                                                        </Link>
-                                                    </li>
+                                                        <li>
+                                                            <Link to={`/culture/${lang}`}>
+                                                                <div className='wrapPage'>
+                                                                    <Container>
+                                                                        <Row>
+                                                                            <Col></Col>
+                                                                            <Col sm={12} lg={12}>
+                                                                                <h1>{t('culture')}</h1>
+                                                                            </Col>
+                                                                        </Row>
+                                                                    </Container>
+                                                                </div>
+                                                            </Link>
+                                                        </li>
 
 
 
 
-                                                </ul>
+
+                                                        <li>
+                                                            <Link to={`/careers/${lang}`}>
+                                                                <div className='wrapPage'>
+                                                                    <Container>
+                                                                        <Row>
+                                                                            <Col></Col>
+                                                                            <Col sm={12} lg={12}>
+                                                                                <h1>{t('careers')}</h1>
+                                                                            </Col>
+                                                                        </Row>
+                                                                    </Container>
+                                                                </div>
+                                                            </Link>
+                                                        </li>
+
+
+
+
+                                                    </ul>
+                                                </div>
                                             </nav>
                                             }
 

@@ -58,10 +58,12 @@ function AppFooter() {
                 <Row>
                     <Col lg={3} sm={6} xs={12}>
                         <h3>{t('Address')}</h3>
+                        <Link target="_blank" to={'https://www.google.com/maps/place/Building,+15+Floor,+SUFFIX,+T-One,+Unit+15-130+Sukhumvit+40,+Phra+Khanong,+Khlong+Toei,+Bangkok+10110/@13.722344,100.580472,15z/data=!4m6!3m5!1s0x30e29e5343dcafdd:0xd71ac4aa2c33bd01!8m2!3d13.722344!4d100.5804718!16s%2Fg%2F11d_ws3mkd?hl=en&gl=TH'}>
                         <div className='wrapAdressFooter'>
                             <img src="/images/icon/iconMap.svg"></img>
                             <h4>{t('location_footer')}</h4>
                         </div>
+                        </Link>
                     </Col>
                     <Col lg={3} sm={6} xs={12}>
                         <h3>{t('Email')}</h3>

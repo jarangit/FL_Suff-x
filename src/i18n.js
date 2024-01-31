@@ -107,7 +107,7 @@ const resources = {
       "title_Culture": "วัฒนธรรมการทำงาน",
       "How we work": "แนวทางการทำงาน",
       "About": "เกี่ยวกับเรา",
-      "culture_Expertise": "ความเชียวชาญ",
+      "culture_Expertise": "ความเชี่ยวชาญ",
       "Position": "ตำแหน่ง",
       "Why this role important for SUFFIX": "Why this role important for SUFFIX",
       "role": "งานตำแหน่งนี้มีความสำคัญกับซัฟฟิกซ์อย่างไร",

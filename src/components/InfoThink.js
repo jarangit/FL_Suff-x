@@ -78,7 +78,7 @@ function InfoThink() {
                         <Row>
                             <Col lg={{ span: 10, offset: 1 }}>
                                 <FadeInSection>
-                                    <img src={data.image_webp}></img>
+                                    <img src={data.image}></img>
                                 </FadeInSection>
                             </Col>
                             <Col lg={{ span: 10, offset: 1 }}>
