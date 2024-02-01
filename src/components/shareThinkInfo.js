@@ -46,6 +46,7 @@ function ShareThinkInfo() {
 
     return (
         <section className='sectionTeamWorksInfo sectionShareThinkInfo'>
+            
             <div className='wrapPage'>
                 <FadeInSection>
                     <Container>
