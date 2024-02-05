@@ -167,6 +167,8 @@ a {
   color: $colorBlack;
 }
 
+a:visited {color:colorBlack;}
+
 %button {
   font-weight: 400;
   font-size: 14px;
