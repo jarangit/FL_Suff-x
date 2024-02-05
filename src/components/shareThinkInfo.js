@@ -42,7 +42,7 @@ function ShareThinkInfo() {
         getWork(slug);
     }, [slug]);
 
-    const shareUrl = "https://www.suffix.works/Thoughts/" + params.lang + "/" + slug + "";
+    const shareUrl = "https://www.suffix.works/Thoughts/" + slug + "/" + params.lang + "";
 
     return (
         <section className='sectionTeamWorksInfo sectionShareThinkInfo'>

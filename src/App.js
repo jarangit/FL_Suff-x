@@ -21,7 +21,7 @@ import PageSiteMaps from './PageSiteMaps';
 import PagePolicy from './PagePrivacyPolicy';
 import PageTerm from './PageTerm';
 import HelmetMetaData from "./components/HelmetMetaData";
-
+import { HelmetProvider } from 'react-helmet-async';
 import { FacebookShareButton, FacebookIcon } from "react-share";
 
 
@@ -36,7 +36,9 @@ function App() {
   // useEffect(() => {
   //   window.history.scrollRestoration = 'manual'
   // }, []);
+  const helmetContext = {};
   return (
+    <HelmetProvider context={helmetContext}>
     <div>
       {/* <AppHeader /> */}
       {/* <HelmetMetaData></HelmetMetaData> */}
@@ -225,6 +227,7 @@ function App() {
         </FacebookShareButton> */}
       <AppFooter />
     </div>
+    </HelmetProvider>
   );
 }
 
