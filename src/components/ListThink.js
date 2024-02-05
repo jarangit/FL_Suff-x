@@ -9,7 +9,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-
+import SEO from './SEO';
 
 // const listClientsHome = [
 //     {
@@ -117,9 +117,15 @@ function ListThink(props) {
                                         <div className='ItemListWorks'>
                                             <img src={user.image}></img>
                                             <p>{user.category}</p>
-                                             <h2 dangerouslySetInnerHTML={{ __html: user.title.toString().replace(/\r?\n|\r/g, '') }}></h2>
+                                            <h2 dangerouslySetInnerHTML={{ __html: user.title.toString().replace(/\r?\n|\r/g, '') }}></h2>
                                         </div>
                                     </Link>
+                                    <SEO
+                                        title="Learning React Helmet!"
+                                        description="Beginner friendly page for learning React Helmet."
+                                        name="Company name."
+                                        image="https://suffix.works/uploads/uploads/thinks/fdc81cea9b777f0555bb56f5c36393b2.jpg"
+                                        type="article" />
                                 </Col>
                             })
                         }
