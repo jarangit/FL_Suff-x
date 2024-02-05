@@ -79,12 +79,12 @@ function InfoThink() {
                 <meta name="twitter:image" content={data.image} /> */}
 
             </Helmet>
-            <SEO
+            {/* <SEO
                 title="Learning React Helmet!"
                 description="Beginner friendly page for learning React Helmet."
                 name="Company name."
                 image="https://suffix.works/uploads/uploads/thinks/fdc81cea9b777f0555bb56f5c36393b2.jpg"
-                type="article" />
+                type="article" /> */}
             <div className='wrapPage'>
                 {
 

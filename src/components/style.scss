@@ -164,11 +164,11 @@ $mobileScreen: 600px;
 
 a {
   text-decoration: none;
-  color: $colorBlack !important;
+  color: $colorBlack ;
 }
 
 a:visited {
-  color: $colorBlack !important;;
+  // color: $colorBlack !important;;
 }
 
 %button {
@@ -176,7 +176,7 @@ a:visited {
   font-size: 14px;
   line-height: 16px;
   border: 1px solid $colorBlack;
-  color: $colorBlack !important;
+  color: $colorBlack;
   padding: 22px 32px;
   background-color: transparent;
   font-family: $fontFrank, $fontHelvetica;
@@ -1997,6 +1997,7 @@ body {
     button {
       background-color: transparent;
       border: none;
+      color: $colorBlack;
       @extend %bodyDesktop;
     }
     h3 {
@@ -2313,6 +2314,7 @@ body {
             font-weight: 400;
             line-height: 32px; /* 200% */
             text-transform: capitalize;
+            color: $colorWhite;
           }
         }
       }

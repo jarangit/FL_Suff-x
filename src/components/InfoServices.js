@@ -95,7 +95,7 @@ function InfoServices() {
                         <Col sm={12} lg={6} className='listItem'>
                             <FadeInSection>
                                 <div className='wrapInfoServices'>
-                                    <h3>Approach</h3>
+                                    <h3>{t('Approach')}</h3>
                                     <p dangerouslySetInnerHTML={{ __html: data.item_footer?.approach.toString().replace(/\r?\n|\r/g, '') }}></p>
                                 </div>
                             </FadeInSection>

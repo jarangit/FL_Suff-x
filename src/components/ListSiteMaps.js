@@ -108,7 +108,7 @@ function ListSiteMaps() {
                         <Col lg={6} sm={12} xs={12} className='listItem'>
                             <div>
                             <FadeInSection>
-                                <h2><Link path='/'>Think</Link></h2>
+                                <h2><Link path='/'>Thoughts</Link></h2>
                                 </FadeInSection>
                             </div>
                         </Col>

@@ -1,18 +1,109 @@
-const posts = [
-    {
-        title: "Post #1",
-        description: "This is the first post",
-        thumbnail: "https://images.unsplash.com/photo-1593642532400-2682810df593?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80"
-    },
-    {
-        title: "Post #2",
-        description: "This is the second post",
-        thumbnail: "https://images.unsplash.com/photo-1625034712314-7bd692b60ecb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
-    },
-    {
-        title: "Post #3",
-        description: "This is the third post",
-        thumbnail: "https://images.unsplash.com/photo-1625034892070-6a3cc12edb42?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=766&q=80"
+import './style.scss';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import React, { useState, useEffect } from "react";
+
+import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
+import SEO from './SEO';
+
+// const listClientsHome = [
+//     {
+//         id: 1,
+//         thumbnail: '/images/works/1.jpg',
+//         title: 'UP & UNDER',
+//         catagory: 'Execution',
+//         slug:''
+//     },
+//     {
+//         id: 2,
+//         thumbnail: '/images/works/2.jpg',
+//         title: 'UP & UNDER',
+//         catagory: 'Execution'
+//     },
+//     {
+//         id: 3,
+//         thumbnail: '/images/works/3.jpg',
+//         title: 'UP & UNDER',
+//         catagory: 'Execution'
+//     },
+//     {
+//         id: 4,
+//         thumbnail: '/images/works/4.jpg',
+//         title: 'UP & UNDER',
+//         catagory: 'Execution'
+//     },
+//     {
+//         id: 5,
+//         thumbnail: '/images/works/5.jpg',
+//         title: 'UP & UNDER',
+//         catagory: 'Execution'
+//     },
+//     {
+//         id: 6,
+//         thumbnail: '/images/works/6.jpg',
+//         title: 'UP & UNDER',
+//         catagory: 'Execution'
+//     },
+//     {
+//         id: 7,
+//         thumbnail: '/images/works/7.jpg',
+//         title: 'UP & UNDER',
+//         catagory: 'Execution'
+//     },
+//     {
+//         id: 8,
+//         thumbnail: '/images/works/8.jpg',
+//         title: 'UP & UNDER',
+//         catagory: 'Execution'
+//     },
+//     {
+//         id: 9,
+//         thumbnail: '/images/works/9.jpg',
+//         title: 'UP & UNDER',
+//         catagory: 'Execution'
+//     },
+//     {
+//         id: 10,
+//         thumbnail: '/images/works/10.jpg',
+//         title: 'UP & UNDER',
+//         catagory: 'Execution'
+//     },
+// ]
+
+
+
+function ListThink(props) {
+    const { t } = useTranslation();
+    let params = useParams();
+    const url = "https://www.suffix.works/api-v2/think/en";
+    const [data, setData] = useState([]);
+    const [lang, setLang] = useState("en");
+
+    const getWork = () => {
+        const config = {
+            headers: {
+                Authorization: 'Basic c3VmZml4OnN1ZmZpeDIwMjEq',
+            }
+        };
+        return axios.get(url, config)
+            .then(res => {
+                console.log(res)
+                setData(res.data);
+            })
+            .catch(err => console.log(err))
+        // return fetch(url)
+        //     .then((res) => res.json())
+        //     .then((d) => setData(d))
     }
-]
-module.exports.getPostById = id => posts[id-1];
+
+    useEffect(() => {
+        getWork();
+    }, []);
+}
+
+export default ListThink;
