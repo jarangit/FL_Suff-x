@@ -13,8 +13,9 @@ import {
 import { ReactTinyLink } from 'react-tiny-link'
 import ThinksPost from './ThinksPost';
 import { Helmet } from 'react-helmet-async';
-
+import SEO from './SEO';
 // import { Helmet } from "react-helmet";
+
 function InfoThink() {
     const [data, setData] = useState([]);
     const { slug } = useParams();
@@ -51,9 +52,9 @@ function InfoThink() {
 
     const regex = /(<([^>]+)>)/gi;
     const titlePage = data.title?.replace(regex, "");
-    const title="Learning React Helmet!";
-    const description="Beginner friendly page for learning React Helmet.";
-    const name= "Company name.";
+    const title = "Learning React Helmet!";
+    const description = "Beginner friendly page for learning React Helmet.";
+    const name = "Company name.";
     const type = "article";
     const image = "https://suffix.works/uploads/uploads/thinks/fdc81cea9b777f0555bb56f5c36393b2.jpg"
 
@@ -78,7 +79,12 @@ function InfoThink() {
                 <meta name="twitter:image" content={data.image} /> */}
 
             </Helmet>
-            
+            <SEO
+                title="Learning React Helmet!"
+                description="Beginner friendly page for learning React Helmet."
+                name="Company name."
+                image="https://suffix.works/uploads/uploads/thinks/fdc81cea9b777f0555bb56f5c36393b2.jpg"
+                type="article" />
             <div className='wrapPage'>
                 {
 

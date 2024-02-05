@@ -120,12 +120,7 @@ function ListThink(props) {
                                             <h2 dangerouslySetInnerHTML={{ __html: user.title.toString().replace(/\r?\n|\r/g, '') }}></h2>
                                         </div>
                                     </Link>
-                                    <SEO
-                                        title="Learning React Helmet!"
-                                        description="Beginner friendly page for learning React Helmet."
-                                        name="Company name."
-                                        image="https://suffix.works/uploads/uploads/thinks/fdc81cea9b777f0555bb56f5c36393b2.jpg"
-                                        type="article" />
+                                   
                                 </Col>
                             })
                         }
