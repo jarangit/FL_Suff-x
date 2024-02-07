@@ -70,7 +70,7 @@ function InfoThink() {
         <section className='sectionInfoThink'>
             <Helmet>
 
-                <title>{titlePage}</title>
+                {/* <title>{titlePage}</title> */}
                 <meta property="og:url" content={data.slugUrl} />
                 <meta property="og:type" content={data.type} />
                 <meta property="og:title" content={data.title} />
