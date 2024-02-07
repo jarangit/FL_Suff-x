@@ -738,6 +738,9 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     animation: nav-bg var(--nav-duration) var(--ease) forwards;
+    @media (max-width: $tabletScreen) {
+      max-width: 100%;
+    }
   }
   .main-content {
     margin: 6rem auto;

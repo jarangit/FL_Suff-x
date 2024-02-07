@@ -9,21 +9,23 @@ import { I18nextProvider } from "react-i18next";
 import i18next from "i18next";
 import './i18n';
 import { CookiesProvider } from 'react-cookie';
+import { render } from 'react-snapshot';
 
 i18next.init({
   interpolation: { escapeValue: false },  // React already does escaping
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+render(
   <React.StrictMode>
     <BrowserRouter>
-      <CookiesProvider defaultSetOptions={{ path: '/' }}>
-        <App />
-      </CookiesProvider>
+     <App />
     </BrowserRouter>
-  </React.StrictMode>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
+
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
