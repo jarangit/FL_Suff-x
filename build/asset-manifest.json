@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.a2754669.css",
-    "main.js": "/static/js/main.f3ef9389.js",
+    "main.js": "/static/js/main.2dab1c51.js",
     "static/js/787.9e737518.chunk.js": "/static/js/787.9e737518.chunk.js",
     "static/media/linotype_-_helvetica_neue_lt_thai_regular-webfont.woff": "/static/media/linotype_-_helvetica_neue_lt_thai_regular-webfont.32f17cd538f3ecc136c5.woff",
     "static/media/linotype_-_helvetica_neue_lt_thai_bold-webfont.woff": "/static/media/linotype_-_helvetica_neue_lt_thai_bold-webfont.b24ab6a788155aba256e.woff",
@@ -9,11 +9,11 @@
     "static/media/linotype_-_helvetica_neue_lt_thai_bold-webfont.woff2": "/static/media/linotype_-_helvetica_neue_lt_thai_bold-webfont.d32a5ac9d4777b080a0a.woff2",
     "index.html": "/index.html",
     "main.a2754669.css.map": "/static/css/main.a2754669.css.map",
-    "main.f3ef9389.js.map": "/static/js/main.f3ef9389.js.map",
+    "main.2dab1c51.js.map": "/static/js/main.2dab1c51.js.map",
     "787.9e737518.chunk.js.map": "/static/js/787.9e737518.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a2754669.css",
-    "static/js/main.f3ef9389.js"
+    "static/js/main.2dab1c51.js"
   ]
 }
