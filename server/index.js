@@ -1,18 +1,20 @@
 const express = require('express');
 const path = require('path');
-const fs = require("fs"); 
+const fs = require("fs");
 const { ListThink } = require('./stub/posts');
 const app = express();
+const axios = require('axios');
+const useEffect = "react";
+const useState = "react";
+const useParams = 'react-router-dom';
+const request = require('request');
+
+
 // const unirest = require("unirest");
 const PORT = process.env.PORT || 3000;
-const indexPath  = path.resolve(__dirname, '..', 'build', 'index.html');
-const url = "https://www.suffix.works/api-v2/think/en";
 
-const config = {
-    headers: {
-        Authorization: 'Basic c3VmZml4OnN1ZmZpeDIwMjEq',
-    }
-};
+const indexPath = path.resolve(__dirname, '..', 'build', 'index.html');
+
 
 const [data, setData] = [];
 // static resources should just be served as they are
@@ -20,42 +22,79 @@ app.use(express.static(
     path.resolve(__dirname, '..', 'build'),
     { maxAge: '30d' },
 ));
-// app.get('/*', (req, res) => {
-//     const request = unirest("GET", "https://www.suffix.works/api-v2/think/en");
-//     request.query({ "entry": req.params.word });
-//     request.headers({
-//         Authorization: 'Basic c3VmZml4OnN1ZmZpeDIwMjEq',
-//     });
-//     request.end(function (response) {
-//       if (response.error) throw new Error(response.error);
-//       res.json(response.body.associations_scored || {});
-//     });
-//   });
 
 // here we serve the index.html page
-app.get('/*', (config,req, res, next) => {
-    fs.readFile(indexPath, 'utf8', (err, htmlData) => {
-        if (err) {
-            console.error('Error during file reading', err);
-            return res.status(404).end()
+app.get('/*', (req, res, next) => {
+    const options = {
+        url: 'https://www.suffix.works/api-v2/think/en',
+        'auth': {
+            'user': 'suffix',
+            'pass': 'suffix2021*',
+            'sendImmediately': false
         }
-        // get post info
-        // const postId = req.query.think_info.id;
-        const post = setData(res.data.think_info.id);
-        if(!post) return res.status(404).send("Post not found");
+    };
 
-        // inject meta tags
-        htmlData = htmlData.replace(
-            "<title>React App</title>",
-            `<title>${post.title}</title>`
-        )
-        .replace('__META_OG_TITLE__', post.title)
-        .replace('__META_OG_DESCRIPTION__', post.description)
-        .replace('__META_DESCRIPTION__', post.description)
-        .replace('__META_OG_IMAGE__', post.image)
-        return res.send(htmlData);
-    });
+    function callback(error, response, body) {
+        // console.error('error:', error); // Print the error if one occurred
+        // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+        // console.log('body:', body); // Print the HTML for the Google homepage.
+        if (!error && response.statusCode == 200) {
+            const info = JSON.parse(body);
+            console.log(info.stargazers_count + " Stars");
+            console.log(info.forks_count + " Forks");
+        }
+
+    }
+    request(options, callback);
+    // fs.readFile(indexPath, 'utf8', (err, htmlData) => {
+
+    //     if (err) {
+    //         console.error('Error during file reading', err);
+    //         return res.status(404).end()
+    //     }
+    //     // inject meta tags
+    //     htmlData = htmlData.replace(
+    //         "<title>React App</title>",
+    //         `<title>${data.title}</title>`
+    //     )
+    //         .replace('__META_OG_TITLE__', data.title)
+    //         .replace('__META_OG_DESCRIPTION__', data.description)
+    //         .replace('__META_DESCRIPTION__', data.description)
+    //         .replace('__META_OG_IMAGE__', data.image)
+    //     return res.send(htmlData);
+
+
+    // });
+
 });
+
+
+// app.get("/api", (req, res, next) => {
+//     const options = {
+//         url: 'https://www.suffix.works/api-v2/think/en',
+//         'auth': {
+//             'user': 'suffix',
+//             'pass': 'suffix2021*',
+//             'sendImmediately': false
+//         }
+//     };
+
+//     function callback(error, response, body) {
+//         // console.error('error:', error); // Print the error if one occurred
+//         // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+//         // console.log('body:', body); // Print the HTML for the Google homepage.
+//         if (!error && response.statusCode == 200) {
+//             const info = JSON.parse(body);
+//             console.log(info.stargazers_count + " Stars");
+//             console.log(info.forks_count + " Forks");
+//         }
+
+//     }
+//     request(options, callback);
+
+// });
+
+
 // listening...
 app.listen(PORT, (error) => {
     if (error) {

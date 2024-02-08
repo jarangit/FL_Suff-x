@@ -30,7 +30,7 @@ function InfoThink() {
         };
         return axios.get(url, config)
             .then(res => {
-                console.log(res)
+                // console.log(res)
                 setData(res.data);
             })
             .catch(err => console.log(err))
@@ -68,9 +68,9 @@ function InfoThink() {
     },);
     return (
         <section className='sectionInfoThink'>
-            <Helmet>
+            {/* <Helmet>
 
-                {/* <title>{titlePage}</title> */}
+                <title>{titlePage}</title>
                 <meta property="og:url" content={data.slugUrl} />
                 <meta property="og:type" content={data.type} />
                 <meta property="og:title" content={data.title} />
@@ -78,7 +78,7 @@ function InfoThink() {
                 <meta property="og:image" content={data.image} />
                 <meta name="twitter:image" content={data.image} />
 
-            </Helmet>
+            </Helmet> */}
             {/* <SEO
                 title="Learning React Helmet!"
                 description="Beginner friendly page for learning React Helmet."
