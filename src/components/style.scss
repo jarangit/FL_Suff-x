@@ -164,7 +164,7 @@ $mobileScreen: 600px;
 
 a {
   text-decoration: none;
-  color: $colorBlack ;
+  color: $colorBlack;
 }
 
 a:visited {
@@ -2168,7 +2168,6 @@ body {
     background-color: #9c9c9c;
     border: 1px solid $colorBlack;
   }
-
 }
 
 .modal .modal-content form .btnSubmit:hover {
@@ -3039,7 +3038,6 @@ label + .css-1rb63tl-MuiInputBase-root-MuiInput-root {
   border-radius: 100%;
 }
 
-
 .wrapInputEmail {
   position: relative;
 }
@@ -3047,8 +3045,14 @@ label + .css-1rb63tl-MuiInputBase-root-MuiInput-root {
 .wrapFormCareer {
   .css-348fk2 {
     color: $colorWhite !important;
-    }
-    .css-348fk2.Mui-focused {
-      color: $colorWhite !important;
-    }
+  }
+  .css-348fk2.Mui-focused {
+    color: $colorWhite !important;
+  }
+  .css-mqt2s5 {
+    color: $colorWhite !important;
+  }
+  .css-mqt2s5.Mui-focused {
+    color: $colorWhite !important;
+  }
 }
