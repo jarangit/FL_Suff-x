@@ -115,8 +115,8 @@
         // console.log("index  window.location.pathname", window.location.pathname);
 
         if (data) {
-          title = data.title.replace(/<[^>]*>?/gm, '');
-          detail = data.detail.replace(/<[^>]*>?/gm, '').substring(0, 100) + "...";
+          title = data.title.replace(/<[^>]*>?/g, '');
+          detail = data.detail.replace(/<[^>]*>?/g, '').substring(0, 100) + "...";
           image = data.image;
         } else {
           title = "SUFFIX Digital Strategy & Execution";
@@ -183,13 +183,18 @@
     -->
   <title>SUFFIX Digital Strategy & Execution</title>
 
-  <meta property="og:title" content="${title}" />
-  <meta property="og:description" content="${detail}" />
-  <meta property="og:image" content="${image}" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={image} />
   <meta property="og:url" content="https://www.suffix.works" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="SUFFIX Digital Strategy & Execution" />
-  <meta property="og:locale" content="en_US" /> <!-- th_TH ของไทย -->
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={image} />
+
 </head>
 
 <body>
