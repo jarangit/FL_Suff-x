@@ -12,12 +12,7 @@ import FadeInSection from './animateFadeIn';
 import ShareLinkedinComponent from './ShareLinkedinComponent';
 import ShareTwitterComponent from './ShareTwitterComponent';
 import ShareFacebookComponent from './ShareFacebookComponent';
-
-// import {
-//     FacebookShareButton,
-//     LinkedinShareButton,
-//     TwitterShareButton,
-// } from 'react-share';
+import MetaTagComponent from './MetaTagComponent';
 
 function ShareThinkInfo() {
     const [data, setData] = useState([]);
@@ -55,6 +50,7 @@ function ShareThinkInfo() {
         <section className='sectionTeamWorksInfo sectionShareThinkInfo'>
 
             <div className='wrapPage'>
+                <MetaTagComponent title={data.title} description={data.description} url={setShareUrl()} imageUrl={data?.image} imageAlt={data.title} />
                 <FadeInSection>
                     <Container>
                         <Row>
@@ -78,9 +74,9 @@ function ShareThinkInfo() {
                                         <FacebookIcon size={40} round={true} />
                                     </FacebookShareButton> */}
 
-                                    <ShareLinkedinComponent url={setShareUrl()} title={data.title} />
-                                    <ShareTwitterComponent url={setShareUrl()} title={data.title} />
-                                    <ShareFacebookComponent url={setShareUrl()} title={data.title} />
+                                    <ShareLinkedinComponent url={setShareUrl()} title={data.title} image={data?.image} />
+                                    <ShareTwitterComponent url={setShareUrl()} title={data.title} image={data?.image} />
+                                    <ShareFacebookComponent url={setShareUrl()} title={data.title} image={data?.image} />
                                 </div>
                             </Col>
                         </Row>
