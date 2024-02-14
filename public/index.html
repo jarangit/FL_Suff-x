@@ -92,7 +92,7 @@
       src="https://px.ads.linkedin.com/collect/?pid=your_partner_id&fmt=gif" />
   </noscript>
 
-  <script>
+  <!-- <script>
     const pathname = window.location.pathname;
     const slugUrl = pathname.split("/")[2];
     const selectLang = pathname.split("/")[3];
@@ -111,9 +111,6 @@
     })
       .then(response => response.json())
       .then(data => {
-        console.log("index data", data);
-        // console.log("index  window.location.pathname", window.location.pathname);
-
         if (data) {
           title = data.title.replace(/<[^>]*>?/g, '');
           detail = data.detail.replace(/<[^>]*>?/g, '').substring(0, 100) + "...";
@@ -151,7 +148,7 @@
         // // linkedin 
         _linkedin_data_partner_ids.push("391194389272494");
       });
-  </script>
+  </script> -->
 
   <noscript><img height="1" width="1" style="display: none"
       src="https://www.facebook.com/tr?id=391194389272494&ev=PageView&noscript=1" /></noscript>
