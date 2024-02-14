@@ -1,101 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
 
-    <!-- Cookie Consent by https://www.cookiewow.com -->
-    <script type="text/javascript" src="https://cookiecdn.com/cwc.js"></script>
-    <script
-      id="cookieWow"
-      type="text/javascript"
-      src="https://cookiecdn.com/configs/zziFEWpnjHfpHy4wYSZ4vdMQ"
-      data-cwcid="zziFEWpnjHfpHy4wYSZ4vdMQ"
-    ></script>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
 
-    <!-- Google Tag Manager -->
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-KRQX2D6");
-    </script>
-    <!-- End Google Tag Manager -->
+  <!-- Cookie Consent by https://www.cookiewow.com -->
+  <script type="text/javascript" src="https://cookiecdn.com/cwc.js"></script>
+  <script id="cookieWow" type="text/javascript" src="https://cookiecdn.com/configs/zziFEWpnjHfpHy4wYSZ4vdMQ"
+    data-cwcid="zziFEWpnjHfpHy4wYSZ4vdMQ"></script>
 
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-KRQX2D6"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+  <!-- Google Tag Manager -->
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != "dataLayer" ? "&l=" + l : "";
+      j.async = true;
+      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", "GTM-KRQX2D6");
+  </script>
+  <!-- End Google Tag Manager -->
 
-    <!-- Facebook Pixel Code -->
-    <script>
-      !(function (f, b, e, v, n, t, s) {
-        if (f.fbq) return;
-        n = f.fbq = function () {
-          n.callMethod
-            ? n.callMethod.apply(n, arguments)
-            : n.queue.push(arguments);
-        };
-        if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = "2.0";
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s);
-      })(
-        window,
-        document,
-        "script",
-        "https://connect.facebook.net/en_US/fbevents.js"
-      );
-      fbq("init", "391194389272494");
-      fbq("track", "PageView");
-    </script>
-    <noscript
-      ><img
-        height="1"
-        width="1"
-        style="display: none"
-        src="https://www.facebook.com/tr?id=391194389272494&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Facebook Pixel Code -->
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KRQX2D6" height="0" width="0"
+      style="display: none; visibility: hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
-    <!-- <meta
+  <!-- Facebook Pixel Code -->
+  <script>
+    !(function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod
+          ? n.callMethod.apply(n, arguments)
+          : n.queue.push(arguments);
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = "2.0";
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s);
+    })(
+      window,
+      document,
+      "script",
+      "https://connect.facebook.net/en_US/fbevents.js"
+    );
+    fbq("init", "391194389272494");
+    fbq("track", "PageView");
+  </script>
+
+  <script>
+    const pathname = window.location.pathname;
+    const slugUrl = pathname.split("/")[2];
+    const selectLang = pathname.split("/")[3];
+    const url = `https://www.suffix.works/api-v2/think-info/${selectLang}?slug=${slugUrl}`;
+    console.log("url", url);
+    fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic c3VmZml4OnN1ZmZpeDIwMjEq',
+      },
+      accept: 'application/json',
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log("index data", data);
+        console.log("index  window.location.pathname", window.location.pathname);
+        // facebook
+        fbq("track", "ViewContent", {
+          content_name: data.title,
+          content_category: "Design",
+          content_ids: "Thoughts",
+          content_type: "article",
+          content_url: `https://www.suffix.works/Thoughts/${slugUrl}/${selectLang}`,
+          image_url: data.image,
+          currency: "TH",
+        });
+        // tiwtter
+        twq('track', 'PageView', {
+          content_name: data.title,
+          content_category: "Design",
+          content_ids: "Thoughts",
+          content_type: "article",
+          content_url: `https://www.suffix.works/Thoughts/${slugUrl}/${selectLang}`,
+          image_url: data.image,
+          currency: "TH",
+        });
+        // linkedin 
+        linkedin('track', 'PageView', {
+          content_name: data.title,
+          content_category: "Design",
+          content_ids: "Thoughts",
+          content_type: "article",
+          content_url: `https://www.suffix.works/Thoughts/${slugUrl}/${selectLang}`,
+          image_url: data.image,
+          currency: "TH",
+        });
+      });
+  </script>
+
+  <meta property="og:title" content="SUFFIX Digital Strategy & Execution" />
+  <meta property="og:description" content="SUFFIX Digital Strategy & Execution" />
+  <meta property="og:image" content="https://www.suffix.works/images/cover/cover.jpg" />
+  <meta property="og:url" content="https://www.suffix.works" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SUFFIX Digital Strategy & Execution" />
+  <meta property="og:locale" content="en_US" /> <!-- th_TH ของไทย -->
+  
+  <noscript><img height="1" width="1" style="display: none"
+      src="https://www.facebook.com/tr?id=391194389272494&ev=PageView&noscript=1" /></noscript>
+  <!-- End Facebook Pixel Code -->
+
+  <!-- <meta
       name="description"
       content="Web site created using create-react-app"
     /> -->
-    <!-- <meta property="og:image" content="%PUBLIC_URL%/images/cover/cover.jpg" /> -->
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <!-- <meta property="og:image" content="%PUBLIC_URL%/images/cover/cover.jpg" /> -->
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
 
-    <meta name="description" content="__META_DESCRIPTION__"/>
-    <meta name="og:title" content="__META_OG_TITLE__"/>
-    <meta name="og:description" content="__META_OG_DESCRIPTION__"/>
-    <meta name="og:image" content="__META_OG_IMAGE__"/>
+  <!-- 
+   -->
 
-    <!--
+  <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -104,12 +148,16 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>SUFFIX Digital Strategy & Execution</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
+  <title>SUFFIX Digital Strategy & Execution</title>
+
+
+
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -119,5 +167,6 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
+</body>
+
 </html>
