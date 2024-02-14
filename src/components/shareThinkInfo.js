@@ -9,11 +9,15 @@ import MetaTags from 'react-meta-tags';
 import { Helmet } from "react-helmet";
 import FadeInSection from './animateFadeIn';
 
-import {
-    FacebookShareButton,
-    LinkedinShareButton,
-    TwitterShareButton,
-} from 'react-share';
+import ShareLinkedinComponent from './ShareLinkedinComponent';
+import ShareTwitterComponent from './ShareTwitterComponent';
+import ShareFacebookComponent from './ShareFacebookComponent';
+
+// import {
+//     FacebookShareButton,
+//     LinkedinShareButton,
+//     TwitterShareButton,
+// } from 'react-share';
 
 function ShareThinkInfo() {
     const [data, setData] = useState([]);
@@ -21,7 +25,7 @@ function ShareThinkInfo() {
     let params = useParams();
     const getWork = (slugUrl) => {
         const selectLang = params.lang;
-        const url = "https://www.suffix.works/api-v2/think/" + params.lang + "";
+        const url = `https://www.suffix.works/api-v2/think-info/${selectLang}?slug=${slugUrl}`;
         const config = {
             headers: {
                 Authorization: 'Basic c3VmZml4OnN1ZmZpeDIwMjEq',
@@ -42,11 +46,14 @@ function ShareThinkInfo() {
         getWork(slug);
     }, [slug]);
 
-    const shareUrl = "https://www.suffix.works/Thoughts/" + slug + "/" + params.lang + "";
+    const setShareUrl = () => {
+        let url = "https://www.suffix.works/Thoughts/" + slug + "/" + params.lang + "";
+        return url;
+    };
 
     return (
         <section className='sectionTeamWorksInfo sectionShareThinkInfo'>
-            
+
             <div className='wrapPage'>
                 <FadeInSection>
                     <Container>
@@ -55,23 +62,25 @@ function ShareThinkInfo() {
                                 <h3>Share</h3>
 
                                 <div className='wrapBtnShareInfoThink'>
-                                    <LinkedinShareButton url={shareUrl} className="share-btn">
+                                    {/* <LinkedinShareButton url={setShareUrl()} className="share-btn">
                                         <img src='../.././images/icon/linkedin.svg' />
                                     </LinkedinShareButton>
 
-                                    <TwitterShareButton url={shareUrl} className="share-btn">
+                                    <TwitterShareButton url={setShareUrl()} className="share-btn">
                                         <img src='../.././images/icon/twitter.svg' />
                                     </TwitterShareButton>
 
                                     <FacebookShareButton
-                                        url={shareUrl}
-                                        imageURL={data.think_info?.image}
-                                        quote={data.title}
+                                        url={setShareUrl()}
                                     >
                                         <img src='../.././images/icon/facebook.svg' />
 
-                                        {/* <FacebookIcon size={40} round={true} /> */}
-                                    </FacebookShareButton>
+                                        <FacebookIcon size={40} round={true} />
+                                    </FacebookShareButton> */}
+
+                                    <ShareLinkedinComponent url={setShareUrl()} title={data.title} />
+                                    <ShareTwitterComponent url={setShareUrl()} title={data.title} />
+                                    <ShareFacebookComponent url={setShareUrl()} title={data.title} />
                                 </div>
                             </Col>
                         </Row>
