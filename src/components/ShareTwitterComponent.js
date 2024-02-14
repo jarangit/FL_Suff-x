@@ -1,7 +1,7 @@
 import React from 'react';
 import { TwitterShareButton } from 'react-share';
 
-const ShareTwitterComponent = ({ url, title}) => {
+const ShareTwitterComponent = ({ url, title, image}) => {
     return (
         <TwitterShareButton
             url={url}

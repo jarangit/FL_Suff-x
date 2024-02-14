@@ -1,7 +1,7 @@
 import React from 'react';
 import { FacebookShareButton, FacebookIcon } from 'react-share';
 
-const ShareFacebookComponent = ({ url, title}) => {
+const ShareFacebookComponent = ({ url, title, image }) => {
     return (
         <FacebookShareButton
             url={url}
