@@ -51,7 +51,7 @@ function TitleThinkInfo() {
                                 <h3>{t('Think')}</h3>
                                 <h3 className='titleCate'>{data.category}</h3>
                                 {/* <h2>{JSON.stringify(data.title)}</h2> */}
-                                <h2 dangerouslySetInnerHTML={{ __html: data.title?.replace(/(<([^>]+)>)/ig, '') }}></h2>
+                                <h2 id="title" dangerouslySetInnerHTML={{ __html: data.title?.replace(/(<([^>]+)>)/ig, '') }}></h2>
                                 {/* <div className='titleWorkInfo' dangerouslySetInnerHTML={{ __html: data.title.replace(/(<([^>]+)>)/ig, '') }}></div> */}
                             </FadeInSection>
                         </Col>
