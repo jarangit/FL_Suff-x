@@ -62,11 +62,45 @@
   </script>
 
   <script>
+    !function (e, t, n, s, u, a) {
+      e.twq || (s = e.twq = function () {
+        s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+      }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
+        a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
+    }(window, document, 'script');
+    // Insert Twitter Pixel ID and Standard Event data below
+    twq('init', 'your_pixel_id');
+    twq('track', 'PageView');
+  </script>
+
+  <script type="text/javascript">
+    _linkedin_partner_id = "your_partner_id";
+    window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+    window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+  </script>
+  <script type="text/javascript">
+    (function () {
+      var s = document.getElementsByTagName("script")[0];
+      var b = document.createElement("script");
+      b.type = "text/javascript"; b.async = true;
+      b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+      s.parentNode.insertBefore(b, s);
+    })();
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none;" alt=""
+      src="https://px.ads.linkedin.com/collect/?pid=your_partner_id&fmt=gif" />
+  </noscript>
+
+  <script>
     const pathname = window.location.pathname;
     const slugUrl = pathname.split("/")[2];
     const selectLang = pathname.split("/")[3];
     const url = `https://www.suffix.works/api-v2/think-info/${selectLang}?slug=${slugUrl}`;
-    console.log("url", url);
+    // console.log("url", url);
+    let title = "";
+    let detail = "";
+    let image = "";
     fetch(url, {
       method: 'GET',
       headers: {
@@ -77,8 +111,14 @@
     })
       .then(response => response.json())
       .then(data => {
-        console.log("index data", data);
-        console.log("index  window.location.pathname", window.location.pathname);
+        // console.log("index data", data);
+        // console.log("index  window.location.pathname", window.location.pathname);
+
+        title = data?.title ? data?.title.replace(/<p>/g, "").replace(/<\/p>/g, "").replace(/<br>/g, "").replace(/&nbsp;/g, "").replace(/&amp;/g, "").replace(/&quot;/g, "") : "SUFFIX Digital Strategy & Execution";
+        detail = data?.detail ? data?.detail.replace(/<p>/g, "").replace(/<\/p>/g, "").replace(/<br>/g, "").replace(/&nbsp;/g, "").replace(/&amp;/g, "").replace(/&quot;/g, "") : "SUFFIX Digital Strategy & Execution";
+        detail = detail.substring(0, 100);
+        image = data?.image ? data?.image : "https://www.suffix.works/images/cover/cover.jpg";
+
         // facebook
         fbq("track", "ViewContent", {
           content_name: data.title,
@@ -99,27 +139,19 @@
           image_url: data.image,
           currency: "TH",
         });
-        // linkedin 
-        linkedin('track', 'PageView', {
-          content_name: data.title,
-          content_category: "Design",
-          content_ids: "Thoughts",
-          content_type: "article",
-          content_url: `https://www.suffix.works/Thoughts/${slugUrl}/${selectLang}`,
-          image_url: data.image,
-          currency: "TH",
-        });
+        // // linkedin 
+        _linkedin_data_partner_ids.push("391194389272494");
       });
   </script>
 
-  <meta property="og:title" content="SUFFIX Digital Strategy & Execution" />
-  <meta property="og:description" content="SUFFIX Digital Strategy & Execution" />
-  <meta property="og:image" content="https://www.suffix.works/images/cover/cover.jpg" />
+  <meta property="og:title" content="${title}" />
+  <meta property="og:description" content="${detail}" />
+  <meta property="og:image" content="${image}" />
   <meta property="og:url" content="https://www.suffix.works" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="SUFFIX Digital Strategy & Execution" />
   <meta property="og:locale" content="en_US" /> <!-- th_TH ของไทย -->
-  
+
   <noscript><img height="1" width="1" style="display: none"
       src="https://www.facebook.com/tr?id=391194389272494&ev=PageView&noscript=1" /></noscript>
   <!-- End Facebook Pixel Code -->
