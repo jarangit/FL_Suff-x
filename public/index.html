@@ -33,7 +33,7 @@
   <!-- End Google Tag Manager (noscript) -->
 
   <!-- Facebook Pixel Code -->
-  <script>
+  <!-- <script>
     !(function (f, b, e, v, n, t, s) {
       if (f.fbq) return;
       n = f.fbq = function () {
@@ -86,13 +86,14 @@
       b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
       s.parentNode.insertBefore(b, s);
     })();
-  </script>
+  </script> -->
+
   <noscript>
     <img height="1" width="1" style="display:none;" alt=""
       src="https://px.ads.linkedin.com/collect/?pid=your_partner_id&fmt=gif" />
   </noscript>
 
-  <!-- <script>
+  <script>
     const pathname = window.location.pathname;
     const slugUrl = pathname.split("/")[2];
     const selectLang = pathname.split("/")[3];
@@ -101,6 +102,7 @@
     let title = "";
     let detail = "";
     let image = "";
+
     fetch(url, {
       method: 'GET',
       headers: {
@@ -111,20 +113,11 @@
     })
       .then(response => response.json())
       .then(data => {
-        if (data) {
+        
           title = data.title.replace(/<[^>]*>?/g, '');
           detail = data.detail.replace(/<[^>]*>?/g, '').substring(0, 100) + "...";
           image = data.image;
-        } else {
-          title = "SUFFIX Digital Strategy & Execution";
-          detail = "SUFFIX Digital Strategy & Execution";
-          image = "https://www.suffix.works/images/cover/cover.jpg";
-        }
-
-        console.log("index title", title);
-        console.log("index detail", detail);
-        console.log("index image", image);
-
+          
         // facebook
         fbq("track", "ViewContent", {
           content_name: title,
@@ -147,8 +140,9 @@
         });
         // // linkedin 
         _linkedin_data_partner_ids.push("391194389272494");
+        _linkedin_partner_id = "391194389272494";
       });
-  </script> -->
+  </script>
 
   <noscript><img height="1" width="1" style="display: none"
       src="https://www.facebook.com/tr?id=391194389272494&ev=PageView&noscript=1" /></noscript>
