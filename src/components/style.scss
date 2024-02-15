@@ -1639,6 +1639,17 @@ body {
   button:hover {
     background-color: $colorHover;
   }
+  h3 {
+    @extend %button;
+    border: none;
+    padding: 0;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 97px;
+    @media (max-width: $mobileScreen) {
+      margin-bottom: 65px;
+    }
+  }
 }
 
 .sectionTeamWorksInfo {
@@ -3054,5 +3065,15 @@ label + .css-1rb63tl-MuiInputBase-root-MuiInput-root {
   }
   .css-mqt2s5.Mui-focused {
     color: $colorWhite !important;
+  }
+}
+
+
+.sectionListWorksRecommen {
+  .listItem:last-child {
+    
+    @media (max-width: $mobileScreen) {
+      display: none;
+    }
   }
 }

@@ -3,10 +3,7 @@ import TitleWorksInfo from './components/TitleWorksInfo.js';
 import TeamWorksInfo from './components/TeamWorksInfo.js';
 import InfoWorks from './components/InfoWorks.js';
 import AppHeader from './components/AppHeader';
-
-import { useTranslation } from 'react-i18next';
-import { useParams } from "react-router-dom";
-
+import ListWorksReacommen from './components/ListWorksReacommen.js';
 
 function PageWorksInfo() {   
   // let { lang } = useParams();
@@ -18,6 +15,7 @@ function PageWorksInfo() {
         <TitleWorksInfo />
         <InfoWorks />
         <TeamWorksInfo />
+        <ListWorksReacommen />
     </div>
   );
 }
