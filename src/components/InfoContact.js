@@ -120,12 +120,13 @@ function InfoContact() {
             body: formdata,
             redirect: 'follow'
         };
+        
 
         fetch("https://www.suffix.works/api-v2/contact-form", requestOptions)
-            .then(response => response.text())
+            .then(response => response.text(),setShowApply(true))
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
-        setShowApply(true);
+       
 
     }
     return (
