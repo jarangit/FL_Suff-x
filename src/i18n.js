@@ -123,7 +123,7 @@ const resources = {
       "Digital Strategy: Marketing & Communication": "บริการวางกลยุทธ์ และการตลาดดิจิทัลWhy this role important for SUFFIX",
       "Digital Executiion: Website & Application": "บริการออกแบบและพัฒนาเว็บไซต์ และแอพพลิเคชั่น",
       "Name":"ชื่อ",
-      "Email":"อีเมลล์",
+      "Email":"อีเมล",
       "Phone":"เบอร์โทรศัพท์",
       "Please tell us a little more about your inquiry.":"รายละเอียดโปรเจค",
       "note": "รายละเอียด",
