@@ -124,7 +124,7 @@ function WorksHome() {
                                         {/* <h2>{data.work_description}</h2> */}
                                         <WorkDescription observerRefs={observerRefs} />
                                     </div>
-                                    
+
                                     <div className="triggers">
                                         <h3>{t('Case Study')}</h3>
                                         <ul>
@@ -187,7 +187,7 @@ function WorksHome() {
                                 <div className="sections" ref={registerContainer} >
                                     <section>
                                         <FadeInSection>
-                                            <Col lg={{ span: 10, offset: 0 }} md={{ span: 8, offset: 2 }} xs={{ span: 10, offset: 0 }}>
+                                            <Col lg={{ span: 10, offset: 0 }} md={{ span: 12, offset: 0 }} xs={{ span: 12, offset: 0 }}>
                                                 <div ref={sectionRefA} id="sectionA" className={`sectionA list`}></div>
                                                 {data.map((data, index) => {
                                                     if (index === 0) {
@@ -214,7 +214,7 @@ function WorksHome() {
                                     </section>
                                     <section>
                                         <FadeInSection>
-                                            <Col lg={{ span: 10, offset: 2 }} md={{ span: 8, offset: 4 }} xs={{ span: 10, offset: 2 }}>
+                                            <Col lg={{ span: 10, offset: 0 }} md={{ span: 12, offset: 0 }} xs={{ span: 12, offset: 0 }}>
                                                 <div ref={sectionRefB} id="sectionB" className={`list `}></div>
                                                 {data.map((data, index) => {
                                                     if (index === 1) {
@@ -241,7 +241,7 @@ function WorksHome() {
                                     </section>
                                     <section>
                                         <FadeInSection>
-                                            <Col lg={{ span: 10, offset: 0 }} md={{ span: 8, offset: 2 }} xs={{ span: 10, offset: 0 }}>
+                                            <Col lg={{ span: 10, offset: 0 }} md={{ span: 12, offset: 0 }} xs={{ span: 12, offset: 0 }}>
                                                 <div ref={sectionRefC} id="sectionC" className={`list`}></div>
                                                 {data.map((data, index) => {
                                                     if (index === 2) {
@@ -269,7 +269,7 @@ function WorksHome() {
                                     </section>
                                     <section>
                                         <FadeInSection>
-                                            <Col lg={{ span: 10, offset: 2 }} md={{ span: 8, offset: 4 }} xs={{ span: 10, offset: 2 }}>
+                                            <Col lg={{ span: 10, offset: 0 }} md={{ span: 12, offset: 0 }} xs={{ span: 12, offset: 0 }}>
                                                 <div ref={sectionRefD} id="sectionD" className={`list`}></div>
                                                 {data.map((data, index) => {
                                                     if (index === 3) {
@@ -294,7 +294,7 @@ function WorksHome() {
                                             </Col>
                                         </FadeInSection>
                                     </section>
-                                    <Col lg={{ span: 10, offset: 0 }} md={{ span: 8, offset: 2 }} xs={{ span: 10, offset: 0 }}>
+                                    <Col lg={{ span: 10, offset: 0 }} md={{ span: 12, offset: 0 }} xs={{ span: 12, offset: 0 }}>
                                         <FadeInSection>
                                             <section className='sectionE' id="sectionE" ref={sectionRefE}>
                                                 {/* <div className='sectionE' ref={sectionRefE}></div> */}
