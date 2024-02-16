@@ -180,9 +180,17 @@
           image_url: image,
           currency: "TH",
         });
-        // // linkedin 
-        _linkedin_data_partner_ids.push("391194389272494");
-        _linkedin_partner_id = "391194389272494";
+        // linkedin
+        linkedin('track', 'PageView', {
+          content_name: title,
+          content_category: "Design",
+          content_ids: "Thoughts",
+          content_type: "article",
+          content_url: `https://www.suffix.works/Thoughts/${slugUrl}/${selectLang}`,
+          image_url: image,
+          currency: "TH",
+        })
+
       });
   </script>
 
