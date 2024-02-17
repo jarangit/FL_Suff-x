@@ -28,7 +28,7 @@ function Think() {
         };
         return axios.get(url, config)
             .then(res => {
-                console.log(res)
+                // console.log(res)
                 setData(res.data);
             })
             .catch(err => console.log(err))

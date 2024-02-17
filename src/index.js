@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { hydrate, render } from "react-dom";
+import ReactDOM from "react-dom/client";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -17,26 +16,40 @@ i18next.init({
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(
-  // <React.StrictMode>
-  //   <BrowserRouter>
-  //     <CookiesProvider defaultSetOptions={{ path: '/' }}>
-  //       <App />
-  //     </CookiesProvider>
-  //   </BrowserRouter>
-  // </React.StrictMode>
+// <React.StrictMode>
+//   <BrowserRouter>
+//     <CookiesProvider defaultSetOptions={{ path: '/' }}>
+//       <App />
+//     </CookiesProvider>
+//   </BrowserRouter>
+// </React.StrictMode>
 // );
-const AppWithRouter = (
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-);
 
-const rootElement = document.getElementById("root");
-if (rootElement.hasChildNodes()) {
-  hydrate(AppWithRouter, rootElement);
-} else {
-  render(AppWithRouter, rootElement);
-}
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <BrowserRouter>
+//       <CookiesProvider defaultSetOptions={{ path: '/' }}>
+//         <I18nextProvider i18n={i18next}>
+//           <App />
+//         </I18nextProvider>
+//       </CookiesProvider>
+//     </BrowserRouter>
+//   </React.StrictMode>,
+//   document.getElementById('root')
+// );
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <CookiesProvider defaultSetOptions={{ path: '/' }}>
+        <I18nextProvider i18n={i18next}>
+          <App />
+        </I18nextProvider>
+      </CookiesProvider>
+    </BrowserRouter>
+  </React.StrictMode>,
+);
 
 
 // If you want to start measuring performance in your app, pass a function

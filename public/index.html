@@ -32,168 +32,10 @@
       style="display: none; visibility: hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-  <!-- Facebook Pixel Code -->
-  <script>
-    !(function (f, b, e, v, n, t, s) {
-      if (f.fbq) return;
-      n = f.fbq = function () {
-        n.callMethod
-          ? n.callMethod.apply(n, arguments)
-          : n.queue.push(arguments);
-      };
-      if (!f._fbq) f._fbq = n;
-      n.push = n;
-      n.loaded = !0;
-      n.version = "2.0";
-      n.queue = [];
-      t = b.createElement(e);
-      t.async = !0;
-      t.src = v;
-      s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s);
-    })(
-      window,
-      document,
-      "script",
-      "https://connect.facebook.net/en_US/fbevents.js"
-    );
-    fbq("init", "391194389272494");
-    fbq("track", "PageView");
-  </script>
-
-  <script>
-    !function (e, t, n, s, u, a) {
-      e.twq || (s = e.twq = function () {
-        s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
-      }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
-        a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
-    }(window, document, 'script');
-    // Insert Twitter Pixel ID and Standard Event data below
-    twq('init', 'your_pixel_id');
-    twq('track', 'PageView');
-  </script>
-
-  <script type="text/javascript">
-    _linkedin_partner_id = "your_partner_id";
-    window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
-    window._linkedin_data_partner_ids.push(_linkedin_partner_id);
-  </script>
-  <script type="text/javascript">
-    (function () {
-      var s = document.getElementsByTagName("script")[0];
-      var b = document.createElement("script");
-      b.type = "text/javascript"; b.async = true;
-      b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
-      s.parentNode.insertBefore(b, s);
-    })();
-  </script>
-
   <noscript>
     <img height="1" width="1" style="display:none;" alt=""
       src="https://px.ads.linkedin.com/collect/?pid=your_partner_id&fmt=gif" />
   </noscript>
-
-  <script>
-    const pathname = window.location.pathname;
-    const slugUrl = pathname.split("/")[2];
-    const selectLang = pathname.split("/")[3];
-    const url = `https://www.suffix.works/api-v2/think-info/${selectLang}?slug=${slugUrl}`;
-    // console.log("url", url);
-    let title = "";
-    let detail = "";
-    let image = "";
-
-    fetch(url, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Basic c3VmZml4OnN1ZmZpeDIwMjEq',
-      },
-      accept: 'application/json',
-    })
-      .then(response => response.json())
-      .then(data => {
-
-        title = data.title.replace(/<[^>]*>?/g, '');
-        detail = data.detail.replace(/<[^>]*>?/g, '').substring(0, 100) + "...";
-        image = data.image;
-
-        document.querySelector('title').innerText = title;
-
-        let metaTitle = document.querySelector('meta[property="og:title"]');
-        if (!metaTitle) {
-          metaTitle = document.createElement('meta');
-          metaTitle.setAttribute('property', 'og:title');
-          document.head.appendChild(metaTitle);
-        }
-        metaTitle.content = title;
-
-        let metaDesc = document.querySelector('meta[name="description"]');
-        if (!metaDesc) {
-          metaDesc = document.createElement('meta');
-          metaDesc.name = 'description';
-          document.head.appendChild(metaDesc);
-        }
-        metaDesc.content = detail;
-
-        let metaImage = document.querySelector('meta[property="og:image"]');
-        if (!metaImage) {
-          metaImage = document.createElement('meta');
-          metaImage.setAttribute('property', 'og:image');
-          document.head.appendChild(metaImage);
-        }
-        metaImage.content = image;
-
-        let metaUrl = document.querySelector('meta[property="og:url"]');
-        if (!metaUrl) {
-          metaUrl = document.createElement('meta');
-          metaUrl.setAttribute('property', 'og:url');
-          document.head.appendChild(metaUrl);
-        }
-        metaUrl.content = `https://www.suffix.works/Thoughts/${slugUrl}/${selectLang}`;
-
-        let metaType = document.querySelector('meta[property="og:type"]');
-        if (!metaType) {
-          metaType = document.createElement('meta');
-          metaType.setAttribute('property', 'og:type');
-          document.head.appendChild(metaType);
-        }
-        metaType.content = 'website';
-
-        // facebook
-        fbq("track", "ViewContent", {
-          content_name: title,
-          content_category: "Design",
-          content_ids: "Thoughts",
-          content_type: "article",
-          content_url: `https://www.suffix.works/Thoughts/${slugUrl}/${selectLang}`,
-          image_url: image,
-          currency: "TH",
-        });
-        // tiwtter
-        twq('track', 'PageView', {
-          content_name: title,
-          content_category: "Design",
-          content_ids: "Thoughts",
-          content_type: "article",
-          content_url: `https://www.suffix.works/Thoughts/${slugUrl}/${selectLang}`,
-          image_url: image,
-          currency: "TH",
-        });
-        // linkedin
-        linkedin('track', 'PageView', {
-          content_name: title,
-          content_category: "Design",
-          content_ids: "Thoughts",
-          content_type: "article",
-          content_url: `https://www.suffix.works/Thoughts/${slugUrl}/${selectLang}`,
-          image_url: image,
-          currency: "TH",
-        })
-
-      });
-  </script>
-
   <noscript><img height="1" width="1" style="display: none"
       src="https://www.facebook.com/tr?id=391194389272494&ev=PageView&noscript=1" /></noscript>
   <!-- End Facebook Pixel Code -->
@@ -204,10 +46,6 @@
     /> -->
   <!-- <meta property="og:image" content="%PUBLIC_URL%/images/cover/cover.jpg" /> -->
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-
-  <!-- 
-   -->
-
   <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -223,21 +61,6 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
   <title>SUFFIX Digital Strategy & Execution</title>
-
-  <meta property="og:title" content="SUFFIX Digital Strategy & Execution" />
-  <meta property="og:description"
-    content="SUFFIX is a digital strategy and execution agency. We help businesses to grow and scale by creating digital strategies and executing them. We are a team of digital experts who are passionate about digital marketing, technology, and design. We are here to help you grow your business and achieve your goals. We are here to help you grow your business and achieve your goals." />
-  <meta property="og:image" content="https://www.suffix.works/images/cover/cover.jpg" />
-  <meta property="og:url" content="https://www.suffix.works" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="SUFFIX Digital Strategy & Execution" />
-  <meta property="og:locale" content="en_US" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="SUFFIX Digital Strategy & Execution" />
-  <meta property="twitter:description"
-    content="SUFFIX is a digital strategy and execution agency. We help businesses to grow and scale by creating digital strategies and executing them. We are a team of digital experts who are passionate about digital marketing, technology, and design. We are here to help you grow your business and achieve your goals. We are here to help you grow your business and achieve your goals." />
-  <meta name="twitter:image" content="https://www.suffix.works/images/cover/cover.jpg" />
-
 </head>
 
 <body>
