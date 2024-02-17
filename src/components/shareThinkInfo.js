@@ -28,7 +28,7 @@ function ShareThinkInfo() {
         };
         return axios.get(url, config)
             .then(res => {
-                console.log(res)
+                // console.log(res)
                 setData(res.data);
             })
             .catch(err => console.log(err))
@@ -56,24 +56,7 @@ function ShareThinkInfo() {
                         <Row>
                             <Col>
                                 <h3>Share</h3>
-
                                 <div className='wrapBtnShareInfoThink'>
-                                    {/* <LinkedinShareButton url={setShareUrl()} className="share-btn">
-                                        <img src='../.././images/icon/linkedin.svg' />
-                                    </LinkedinShareButton>
-
-                                    <TwitterShareButton url={setShareUrl()} className="share-btn">
-                                        <img src='../.././images/icon/twitter.svg' />
-                                    </TwitterShareButton>
-
-                                    <FacebookShareButton
-                                        url={setShareUrl()}
-                                    >
-                                        <img src='../.././images/icon/facebook.svg' />
-
-                                        <FacebookIcon size={40} round={true} />
-                                    </FacebookShareButton> */}
-
                                     <ShareLinkedinComponent url={setShareUrl()} title={data.title} image={data?.image} />
                                     <ShareTwitterComponent url={setShareUrl()} title={data.title} image={data?.image} />
                                     <ShareFacebookComponent url={setShareUrl()} title={data.title} image={data?.image} />

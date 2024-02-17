@@ -6,6 +6,8 @@ const ShareFacebookComponent = ({ url, title, image }) => {
         <FacebookShareButton
             url={url}
             quote={title}
+            hashtag="#suffixworks"
+            itemType='WebPage'
             className="Demo__some-network__share-button"
         >
             <img src='../.././images/icon/facebook.svg' />
