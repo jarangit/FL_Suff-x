@@ -12,7 +12,7 @@ import FadeInSection from './animateFadeIn';
 import ShareLinkedinComponent from './ShareLinkedinComponent';
 import ShareTwitterComponent from './ShareTwitterComponent';
 import ShareFacebookComponent from './ShareFacebookComponent';
-import MetaTagComponent from './MetaTagComponent';
+// import MetaTagComponent from './MetaTagComponent';
 
 function ShareThinkInfo() {
     const [data, setData] = useState([]);
@@ -50,7 +50,7 @@ function ShareThinkInfo() {
         <section className='sectionTeamWorksInfo sectionShareThinkInfo'>
 
             <div className='wrapPage'>
-                <MetaTagComponent title={data.title} description={data.description} url={setShareUrl()} imageUrl={data?.image} imageAlt={data.title} />
+                {/* <MetaTagComponent title={data.title} description={data.description} url={setShareUrl()} imageUrl={data?.image} imageAlt={data.title} /> */}
                 <FadeInSection>
                     <Container>
                         <Row>
