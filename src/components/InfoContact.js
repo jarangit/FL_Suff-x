@@ -123,7 +123,14 @@ function InfoContact() {
         
 
         fetch("https://www.suffix.works/api-v2/contact-form", requestOptions)
-            .then(response => response.text(),setShowApply(true))
+            .then(response => {
+            const status = response.status
+           
+            if (status == 200) {
+                return  response.text(),
+                setShowApply(true)
+              }
+            })
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
        
