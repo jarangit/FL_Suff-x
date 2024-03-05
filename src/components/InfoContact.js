@@ -96,7 +96,7 @@ function InfoContact() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
+        const isValidEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,6}$/g;
         const email = document.getElementById("email")
         const full_name = document.getElementById("full_name")
         const phone_number = document.getElementById("phone_number")
@@ -108,11 +108,23 @@ function InfoContact() {
 
         var formdata = new FormData();
 
+        if (email && email.value.match(isValidEmail)) {
+
+            setSelectBool(false)
+            setHelperText("")
+            formdata.append("email", email.value);
+            setShowApply(true);
+        }
+        else {
+            setSelectBool(true)
+            setHelperText(
+                "")
+        }   
         formdata.append("full_name", full_name.value);
         formdata.append("phone_number", phone_number.value);
         formdata.append("service", "Digital Strategy: Marketing & Communication");
         formdata.append("message", message.value);
-        formdata.append("email", email.value);
+
 
         var requestOptions = {
             method: 'POST',
@@ -127,9 +139,8 @@ function InfoContact() {
             const status = response.status
            
             if (status == 200) {
-                return  response.text(),
-                setShowApply(true)
-              }
+                return  response.text()
+            }
             })
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
