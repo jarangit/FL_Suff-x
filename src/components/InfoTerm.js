@@ -11,7 +11,7 @@ import FadeInSection from './animateFadeIn';
 function InfoPolicy() {
     let params = useParams();
     const { t, i18n } = useTranslation();
-    const url = "https://www.suffix.works/api-v2/terms/" + params.lang + "";
+    const url = "https://128.199.72.95/api-v2/terms/" + params.lang + "";
     const [data, setData] = useState([]);
     // const [lang, setLang] = useState("en");
 

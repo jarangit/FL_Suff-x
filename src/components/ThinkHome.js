@@ -33,7 +33,7 @@ function ThinkHome() {
     const [data, setData] = useState([]);
     const { t } = useTranslation();
     let { lang } = useParams();
-    const url = "https://www.suffix.works/api-v2/home/" + params.lang + "";
+    const url = "https://128.199.72.95/api-v2/home/" + params.lang + "";
 
     const getWork = () => {
         const config = {

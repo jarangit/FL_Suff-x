@@ -80,7 +80,7 @@ import SEO from './SEO';
 function ListThink(props) {
     const { t } = useTranslation();
     let params = useParams();
-    const url = "https://www.suffix.works/api-v2/think/en";
+    const url = "https://128.199.72.95/api-v2/think/en";
     const [data, setData] = useState([]);
     const [lang, setLang] = useState("en");
 

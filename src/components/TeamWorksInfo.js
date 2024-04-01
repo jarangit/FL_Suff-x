@@ -42,7 +42,7 @@ function TeamWorksInfo() {
     const { t } = useTranslation();
 
     const getWork = (slugUrl) => {
-        const url = `https://www.suffix.works/api-v2/work-detail/en?slug=${slugUrl}`;
+        const url = `https://128.199.72.95/api-v2/work-detail/en?slug=${slugUrl}`;
         const config = {
             headers: {
                 Authorization: 'Basic c3VmZml4OnN1ZmZpeDIwMjEq',

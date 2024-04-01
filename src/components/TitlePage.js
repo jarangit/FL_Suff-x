@@ -12,7 +12,7 @@ import FadeInSection from './animateFadeIn';
 function TitlePage() {
     let params = useParams();
     const { t } = useTranslation();
-    const url = "https://www.suffix.works/api-v2/works/" + params.lang + "";
+    const url = "https://128.199.72.95/api-v2/works/" + params.lang + "";
     const [data, setData] = useState([]);
 
 
