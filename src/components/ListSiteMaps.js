@@ -12,7 +12,7 @@ import FadeInSection from './animateFadeIn';
 function ListSiteMaps() {
     let params = useParams();
 
-    const url = "https://128.199.72.95/api-v2/sitemaps/" + params.lang + "";
+    const url = "https://www.suffix.works/api-v2/sitemaps/" + params.lang + "";
     const [data, setData] = useState([]);
     const [lang, setLang] = useState("en");
 

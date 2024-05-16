@@ -20,7 +20,7 @@ function ListWorks() {
     let params = useParams();
     const getWork = (slugUrl) => {
         const selectLang = params.lang;
-        const url = `https://128.199.72.95/api-v2/work-detail/${selectLang}?slug=${slugUrl}`;
+        const url = `https://www.suffix.works/api-v2/work-detail/${selectLang}?slug=${slugUrl}`;
         const config = {
             headers: {
                 Authorization: 'Basic c3VmZml4OnN1ZmZpeDIwMjEq',

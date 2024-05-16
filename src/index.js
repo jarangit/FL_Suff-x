@@ -10,7 +10,6 @@ import i18next from "i18next";
 import './i18n';
 import { CookiesProvider } from 'react-cookie';
 
-
 i18next.init({
   interpolation: { escapeValue: false },  // React already does escaping
 });

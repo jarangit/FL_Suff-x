@@ -13,7 +13,7 @@ import { useTranslation } from 'react-i18next';
 function InfoPolicy() {
     let params = useParams();
     const { t, i18n } = useTranslation();
-    const url = "https://128.199.72.95/api-v2/policy/" + params.lang + "";
+    const url = "https://www.suffix.works/api-v2/policy/" + params.lang + "";
     const [data, setData] = useState([]);
     // const [lang, setLang] = useState("en");
 
@@ -50,7 +50,7 @@ function InfoPolicy() {
                         </Row>
                         <Row>
                             <Col>
-                                    <p dangerouslySetInnerHTML={{ __html: data.description?.toString().replace(/\r?\n|\r/g, '<br>') }}></p>
+                                <p dangerouslySetInnerHTML={{ __html: data.description?.toString().replace(/\r?\n|\r/g, '<br>') }}></p>
 
                              {/* <div dangerouslySetInnerHTML={{ __html: data.description }}></div> */}
                             </Col>

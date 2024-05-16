@@ -45,7 +45,7 @@ import { useParams } from "react-router-dom";
 
 
 function ClientsHome() {
-    const url = "https://128.199.72.95/api-v2/home/en";
+    const url = "https://www.suffix.works/api-v2/home/en";
     const [data, setData] = useState([]);
     let { lang } = useParams();
 

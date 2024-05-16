@@ -12,7 +12,7 @@ import { useParams } from 'react-router-dom';
 function ListClient() {
     let params = useParams();
     const selectLang = params.lang;
-    const url = `https://128.199.72.95/api-v2/client/${selectLang}`;
+    const url = `https://www.suffix.works/api-v2/client/${selectLang}`;
     const [data, setData] = useState([]);
   
     const [lang, setLang] = useState("en");

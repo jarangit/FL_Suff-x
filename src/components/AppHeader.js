@@ -13,7 +13,6 @@ import { Routes, Route } from 'react-router-dom';
 import PageWorks from '../PageWorks';
 import { useCookies } from 'react-cookie';
 
-
 function AppHeader() {
     const { t, i18n } = useTranslation();
     const [toggle, setToggle] = useState(false);

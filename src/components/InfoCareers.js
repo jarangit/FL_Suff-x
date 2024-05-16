@@ -27,7 +27,7 @@ function InfoCareers() {
     let params = useParams();
     const getWork = (slugUrl) => {
         const selectLang = params.lang;
-        const url = `https://128.199.72.95/api-v2/position/${selectLang}?id=${slugUrl}`;
+        const url = `https://www.suffix.works/api-v2/position/${selectLang}?id=${slugUrl}`;
         const config = {
             headers: {
                 Authorization: 'Basic c3VmZml4OnN1ZmZpeDIwMjEq',
@@ -125,7 +125,7 @@ function InfoCareers() {
             redirect: 'follow'
         };
 
-        fetch("https://128.199.72.95/api-v2/apply", requestOptions)
+        fetch("https://www.suffix.works/api-v2/apply", requestOptions)
             .then(response => response.text())
             .then(result => console.log(result))
             .catch(error => console.log('error', error));

@@ -14,7 +14,7 @@ import FadeInSection from './animateFadeIn';
 function Approach() {
     let params = useParams();
     const { t } = useTranslation();
-    const url = "https://128.199.72.95/api-v2/home/" + params.lang + "";
+    const url = "https://www.suffix.works/api-v2/home/" + params.lang + "";
     const [data, setData] = useState([]);
     // const [lang, setLang] = useState("en");
 
