@@ -43,7 +43,8 @@ function App() {
     <HelmetProvider context={helmetContext}>
       <div>
         {/* <AppHeader /> */}
-        {/* <HelmetMetaData></HelmetMetaData> */}
+        {/* <HelmetMetaData></HelmetMetaData> */} 
+        
         <Routes>
           <Route path="/" element={<Navigate to={`/en`} replace />} />
 
