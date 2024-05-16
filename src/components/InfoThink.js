@@ -68,7 +68,7 @@ function InfoThink() {
     },);
     return (
         <section className='sectionInfoThink'>
-            {/* <Helmet>
+            <Helmet>
 
                 <title>{titlePage}</title>
                 <meta property="og:url" content={data.slugUrl} />
@@ -78,7 +78,7 @@ function InfoThink() {
                 <meta property="og:image" content={data.image} />
                 <meta name="twitter:image" content={data.image} />
 
-            </Helmet> */}
+            </Helmet>
             {/* <SEO
                 title="Learning React Helmet!"
                 description="Beginner friendly page for learning React Helmet."

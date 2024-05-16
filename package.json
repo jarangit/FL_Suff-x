@@ -1,4 +1,5 @@
 {
+  "homepage": "",
   "name": "suffix_frontend_new_react",
   "version": "0.1.0",
   "private": true,
@@ -52,6 +53,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "postbuild": "react-snap",
     "server": "npm run build&&node server/index.js"
   },
   "eslintConfig": {
@@ -59,6 +61,9 @@
       "react-app",
       "react-app/jest"
     ]
+  },
+  "reactSnap": {
+    "inlineCss": true
   },
   "browserslist": {
     "production": [
